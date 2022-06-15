@@ -4,6 +4,6 @@ metadata:
   name: frontend
   namespace: flux-system
 spec:
-  image: ghcr.io/hm-edu/portal-frontend/frontend
+  image: ghcr.io/hm-edu/portal-frontend
   interval: 1m0s
 ---
