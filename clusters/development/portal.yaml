@@ -1,0 +1,216 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pki-rest-interface
+  namespace: portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pki-rest-interface
+  template:
+    metadata:
+      labels:
+        app: pki-rest-interface
+    spec:
+      containers:
+        - args:
+          - --level
+          - "debug"
+          - --audience
+          - "api://1d9e1166-1c48-4cb2-a65e-21fa9dd384c7"
+          - --ssl_service
+          - "pki-service:8081"
+          - --smime_service
+          - "pki-service:8081"
+          - --domain_service
+          - "domain-rest-interface:8081"
+          - --jwks_uri
+          - "https://login.microsoftonline.com/845ffaef-4f14-46a0-8d3d-542a8a5eb11e/discovery/v2.0/keys"
+          env:
+          - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system.svc:14268/api/traces            
+          - name: INSTANCE_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main
+          imagePullPolicy: Always
+          name: app
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: domain-rest-interface
+  namespace: portal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: domain-rest-interface
+  template:
+    metadata:
+      labels:
+        app: domain-rest-interface
+    spec:
+      containers:
+        - args:
+          - --level
+          - "debug"
+          - --audience
+          - "api://1d9e1166-1c48-4cb2-a65e-21fa9dd384c7"
+          - --jwks_uri
+          - "https://login.microsoftonline.com/845ffaef-4f14-46a0-8d3d-542a8a5eb11e/discovery/v2.0/keys"
+          - --db
+          - "postgresql://pki:pki@postgres.portal.svc.cluster.local/domain"
+          - --preseed
+          - "/data/data.json"
+          - --ssl_service
+          - "pki-service:8081"
+          volumeMounts:
+            - mountPath: /data
+              name: domain-data
+          env:
+          - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system.svc:14268/api/traces
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main
+          imagePullPolicy: Always
+          name: app
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          - containerPort: 8081
+            protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+      volumes:
+        - name: domain-data
+          configMap:
+            name: domain-data
+            items:
+              - key: data.json
+                path: data.json
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eab-rest-interface
+  namespace: portal
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eab-rest-interface
+  template:
+    metadata:
+      labels:
+        app: eab-rest-interface
+    spec:
+      containers:
+        - args:
+          - --level
+          - "debug"
+          - --audience
+          - "api://1d9e1166-1c48-4cb2-a65e-21fa9dd384c7"
+          - --jwks_uri
+          - "https://login.microsoftonline.com/845ffaef-4f14-46a0-8d3d-542a8a5eb11e/discovery/v2.0/keys"
+          - --db
+          - "postgresql://acme:acme@postgres.portal.svc.cluster.local/eab"
+          - --acme_db
+          - "postgresql://acme:acme@postgres.portal.svc.cluster.local/acme"
+          - --provisioner_id
+          - "acme/acme"
+          - --domain_service
+          - "domain-rest-interface:8081"
+          env:
+          - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system.svc:14268/api/traces
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main
+          imagePullPolicy: Always
+          name: app
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          - containerPort: 8081
+            protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pki-service
+  namespace: portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pki-service
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '2222'
+        prometheus.io/path: "/"
+        prometheus.io/scrape: 'true'
+      labels:
+        app: pki-service
+    spec:
+      containers:
+        - args:
+          - --level
+          - "debug"
+          - --sectigo_user 
+          - "fritterh"
+          - --sectigo_customeruri 
+          - "DFN"
+          - --ssl_org_id 
+          - "30032"
+          - --ssl_term
+          - "365"
+          - --ssl_profile
+          - "15863"
+          - --smime_profile 
+          - "16307"
+          - --smime_org_id 
+          - "30032"
+          - --smime_term 
+          - "730"
+          - --smime_key_length 
+          - "4096"
+          - --smime_key_type 
+          - "RSA"
+          - --db
+          - "postgresql://pki:pki@postgres.portal.svc.cluster.local/certificates"
+          env:
+          - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system.svc:14268/api/traces
+          - name: SECTIGO_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sectigo
+                key: sectigo_password
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main
+          imagePullPolicy: Always
+          name: app
+          ports:
+          - containerPort: 8081
+            protocol: TCP
+          - containerPort: 2222
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command: ["/grpc_health_probe", "-addr=:8081"]
+            initialDelaySeconds: 10
+            periodSeconds: 30
