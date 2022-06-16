@@ -205,7 +205,7 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: eab_hmac
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-b78316f-1655360348 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-264de83-1655375546 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
