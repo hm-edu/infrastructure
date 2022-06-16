@@ -175,6 +175,12 @@ spec:
             - "fritterh"
             - --sectigo_customeruri
             - "DFN"
+            - --ssl_org_id
+            - "30032"
+            - --ssl_term
+            - "365"
+            - --ssl_profile
+            - "15863"
             - --smime_profile
             - "16307"
             - --smime_org_id
@@ -195,16 +201,6 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: sectigo_password
-            - name: EAB_KID
-              valueFrom:
-                secretKeyRef:
-                  name: sectigo
-                  key: eab_kid
-            - name: EAB_HMAC
-              valueFrom:
-                secretKeyRef:
-                  name: sectigo
-                  key: eab_hmac
           image: ghcr.io/hm-edu/portal-backend/pki-service:main-264de83-1655375546 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
