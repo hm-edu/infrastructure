@@ -14,7 +14,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: ghcr.io/hm-edu/portal-frontend:main-156fabf-1657154943 # {"$imagepolicy": "flux-system:frontend"}
+        - image: ghcr.io/hm-edu/portal-frontend:main-29d1393-1657155063 # {"$imagepolicy": "flux-system:frontend"}
           imagePullPolicy: Always
           name: app
           ports:
