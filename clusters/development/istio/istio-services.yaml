@@ -1,0 +1,106 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pki
+  namespace: portal
+spec:
+  hosts:
+  - pki.api.hmtest.de
+  gateways:
+  - istio-system/gateway-prod
+  http:
+  - route:
+    - destination:
+        host: pki-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hmtest.de
+      - exact: http://localhost:3000
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend
+  namespace: portal
+spec:
+  hosts:
+  - my.hmtest.de
+  gateways:
+  - istio-system/gateway-prod
+  http:
+  - route:
+    - destination:
+        host: frontend
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: domain
+  namespace: portal
+spec:
+  hosts:
+  - domain.api.hmtest.de
+  gateways:
+  - istio-system/gateway-prod
+  http:
+  - route:
+    - destination:
+        host: domain-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hmtest.de
+      - exact: http://localhost:3000
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: eab
+  namespace: portal
+spec:
+  hosts:
+  - eab.api.hmtest.de
+  gateways:
+  - istio-system/gateway-prod
+  http:
+  - route:
+    - destination:
+        host: eab-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hmtest.de
+      - exact: http://localhost:3000
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type

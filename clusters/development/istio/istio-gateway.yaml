@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway-prod
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: portal-cert
+    hosts:
+    - "my.hmtest.de"
+    - "domain.api.hmtest.de"
+    - "pki.api.hmtest.de"
+    - "eab.api.hmtest.de"

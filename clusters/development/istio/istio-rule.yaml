@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: pki-service-mtls
+  namespace: portal
+spec:
+  host: pki-service.portal.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: domain-rest-interface-mtls
+  namespace: portal
+spec:
+  host: domain-rest-interface.portal.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: eab-rest-interface-mtls
+  namespace: portal
+spec:
+  host: eab-rest-interface.portal.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---

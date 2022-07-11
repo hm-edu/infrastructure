@@ -4,4 +4,3 @@ resources:
 - portal-frontend-image-registry.yaml
 - portal-frontend-policy.yaml
 - portal-frontend.yaml
-- portal-frontend-istio.yaml

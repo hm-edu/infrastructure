@@ -214,3 +214,71 @@ spec:
               command: ["/grpc_health_probe", "-addr=:8081"]
             initialDelaySeconds: 10
             periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: domain-rest-interface
+  name: domain-rest-interface
+  namespace: portal
+spec:
+  selector:
+    app: domain-rest-interface
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  - name: grpc
+    port: 8081
+    targetPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pki-service
+  name: pki-service
+  namespace: portal
+spec:
+  selector:
+    app: pki-service
+  type: ClusterIP
+  ports:
+  - name: grpc
+    port: 8081
+    targetPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: eab-rest-interface
+  name: eab-rest-interface
+  namespace: portal
+spec:
+  selector:
+    app: eab-rest-interface
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pki-rest-interface
+  name: pki-rest-interface
+  namespace: portal
+spec:
+  selector:
+    app: pki-rest-interface
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+---

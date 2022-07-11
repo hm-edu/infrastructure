@@ -4,4 +4,3 @@ resources:
 - portal-image-registry.yaml
 - portal-image-policy.yaml
 - portal.yaml
-- portal-istio.yaml
