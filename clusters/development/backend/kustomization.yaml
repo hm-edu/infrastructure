@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
 - portal-image-registry.yaml
 - portal-image-policy.yaml
+- portal-accounts.yaml
 - portal.yaml

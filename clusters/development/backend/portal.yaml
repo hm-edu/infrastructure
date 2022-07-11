@@ -13,6 +13,7 @@ spec:
       labels:
         app: pki-rest-interface
     spec:
+      serviceAccountName: portal-pki-rest
       containers:
         - args:
             - --level
@@ -57,6 +58,7 @@ spec:
       labels:
         app: domain-rest-interface
     spec:
+      serviceAccountName: portal-domain
       containers:
         - args:
             - --level
@@ -114,6 +116,7 @@ spec:
       labels:
         app: eab-rest-interface
     spec:
+      serviceAccountName: portal-eab
       containers:
         - args:
             - --level
@@ -167,6 +170,7 @@ spec:
       labels:
         app: pki-service
     spec:
+      serviceAccountName: portal-pki-internal
       containers:
         - args:
             - --level
