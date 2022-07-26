@@ -5,3 +5,4 @@ resources:
 - istio-services.yaml
 - istio-rule.yaml
 - istio-gateway.yaml
+- istio-policies.yaml
