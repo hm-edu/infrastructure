@@ -19,3 +19,21 @@ spec:
     - "domain.api.hmtest.de"
     - "pki.api.hmtest.de"
     - "eab.api.hmtest.de"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: acme-gateway
+  namespace: portal
+spec:
+  selector:
+    istio: ingressgateway-secondary # use istio default ingress gateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: PASSTHROUGH
+    hosts:
+    - acme.hmtest.de

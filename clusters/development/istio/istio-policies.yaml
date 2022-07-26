@@ -1,0 +1,32 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: pki-service
+  namespace: portal
+spec:
+  selector:
+    matchLabels:
+      app: pki-service
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+          - "cluster.local/ns/portal/sa/portal-acme"
+    to:
+    - operation:
+        paths: ["/pkiService.SSLService/ListCertificates", "/pkiService.SSLService/IssueCertificate"]
+  - from:
+    - source:
+        principals:
+          - "cluster.local/ns/portal/sa/portal-pki-rest"
+    to:
+    - operation:
+        paths: ["/pkiService.SSLService/ListCertificates", "/pkiService.SSLService/IssueCertificate", "/pkiService.SSLService/RevokeCertificate", "/pkiService.SmimeService/ListCertificates", "/pkiService.SmimeService/IssueCertificate", "/pkiService.SmimeService/RevokeCertificate"]
+  - from:
+    - source:
+        principals:
+          - "cluster.local/ns/portal/sa/portal-domain"
+    to:
+    - operation:
+        paths: ["/pkiService.SSLService/ListCertificates", "/pkiService.SSLService/RevokeCertificate" ]

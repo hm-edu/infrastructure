@@ -31,3 +31,13 @@ spec:
     tls:
       mode: ISTIO_MUTUAL
 ---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: certificates-mtls
+  namespace: portal
+spec:
+  host: certificates.portal.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

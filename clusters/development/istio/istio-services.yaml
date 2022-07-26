@@ -104,3 +104,24 @@ spec:
       allowHeaders:
       - Authorization
       - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: acme
+  namespace: portal
+spec:
+  hosts:
+  - acme.hmtest.de
+  gateways:
+  - acme-gateway
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - acme.hmtest.de
+    route:
+    - destination:
+        host: certificates
+        port:
+          number: 443
