@@ -22,7 +22,7 @@ spec:
           - "cluster.local/ns/portal/sa/portal-pki-rest"
     to:
     - operation:
-        paths: ["/pkiService.SSLService/ListCertificates", "/pkiService.SSLService/IssueCertificate", "/pkiService.SSLService/RevokeCertificate", "/pkiService.SmimeService/ListCertificates", "/pkiService.SmimeService/IssueCertificate", "/pkiService.SmimeService/RevokeCertificate"]
+        paths: ["/pkiService.SSLService/ListCertificates", "/pkiService.SSLService/CertificateDetails", "/pkiService.SSLService/IssueCertificate", "/pkiService.SSLService/RevokeCertificate", "/pkiService.SmimeService/ListCertificates", "/pkiService.SmimeService/IssueCertificate", "/pkiService.SmimeService/RevokeCertificate"]
   - from:
     - source:
         principals:
