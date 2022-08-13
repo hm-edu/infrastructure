@@ -192,7 +192,7 @@ spec:
             - --smime_term
             - "730"
             - --smime_key_length
-            - "4096"
+            - "3072"
             - --smime_key_type
             - "RSA"
             - --db
