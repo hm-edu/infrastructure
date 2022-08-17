@@ -55,6 +55,8 @@ spec:
       app: domain-rest-interface
   template:
     metadata:
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
       labels:
         app: domain-rest-interface
     spec:
@@ -113,6 +115,8 @@ spec:
       app: eab-rest-interface
   template:
     metadata:
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
       labels:
         app: eab-rest-interface
     spec:
@@ -164,9 +168,10 @@ spec:
   template:
     metadata:
       annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
         prometheus.io/port: '2222'
         prometheus.io/path: "/"
-        prometheus.io/scrape: 'true'
+        prometheus.io/scrape: 'true'        
       labels:
         app: pki-service
     spec:

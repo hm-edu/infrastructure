@@ -76,6 +76,8 @@ spec:
       app: certificates
   template:
     metadata:
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
       labels:
         app: certificates
     spec:
@@ -93,7 +95,7 @@ spec:
           - containerPort: 8443
             protocol: TCP
 
-          livenessProbe:
+          readinessProbe:
             httpGet:
               path: /health
               port: 8443
