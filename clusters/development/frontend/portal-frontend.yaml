@@ -17,6 +17,9 @@ spec:
         - image: ghcr.io/hm-edu/portal-frontend:main-67e186e-1660803271 # {"$imagepolicy": "flux-system:frontend"}
           imagePullPolicy: Always
           name: app
+          envFrom: 
+            - secretRef:
+                name: frontend
           ports:
             - containerPort: 3000
               protocol: TCP
