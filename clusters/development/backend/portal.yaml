@@ -81,7 +81,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://jaeger-collector.istio-system.svc:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-53baf74-1661690813 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-fb587a3-1661841885 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
