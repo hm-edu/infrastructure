@@ -195,7 +195,7 @@ spec:
             - --smime_org_id
             - "30032"
             - --smime_term
-            - "730"
+            - "1095"
             - --smime_key_length
             - "3072"
             - --smime_key_type
