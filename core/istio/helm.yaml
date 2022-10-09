@@ -71,6 +71,7 @@ spec:
     remediation:
       retries: 5
   values:
+    replicaCount: 2
     autoscaling:
       enabled: false
     service:
@@ -101,6 +102,7 @@ spec:
     remediation:
       retries: 5
   values:
+    replicaCount: 2
     autoscaling:
       enabled: false
     service:
