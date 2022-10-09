@@ -47,7 +47,8 @@ spec:
     remediation:
       retries: 5
   values:
-    replicaCount: 2
+    pilot:
+      replicaCount: 2
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
