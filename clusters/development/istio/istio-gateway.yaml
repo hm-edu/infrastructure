@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: gateway-prod
+  name: gateway-portal
   namespace: istio-ingress
 spec:
   selector:
@@ -23,7 +23,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: acme-gateway
+  name: gateway-acme
   namespace: istio-ingress
 spec:
   selector:

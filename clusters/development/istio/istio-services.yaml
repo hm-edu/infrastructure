@@ -7,7 +7,7 @@ spec:
   hosts:
   - pki.api.hmtest.de
   gateways:
-  - istio-ingress/gateway-prod
+  - istio-ingress/gateway-portal
   http:
   - route:
     - destination:
@@ -37,7 +37,7 @@ spec:
   hosts:
   - my.hmtest.de
   gateways:
-  - istio-ingress/gateway-prod
+  - istio-ingress/gateway-portal
   http:
   - route:
     - destination:
@@ -54,7 +54,7 @@ spec:
   hosts:
   - domain.api.hmtest.de
   gateways:
-  - istio-ingress/gateway-prod
+  - istio-ingress/gateway-portal
   http:
   - route:
     - destination:
@@ -84,7 +84,7 @@ spec:
   hosts:
   - eab.api.hmtest.de
   gateways:
-  - istio-ingress/gateway-prod
+  - istio-ingress/gateway-portal
   http:
   - route:
     - destination:
@@ -114,7 +114,7 @@ spec:
   hosts:
   - acme.hmtest.de
   gateways:
-  - istio-ingress/acme-gateway
+  - istio-ingress/gateway-acme
   tls:
   - match:
     - port: 443
