@@ -11,3 +11,16 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: system-upgrade
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./core/system-upgrade
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
