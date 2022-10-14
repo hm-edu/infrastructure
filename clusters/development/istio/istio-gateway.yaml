@@ -7,6 +7,18 @@ spec:
   selector:
     istio: ingressgateway
   servers:
+  - port: 
+      number: 80
+      name: http
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - "my.hmtest.de"
+    - "domain.api.hmtest.de"
+    - "pki.api.hmtest.de"
+    - "eab.api.hmtest.de"
+    
   - port:
       number: 443
       name: https
@@ -29,6 +41,14 @@ spec:
   selector:
     istio: ingressgateway-secondary # use istio default ingress gateway
   servers:
+  - port: 
+      number: 80
+      name: http
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - acme.hmtest.de
   - port:
       number: 443
       name: https
