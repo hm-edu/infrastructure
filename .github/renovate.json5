@@ -44,7 +44,8 @@
     {
       "matchPackageNames": [
         "ghcr.io/fluxcd/image-reflector-controller",
-        "ghcr.io/fluxcd/image-automation-controller"
+        "ghcr.io/fluxcd/image-automation-controller",
+        "ghcr.io/fluxcd/source-controller"
       ],
       "enabled": false
     },
