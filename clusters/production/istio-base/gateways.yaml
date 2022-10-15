@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingressgateway
+  namespace: istio-ingress
+spec:
+  values:
+    type: LoadBalancer
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingressgateway-secondary
+  namespace: istio-ingress
+spec:
+  values:
+    type: LoadBalancer
