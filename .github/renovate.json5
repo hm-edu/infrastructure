@@ -42,55 +42,116 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": [
+        "ghcr.io/fluxcd/image-reflector-controller",
+        "ghcr.io/fluxcd/image-automation-controller"
+      ],
+      "enabled": false
+    },
+    {
       "description": "Disable kubernetes-api",
-      "matchManagers": ["kubernetes"],
-      "matchDatasources": ["kubernetes-api"],
+      "matchManagers": [
+        "kubernetes"
+      ],
+      "matchDatasources": [
+        "kubernetes-api"
+      ],
       "enabled": false
     },
     // setup datasources
     {
-      "matchDatasources": ["helm"],
+      "matchDatasources": [
+        "helm"
+      ],
       "separateMinorPatch": true,
       "ignoreDeprecated": true
     },
     // global docker datasource settings
     {
-      "matchDatasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "enabled": true,
       "commitMessageTopic": "container image {{depName}}",
       "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ]
     },
     // add labels according to package and update types
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/docker", "renovate/major"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "labels": [
+        "renovate/docker",
+        "renovate/major"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/docker", "renovate/minor"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "labels": [
+        "renovate/docker",
+        "renovate/minor"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/docker", "renovate/patch"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "labels": [
+        "renovate/docker",
+        "renovate/patch"
+      ]
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/helm", "renovate/major"]
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "labels": [
+        "renovate/helm",
+        "renovate/major"
+      ]
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/helm", "renovate/minor"]
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "labels": [
+        "renovate/helm",
+        "renovate/minor"
+      ]
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/helm", "renovate/patch"]
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "labels": [
+        "renovate/helm",
+        "renovate/patch"
+      ]
     }
   ]
 }
