@@ -8,5 +8,8 @@ spec:
   interval: 10ms
   dependsOn:
   - name: system-upgrade-controller
-  path: ../core/system-upgrade-plans
+  path: ./core/production/system-upgrade
   prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
