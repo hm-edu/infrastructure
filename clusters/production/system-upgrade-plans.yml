@@ -8,7 +8,7 @@ spec:
   interval: 10ms
   dependsOn:
   - name: system-upgrade-controller
-  path: ./core/production/system-upgrade
+  path: ./core/system-upgrade-plans
   prune: true
   sourceRef:
     kind: GitRepository
