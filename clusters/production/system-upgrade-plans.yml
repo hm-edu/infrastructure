@@ -5,7 +5,7 @@ metadata:
   name: system-upgrade-plans
   namespace: system-upgrade
 spec:
-  interval: 10ms
+  interval: 10m
   dependsOn:
   - name: system-upgrade-controller
   path: ./core/system-upgrade-plans
