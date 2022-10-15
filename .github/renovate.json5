@@ -81,6 +81,21 @@
         "patch"
       ]
     },
+    // group istio dependencies
+    {
+      "description": "Group Istio Charts",
+      "groupName": "Istio",
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPaths": [
+        "core/istio/helm.yaml"
+      ],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      },
+      "separateMinorPatch": true
+    },
     // add labels according to package and update types
     {
       "matchDatasources": [
