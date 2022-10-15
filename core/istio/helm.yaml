@@ -47,6 +47,9 @@ spec:
     remediation:
       retries: 5
   values:
+    meshConfig:
+      accessLogFile: /dev/stdout
+      accessLogEncoding: JSON
     pilot:
       autoscaleEnabled: false
       replicaCount: 2
