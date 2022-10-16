@@ -6,6 +6,9 @@ metadata:
 spec:
   values:
     service: 
+      annotations: 
+        "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
+
       type: NodePort
       ports:
         - name: http2
@@ -25,6 +28,8 @@ metadata:
 spec:
   values:
     service:
+      annotations: 
+        "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
       type: NodePort
       ports:
         - name: http2
