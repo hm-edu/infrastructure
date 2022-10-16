@@ -70,6 +70,8 @@ metadata:
   namespace: portal
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: certificates
@@ -79,7 +81,7 @@ spec:
         traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
       labels:
         app: certificates
-    spec:
+    spec: 
       securityContext:
         fsGroup: 1000
       serviceAccountName: portal-acme
