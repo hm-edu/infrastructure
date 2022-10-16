@@ -3,5 +3,8 @@ kind: Kustomization
 resources:
   - ../../core
   - istio-base
+  - istio
   - flux-system
   - frontend
+  - backend
+  - acme
