@@ -1,0 +1,124 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pki
+  namespace: portal
+spec:
+  hosts:
+  - pki.api.hm.edu
+  gateways:
+  - istio-ingress/gateway-portal
+  http:
+  - route:
+    - destination:
+        host: pki-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hm.edu
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend
+  namespace: portal
+spec:
+  hosts:
+  - my.hm.edu
+  gateways:
+  - istio-ingress/gateway-portal
+  http:
+  - route:
+    - destination:
+        host: frontend
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: domain
+  namespace: portal
+spec:
+  hosts:
+  - domain.api.hm.edu
+  gateways:
+  - istio-ingress/gateway-portal
+  http:
+  - route:
+    - destination:
+        host: domain-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hm.edu
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: eab
+  namespace: portal
+spec:
+  hosts:
+  - eab.api.hm.edu
+  gateways:
+  - istio-ingress/gateway-portal
+  http:
+  - route:
+    - destination:
+        host: eab-rest-interface
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: https://my.hm.edu
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - DELETE
+      allowCredentials: false
+      allowHeaders:
+      - Authorization
+      - Content-Type
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: acme
+  namespace: portal
+spec:
+  hosts:
+  - acme.hm.edu
+  gateways:
+  - istio-ingress/gateway-acme
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - acme.hm.edu
+    route:
+    - destination:
+        host: certificates
+        port:
+          number: 443

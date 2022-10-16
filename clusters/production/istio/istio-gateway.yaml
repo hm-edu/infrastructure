@@ -1,0 +1,59 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway-portal
+  namespace: istio-ingress
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port: 
+      number: 80
+      name: http
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - "my.hm.edu"
+    - "domain.api.hm.edu"
+    - "pki.api.hm.edu"
+    - "eab.api.hm.edu"
+    
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: portal-cert
+    hosts:
+    - "my.hm.edu"
+    - "domain.api.hm.edu"
+    - "pki.api.hm.edu"
+    - "eab.api.hm.edu"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway-acme
+  namespace: istio-ingress
+spec:
+  selector:
+    istio: ingressgateway-acme # use istio default ingress gateway
+  servers:
+  - port: 
+      number: 80
+      name: http
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - acme.hm.edu
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: PASSTHROUGH
+    hosts:
+    - acme.hm.edu
