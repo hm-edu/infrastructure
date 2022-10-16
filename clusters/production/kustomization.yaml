@@ -4,3 +4,4 @@ resources:
   - ../../core
   - istio-base
   - flux-system
+  - frontend
