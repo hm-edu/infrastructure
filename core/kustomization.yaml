@@ -6,3 +6,4 @@ resources:
   - system-upgrade-plans.yaml
   - system-upgrade.yaml
   - kured.yaml
+  - longhorn.yaml
