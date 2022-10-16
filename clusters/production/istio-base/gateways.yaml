@@ -42,4 +42,4 @@ spec:
         - name: status-port
           port: 15021
           protocol: TCP
-          nodeport: 30004
+          nodePort: 30004
