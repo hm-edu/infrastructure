@@ -5,7 +5,8 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
-    type: LoadBalancer
+    service: 
+      type: NodePort
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -14,4 +15,5 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
-    type: LoadBalancer
+    service:
+      type: NodePort
