@@ -6,3 +6,4 @@ resources:
   - istio.yaml
   - prometheus-community-charts.yaml
   - grafana.yaml
+  - longhorn.yaml
