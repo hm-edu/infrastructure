@@ -8,3 +8,4 @@ resources:
   - frontend
   - backend
   - acme
+  - flux-system-automation.yaml
