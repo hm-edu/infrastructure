@@ -7,3 +7,4 @@ resources:
   - system-upgrade.yaml
   - kured.yaml
   - longhorn.yaml
+  - cert-manager.yaml
