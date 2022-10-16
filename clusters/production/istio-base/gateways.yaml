@@ -39,3 +39,7 @@ spec:
           port: 443
           protocol: TCP
           nodePort: 30003
+        - name: status
+          port: 15021
+          protocol: TCP
+          nodeport: 30004
