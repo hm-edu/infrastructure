@@ -9,8 +9,12 @@ spec:
       type: NodePort
       ports:
         - name: http2
+          port: 80
+          protocol: TCP
           nodePort: 30000
         - name: https
+          port: 443
+          protocol: TCP
           nodePort: 30001
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
@@ -24,6 +28,10 @@ spec:
       type: NodePort
       ports:
         - name: http2
+          port: 80
+          protocol: TCP
           nodePort: 30002
         - name: https
+          port: 443
+          protocol: TCP
           nodePort: 30003
