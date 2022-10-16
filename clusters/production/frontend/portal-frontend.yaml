@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: portal
+  annotations:
+    istio-injection: enabled
 ---
 apiVersion: apps/v1
 kind: Deployment
