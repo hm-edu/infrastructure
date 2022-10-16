@@ -5,10 +5,9 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
-    service: 
-      annotations: 
-        "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
-
+    podAnnotations: 
+      "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
+    service:
       type: NodePort
       ports:
         - name: http2
@@ -27,9 +26,9 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
+    podAnnotations: 
+      "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
     service:
-      annotations: 
-        "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
       type: NodePort
       ports:
         - name: http2
