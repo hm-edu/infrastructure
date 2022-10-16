@@ -7,6 +7,11 @@ spec:
   values:
     service: 
       type: NodePort
+      ports:
+        - name: http2
+          nodePort: 30000
+        - name: https
+          nodePort: 30001
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -17,3 +22,8 @@ spec:
   values:
     service:
       type: NodePort
+      ports:
+        - name: http2
+          nodePort: 30002
+        - name: https
+          nodePort: 30003
