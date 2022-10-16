@@ -39,7 +39,7 @@ metadata:
   namespace: istio-ingress
 spec:
   selector:
-    istio: ingressgateway-secondary # use istio default ingress gateway
+    istio: ingressgateway-acme # use istio default ingress gateway
   servers:
   - port: 
       number: 80
