@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingressgateway
+  namespace: istio-ingress
+spec:
+  values:
+    replicaCount: 2
+    autoscaling:
+      enabled: false
+    service:
+      annotations:
+        purelb.io/service-group: portal
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingressgateway-acme
+  namespace: istio-ingress
+spec:
+  values:
+    replicaCount: 2
+    autoscaling:
+      enabled: false
+    service:
+      annotations:
+        purelb.io/service-group: acme
