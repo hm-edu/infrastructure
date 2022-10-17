@@ -5,9 +5,11 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
+    kind: DaemonSet
     podAnnotations: 
       "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
     service:
+      externalTrafficPolicy: Local
       type: NodePort
       ports:
         - name: http2
@@ -26,9 +28,11 @@ metadata:
   namespace: istio-ingress
 spec:
   values:
+    kind: DaemonSet
     podAnnotations: 
       "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
     service:
+      externalTrafficPolicy: Local
       type: NodePort
       ports:
         - name: http2
