@@ -18,29 +18,6 @@ spec:
     - "domain.api.hmtest.de"
     - "pki.api.hmtest.de"
     - "eab.api.hmtest.de"
-    
-  - port:
-      number: 443
-      name: https
-      protocol: HTTPS
-    tls:
-      mode: SIMPLE
-      credentialName: portal-cert
-    hosts:
-    - "my.hmtest.de"
-    - "domain.api.hmtest.de"
-    - "pki.api.hmtest.de"
-    - "eab.api.hmtest.de"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: gateway-acme
-  namespace: istio-ingress
-spec:
-  selector:
-    istio: ingressgateway-acme # use istio default ingress gateway
-  servers:
   - port: 
       number: 80
       name: http
@@ -57,3 +34,15 @@ spec:
       mode: PASSTHROUGH
     hosts:
     - acme.hmtest.de
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: portal-cert
+    hosts:
+    - "my.hmtest.de"
+    - "domain.api.hmtest.de"
+    - "pki.api.hmtest.de"
+    - "eab.api.hmtest.de"
