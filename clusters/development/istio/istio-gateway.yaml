@@ -20,7 +20,7 @@ spec:
     - "eab.api.hmtest.de"
   - port: 
       number: 80
-      name: http
+      name: http-acme
       protocol: HTTP
     tls:
       httpsRedirect: true
@@ -28,7 +28,7 @@ spec:
     - acme.hmtest.de
   - port:
       number: 443
-      name: https
+      name: https-acme
       protocol: HTTPS
     tls:
       mode: PASSTHROUGH
