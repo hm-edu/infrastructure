@@ -111,7 +111,7 @@ spec:
   hosts:
   - acme.hm.edu
   gateways:
-  - istio-ingress/gateway-acme
+  - istio-ingress/gateway-portal
   tls:
   - match:
     - port: 443
