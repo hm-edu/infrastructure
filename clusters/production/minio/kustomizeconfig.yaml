@@ -1,6 +1,8 @@
 nameReference:
   - kind: Secret
     version: v1
+    metadata:
+      namespace: minio
     fieldSpecs:
       - path: spec/valuesFrom/name
         kind: HelmRelease
