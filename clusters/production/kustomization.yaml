@@ -8,4 +8,5 @@ resources:
   - frontend
   - backend
   - acme
+  - minio.yaml
   - flux-system-automation.yaml
