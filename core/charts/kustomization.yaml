@@ -8,3 +8,4 @@ resources:
   - grafana.yaml
   - longhorn.yaml
   - cert-manager.yaml
+  - minio.yaml
