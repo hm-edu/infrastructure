@@ -1,1 +1,2 @@
 clusters/production/minio/values.yaml
+clusters/production/monitoring/grafana/secrets.yaml

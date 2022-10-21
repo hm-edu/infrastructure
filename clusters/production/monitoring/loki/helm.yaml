@@ -3,13 +3,13 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: loki
-  namespace: loki
+  namespace: monitoring
 spec:
   interval: 5m
   chart:
     spec:
-      chart: loki-stack
-      version: 2.8.3
+      chart: loki
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -30,47 +30,107 @@ spec:
     cleanupOnFail: true
   values:
     loki:
-      enabled: true
-      config:
-        compactor:
-          shared_store: s3
-          working_directory: /data/loki/boltdb-shipper-compactor
+      structuredConfig:
+        auth_enabled: false
+        server:
+          log_level: info
+          http_listen_port: 3100
+          grpc_listen_port: 9095
+        memberlist:
+          join_members: ["loki-memberlist"]
+        limits_config:
+          retention_period: 14d
+          enforce_metric_name: false
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
+          max_cache_freshness_per_query: 10m
+          split_queries_by_interval: 15m
+          ingestion_rate_mb: 8
+          ingestion_burst_size_mb: 16
         schema_config:
           configs:
-            - from: "2020-10-24"
-              index:
-                period: 24h
-                prefix: index_
-              object_store: aws
-              schema: v11
+            - from: "2021-08-01"
               store: boltdb-shipper
-        table_manager:
-          retention_deletes_enabled: true
-          # Customize this: how long should logs be kept?
-          retention_period: 2w
-        storage_config:
-          boltdb_shipper:
-            active_index_directory: /data/loki/boltdb-shipper-active
-            cache_location: /data/loki/boltdb-shipper-cache
-            cache_ttl: 24h
-            shared_store: s3
-          aws:
-            bucketnames: loki
-            endpoint: minio.minio:9000
-            s3forcepathstyle: true
-            insecure: true
-      serviceMonitor:
-        enabled: false
-    promtail:
+              object_store: s3
+              schema: v11
+              index:
+                prefix: loki_index_
+                period: 24h
+        common:
+          path_prefix: /var/loki
+          replication_factor: 3
+          storage:
+            s3:
+              s3: null
+              endpoint: http://minio.minio.svc.cluster.local:9000
+              bucketnames: loki
+              insecure: true
+              s3forcepathstyle: true
+          ring:
+            kvstore:
+              store: memberlist
+        ruler:
+          enable_api: true
+          enable_alertmanager_v2: true
+          alertmanager_url: http://kube-prometheus-stack-alertmanager:9093
+          storage:
+            type: local
+            local:
+              directory: /rules
+          rule_path: /tmp/scratch
+          ring:
+            kvstore:
+              store: memberlist
+        distributor:
+          ring:
+            kvstore:
+              store: memberlist
+        compactor:
+          working_directory: /var/loki/boltdb-shipper-compactor
+          shared_store: s3
+          compaction_interval: 10m
+          retention_enabled: true
+          retention_delete_delay: 2h
+          retention_delete_worker_count: 150
+        ingester:
+          max_chunk_age: 1h
+          lifecycler:
+            ring:
+              kvstore:
+                store: memberlist
+        analytics:
+          reporting_enabled: false
+    gateway:
       enabled: true
-      serviceMonitor:
+      replicas: 3
+    write:
+      replicas: 3
+      persistence:
+        size: 10Gi
+    read:
+      replicas: 3
+      extraVolumeMounts:
+        - name: loki-rules
+          mountPath: /rules/fake
+        - name: loki-rules-tmp
+          mountPath: /tmp/scratch
+        - name: loki-tmp
+          mountPath: /tmp/loki-tmp
+      extraVolumes:
+        - name: loki-rules
+          configMap:
+            name: loki-alerting-rules
+        - name: loki-rules-tmp
+          emptyDir: {}
+        - name: loki-tmp
+          emptyDir: {}
+      persistence:
+        size: 10Gi
+    monitoring:
+      selfMonitoring:
         enabled: false
-    fluent-bit:
-      enabled: false
-    grafana:
-      enabled: false
-    prometheus:
-      enabled: false
+        grafanaAgent:
+          installOperator: false
   valuesFrom:
     - kind: Secret
       name: loki-values

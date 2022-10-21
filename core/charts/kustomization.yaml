@@ -9,3 +9,4 @@ resources:
   - longhorn.yaml
   - cert-manager.yaml
   - minio.yaml
+  - vector.yaml
