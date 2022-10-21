@@ -86,7 +86,7 @@ spec:
         fsGroup: 1000
       serviceAccountName: portal-acme
       containers:
-        - image: ghcr.io/hm-edu/certificates:master-68318a6-1666372014 # {"$imagepolicy": "flux-system:certificates"}
+        - image: ghcr.io/hm-edu/certificates:master-28031dc-1666372685 # {"$imagepolicy": "flux-system:certificates"}
           imagePullPolicy: Always
           name: app
           command: ["/usr/local/bin/step-ca"]
