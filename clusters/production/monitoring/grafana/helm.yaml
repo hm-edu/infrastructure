@@ -27,8 +27,6 @@ spec:
       pspEnabled: false
     admin:
       existingSecret: grafana-admin
-    envFromSecrets:
-      - name: grafana
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
