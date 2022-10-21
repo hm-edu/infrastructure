@@ -50,7 +50,17 @@ spec:
             - kubernetes_logs
           source: |
             # Standardize 'app' index
-            .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"        
+            .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
+            
+        kubernetes_logs_remap_json:
+          type: remap
+          inputs:
+            - kubernetes_logs_remap
+          drop_on_error: true
+          reroute_dropped: true
+          source: |
+            # Standardize 'app' index
+            . = parse_json!(.message)  
       sinks:
         loki_journal:
           type: loki
@@ -70,7 +80,8 @@ spec:
         loki_kubernetes:
           type: loki
           inputs:
-            - kubernetes_logs_remap
+            - kubernetes_logs_remap_json
+            - kubernetes_logs_remap_json.dropped
           endpoint: http://loki-gateway:80
           encoding:
             codec: json
