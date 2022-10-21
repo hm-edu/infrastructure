@@ -71,3 +71,6 @@ spec:
       enabled: false
     prometheus:
       enabled: false
+  valuesFrom:
+    - kind: Secret
+      name: loki-values

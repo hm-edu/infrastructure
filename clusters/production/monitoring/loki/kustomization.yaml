@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - helm.yaml
 secretGenerator:
-  - name: minio-values
+  - name: loki-values
     files:
       - values.yaml=values.enc.yaml
 configurations:
