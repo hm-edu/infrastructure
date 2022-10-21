@@ -36,7 +36,11 @@ spec:
       size: 10Gi
     buckets:
       - name: thanos
+        policy: none
+        purge: false
       - name: loki
+        policy: none
+        purge: false
   valuesFrom:
     - kind: Secret
       name: minio-values
