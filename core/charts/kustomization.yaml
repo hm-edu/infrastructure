@@ -10,3 +10,4 @@ resources:
   - cert-manager.yaml
   - minio.yaml
   - vector.yaml
+  - bitnami.yaml
