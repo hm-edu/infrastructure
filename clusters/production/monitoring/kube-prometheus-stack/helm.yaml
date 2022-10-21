@@ -99,8 +99,6 @@ spec:
         enabled: true
       thanosServiceMonitor:
         enabled: true
-      thanosIngress:
-        enabled: true
       prometheusSpec:
         replicas: 3
         replicaExternalLabelName: __replica__
