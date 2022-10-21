@@ -56,7 +56,7 @@ spec:
           type: filter
           inputs:
             - kubernetes_logs_remap
-          condition: kubernetes.pod_namespace == "portal"
+          condition: .kubernetes.pod_namespace == "portal"
         kubernetes_logs_portal_remap:
           type: remap
           drop_on_error: true
@@ -71,7 +71,7 @@ spec:
           type: filter
           inputs:
             - kubernetes_logs_remap
-          condition: kubernetes.pod_namespace != "portal"
+          condition: .kubernetes.pod_namespace != "portal"
       sinks:
         loki_journal:
           type: loki
