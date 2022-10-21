@@ -1,0 +1,26 @@
+loki:
+    config:
+        storage_config:
+            aws:
+                access_key_id: ENC[AES256_GCM,data:ox5FiiSPfKk=,iv:gyNjxlGEP5qEudROyEJPNqnd4v+RiQ1lPQhXP/EAxHQ=,tag:6ZjoxjdePHb4nWCA4Fxywg==,type:str]
+                secret_access_key: ENC[AES256_GCM,data:70P7W/rw4ZVdJ/joZbGFOtirJnxxnWnimC1oJFgzjGg=,iv:hbInRTw8SOy9sYOEWFHR4rcE3ilqRsAjKhzUWNGkbwI=,tag:ODNEMd8TuJUJJNDdHKEgUw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1n4ar7vyp3nmv844ep8ct4ea4d6uz7xflvug0pyz08ujek0ks2emsxzhn55
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBTUlVKT3JqajNiclJueUl5
+            SEVpWGI1TGh6VFMwTFR6VWk3S1ZMa3VaT1NFClUvbjV5NVhGYXkySnZUZWN2a0dX
+            dmlCTkdJUFNwdVBNclp5UXhYeWp0b1EKLS0tIGgzZUVQRHJyZVYvdnZVUnVmekpP
+            MEJLQnIxVjVmdzlzNFJ3VGNVdWh4a0UKEB8OsDEBUNSAunOhivFGbbKvVRgxVQHP
+            I9z++CaXxnDSdmUa1wc6GusDP3R2hjCwUG88kKauDquDvTIyoH7cJw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-10-21T06:30:51Z"
+    mac: ENC[AES256_GCM,data:KQzXmk0FzcMVWEI2BxTQqvr8tzH+DH3lks7tg2z2pvr/1Zw7Lr616m4HHUkWX0OuYdTcHJiF4pteUwVAyK3/W3LdEuxvHhZ2vLY2EeRu1fnd7qSJtlVfx7RNj5dKXa9R5tTAWS8gi+EG0tZ6l9tHYmQEZQ7BiKSQOnIcIavoHCo=,iv:AV9MGHjvcCEkl4g4U3prZGiOiOY0H2jtkwKIkzFU/SM=,tag:WypUjt6ReDM+6FE4mIVm8g==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

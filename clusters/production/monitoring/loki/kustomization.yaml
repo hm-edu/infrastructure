@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - helm.yaml
+secretGenerator:
+  - name: minio-values
+    files:
+      - values.yaml=values.enc.yaml
+configurations:
+  - kustomizeconfig.yaml
