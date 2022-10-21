@@ -14,7 +14,7 @@ spec:
       tls:
         httpsRedirect: true
       hosts:
-        - "my.hm.edu"
+        - "pki.hm.edu"
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
@@ -42,7 +42,7 @@ spec:
         mode: SIMPLE
         credentialName: portal-cert
       hosts:
-        - "my.hm.edu"
+        - "pki.hm.edu"
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"

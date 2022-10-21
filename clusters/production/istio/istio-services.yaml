@@ -16,7 +16,7 @@ spec:
           number: 80
     corsPolicy:
       allowOrigins:
-      - exact: https://my.hm.edu
+      - exact: https://pki.hm.edu
       allowMethods:
       - POST
       - GET
@@ -34,7 +34,7 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - my.hm.edu
+  - pki.hm.edu
   gateways:
   - istio-ingress/gateway-portal
   http:
@@ -62,7 +62,7 @@ spec:
           number: 80
     corsPolicy:
       allowOrigins:
-      - exact: https://my.hm.edu
+      - exact: https://pki.hm.edu
       allowMethods:
       - POST
       - GET
@@ -91,7 +91,7 @@ spec:
           number: 80
     corsPolicy:
       allowOrigins:
-      - exact: https://my.hm.edu
+      - exact: https://pki.hm.edu
       allowMethods:
       - POST
       - GET
