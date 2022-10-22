@@ -28,6 +28,9 @@ spec:
     recreate: true
     cleanupOnFail: true
   values:
+    search:
+      # -- Enable Tempo search
+      enabled: true
     traces:
       otlp:
         grpc:
