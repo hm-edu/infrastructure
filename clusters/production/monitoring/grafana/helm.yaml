@@ -45,7 +45,12 @@ spec:
         deleteDatasources:
           - name: Loki
             orgId: 1
-        datasources:
+        datasources:          
+          - name: Tempo
+            type: tempo
+            access: proxy
+            uid: tempo_ds
+            url: http://tempo-tempo-distributed-query-frontend.monitoring.svc.cluster.local:3100
           - name: Prometheus
             type: prometheus
             access: proxy
@@ -61,6 +66,26 @@ spec:
         minio:
           gnetId: 13502
           revision: 10
+          datasource: Prometheus        
+        istio-workload:
+          gnetId: 7630
+          revision: 68
+          datasource: Prometheus
+        istio-mesh:
+          gnetId: 7639
+          revision: 68
+          datasource: Prometheus
+        istio-service:
+          gnetId: 7636
+          revision: 68
+          datasource: Prometheus
+        istio-control-plane:
+          gnetId: 7645
+          revision: 68
+          datasource: Prometheus
+        istio-performance:
+          gnetId: 11829
+          revision: 68
           datasource: Prometheus
     sidecar:
       dashboards:
