@@ -65,7 +65,7 @@ spec:
             - kubernetes_logs_portal
           source: |
             # Try to extract JSON Message
-            . = parse_json!(.message)
+            .message = parse_json!(.message)
           
         kubernetes_logs_other:
           type: filter
