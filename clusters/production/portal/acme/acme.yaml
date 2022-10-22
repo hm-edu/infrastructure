@@ -109,7 +109,7 @@ spec:
               name: cert-config
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-tempo-distributed-distributor.monitoring:14268/api/traces
+              value: http://tempo-tempo-distributed-distributor.monitoring:14268
       volumes:
         - name: cert-config
           configMap:
