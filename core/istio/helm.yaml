@@ -22,6 +22,7 @@ spec:
   upgrade:
     remediation:
       retries: 5
+    crds: CreateReplace
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -46,12 +47,19 @@ spec:
   upgrade:
     remediation:
       retries: 5
+    crds: CreateReplace
   values:
     global:
       logAsJson: true
+      tracer:
+        zipkin:
+          address: tempo-tempo-distributed-distributor.monitoring:9411
     meshConfig:
       accessLogFile: /dev/stdout
       accessLogEncoding: JSON
+      defaultConfig:
+        tracing:
+          sampling: 100
     pilot:
       autoscaleEnabled: false
       replicaCount: 2
@@ -80,6 +88,7 @@ spec:
     force: true
     remediation:
       retries: 5
+    crds: CreateReplace
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
@@ -106,3 +115,4 @@ spec:
     force: true
     remediation:
       retries: 5
+    crds: CreateReplace
