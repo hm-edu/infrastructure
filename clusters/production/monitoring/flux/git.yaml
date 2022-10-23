@@ -1,0 +1,30 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux-monitoring
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://github.com/fluxcd/flux2
+  ref:
+    # renovate: datasource=github-releases depName=rancher/system-upgrade-controller
+    tag: v0.9.1
+  ignore: |
+    # exclude all
+    /*
+    # include manifests dir
+    !/manifests/monitoring/monitoring-config
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: monitoring-config
+  namespace: flux-system
+spec:
+  interval: 24h
+  path: "./manifests/monitoring/monitoring-config"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-monitoring
+    namespace: flux-system
