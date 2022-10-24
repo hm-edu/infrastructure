@@ -60,9 +60,8 @@ spec:
         number: 80
         name: http
         protocol: HTTP
-      tls:
-        httpsRedirect: true
       hosts:
+        - "*"
         - "logging.k8s.cc.private.hm.edu"
     - port:
         number: 443

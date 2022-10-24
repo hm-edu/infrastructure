@@ -134,8 +134,37 @@ spec:
   gateways:
     - istio-ingress/gateway-internal
   http:
-    - route:
+    - match:
+        - headers:
+            x-forwarded-proto:
+              exact: https
+          uri:
+            regex: ^\/[^\.]+.*
+        - headers:
+            x-forwarded-proto:
+              exact: https
+          uri:
+            exact: /
+      route:
         - destination:
             host: grafana
             port:
               number: 80
+    - match:
+        - headers:
+            x-forwarded-proto:
+              exact: http
+          uri:
+            regex: ^\/[^\.]+.*
+        - headers:
+            x-forwarded-proto:
+              exact: http
+          uri:
+            exact: /
+        - headers:
+            x-forwarded-proto:
+              exact: http
+          uri:
+            exact: /
+      redirect:
+        scheme: https
