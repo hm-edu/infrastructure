@@ -6,3 +6,4 @@ resources:
 - istio-rule.yaml
 - istio-gateway.yaml
 - istio-policies.yaml
+- istio-filters.yaml
