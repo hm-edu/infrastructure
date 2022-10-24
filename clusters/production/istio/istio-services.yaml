@@ -5,27 +5,27 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - pki.api.hm.edu
+    - pki.api.hm.edu
   gateways:
-  - istio-ingress/gateway-portal
+    - istio-ingress/gateway-portal
   http:
-  - route:
-    - destination:
-        host: pki-rest-interface
-        port:
-          number: 80
-    corsPolicy:
-      allowOrigins:
-      - exact: https://pki.hm.edu
-      allowMethods:
-      - POST
-      - GET
-      - OPTIONS
-      - DELETE
-      allowCredentials: false
-      allowHeaders:
-      - Authorization
-      - Content-Type
+    - route:
+        - destination:
+            host: pki-rest-interface
+            port:
+              number: 80
+      corsPolicy:
+        allowOrigins:
+          - exact: https://pki.hm.edu
+        allowMethods:
+          - POST
+          - GET
+          - OPTIONS
+          - DELETE
+        allowCredentials: false
+        allowHeaders:
+          - Authorization
+          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -34,15 +34,15 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - pki.hm.edu
+    - pki.hm.edu
   gateways:
-  - istio-ingress/gateway-portal
+    - istio-ingress/gateway-portal
   http:
-  - route:
-    - destination:
-        host: frontend
-        port:
-          number: 80
+    - route:
+        - destination:
+            host: frontend
+            port:
+              number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -51,27 +51,27 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - domain.api.hm.edu
+    - domain.api.hm.edu
   gateways:
-  - istio-ingress/gateway-portal
+    - istio-ingress/gateway-portal
   http:
-  - route:
-    - destination:
-        host: domain-rest-interface
-        port:
-          number: 80
-    corsPolicy:
-      allowOrigins:
-      - exact: https://pki.hm.edu
-      allowMethods:
-      - POST
-      - GET
-      - OPTIONS
-      - DELETE
-      allowCredentials: false
-      allowHeaders:
-      - Authorization
-      - Content-Type
+    - route:
+        - destination:
+            host: domain-rest-interface
+            port:
+              number: 80
+      corsPolicy:
+        allowOrigins:
+          - exact: https://pki.hm.edu
+        allowMethods:
+          - POST
+          - GET
+          - OPTIONS
+          - DELETE
+        allowCredentials: false
+        allowHeaders:
+          - Authorization
+          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -80,27 +80,27 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - eab.api.hm.edu
+    - eab.api.hm.edu
   gateways:
-  - istio-ingress/gateway-portal
+    - istio-ingress/gateway-portal
   http:
-  - route:
-    - destination:
-        host: eab-rest-interface
-        port:
-          number: 80
-    corsPolicy:
-      allowOrigins:
-      - exact: https://pki.hm.edu
-      allowMethods:
-      - POST
-      - GET
-      - OPTIONS
-      - DELETE
-      allowCredentials: false
-      allowHeaders:
-      - Authorization
-      - Content-Type
+    - route:
+        - destination:
+            host: eab-rest-interface
+            port:
+              number: 80
+      corsPolicy:
+        allowOrigins:
+          - exact: https://pki.hm.edu
+        allowMethods:
+          - POST
+          - GET
+          - OPTIONS
+          - DELETE
+        allowCredentials: false
+        allowHeaders:
+          - Authorization
+          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -109,19 +109,19 @@ metadata:
   namespace: portal
 spec:
   hosts:
-  - acme.hm.edu
+    - acme.hm.edu
   gateways:
-  - istio-ingress/gateway-portal
+    - istio-ingress/gateway-portal
   tls:
-  - match:
-    - port: 443
-      sniHosts:
-      - acme.hm.edu
-    route:
-    - destination:
-        host: certificates
-        port:
-          number: 443
+    - match:
+        - port: 443
+          sniHosts:
+            - acme.hm.edu
+      route:
+        - destination:
+            host: certificates
+            port:
+              number: 443
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -130,12 +130,12 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - logging.k8s.cc.private.hm.edu
+    - logging.k8s.cc.private.hm.edu
   gateways:
-  - istio-ingress/internal-portal
+    - istio-ingress/gateway-internal
   http:
-  - route:
-    - destination:
-        host: grafana
-        port:
-          number: 3000
+    - route:
+        - destination:
+            host: grafana
+            port:
+              number: 3000
