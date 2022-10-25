@@ -23,7 +23,7 @@ metadata:
   namespace: system-upgrade
 spec:
   interval: 24h
-  path: "./config/crdß"
+  path: "./config/crd"
   prune: true
   sourceRef:
     kind: GitRepository
