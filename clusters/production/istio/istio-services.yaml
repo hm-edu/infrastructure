@@ -122,3 +122,19 @@ spec:
             host: certificates
             port:
               number: 443
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  hosts:
+    - logging.k8s.cc.private.hm.edu
+  gateways:
+    - istio-ingress/gateway-internal
+  http:
+    - route:
+        - destination:
+            host: grafana
+            port: 80
