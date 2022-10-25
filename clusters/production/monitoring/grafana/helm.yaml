@@ -32,6 +32,7 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_LOG_FILTERS: rendering:debug
       GF_LOG_MODE: console
+      GF_LOG_LEVEL: debug
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_PATHS_DATA: /var/lib/grafana/data
       GF_PATHS_LOGS: /var/log/grafana
