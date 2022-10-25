@@ -4,6 +4,7 @@ resources:
   - ../../core
   - istio-base
   - istio
+  - gateway
   - flux-system
   - minio.yaml
   - apps.yaml
