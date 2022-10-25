@@ -83,17 +83,13 @@ spec:
     kubeApiServer:
       enabled: true
     kubeControllerManager:
-      enabled: true
+      enabled: false
     kubeScheduler:
-      enabled: true
+      enabled: false
     kubeProxy:
-      enabled: true
+      enabled: false
     kubeEtcd:
-      enabled: true
-      service:
-        enabled: true
-        port: 2381
-        targetPort: 2381
+      enabled: false
     prometheus:
       thanosService:
         enabled: true
@@ -103,7 +99,7 @@ spec:
         replicas: 3
         replicaExternalLabelName: __replica__
         externalLabels:
-          cluster: home-ops
+          cluster: hm-edu
         thanos:
           image: quay.io/thanos/thanos:v0.28.1
           # renovate: datasource=docker depName=quay.io/thanos/thanos
@@ -114,7 +110,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         retention: 14d
-        retentionSize: 45GB
+        retentionSize: 9GB
         enableAdminAPI: true
         walCompression: true
         storageSpec:
@@ -122,10 +118,10 @@ spec:
             spec:
               resources:
                 requests:
-                  storage: 50Gi
+                  storage: 10Gi
         resources:
           requests:
             cpu: 10m
             memory: 2000Mi
           limits:
-            memory: 8000Mi
+            memory: 4000Mi
