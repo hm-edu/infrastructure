@@ -22,6 +22,27 @@ spec:
     remediation:
       retries: 5
   values:
+    env:
+      GF_ANALYTICS_CHECK_FOR_UPDATES: false
+      GF_DATABASE_NAME: grafana
+      GF_DATABASE_HOST: postgres.portal.svc.cluster.local:5432
+      GF_DATABASE_SSL_MODE: disable
+      GF_DATABASE_TYPE: postgres
+      GF_DATE_FORMATS_FULL_DATE: "MMM Do, YYYY hh:mm:ss a"
+      GF_EXPLORE_ENABLED: true
+      GF_LOG_FILTERS: rendering:debug
+      GF_LOG_MODE: console
+      GF_PANELS_DISABLE_SANITIZE_HTML: true
+      GF_PATHS_DATA: /var/lib/grafana/data
+      GF_PATHS_LOGS: /var/log/grafana
+      GF_PATHS_PLUGINS: /var/lib/grafana/plugins
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      GF_SERVER_DOMAIN: "logging.k8s.cc.private.hm.edu"
+      GF_SERVER_HTTPS: true
+      GF_SERVER_ROOT_URL: "https://logging.k8s.cc.private.hm.edu"
+      GF_SECURITY_ALLOW_EMBEDDING: true
+      GF_SECURTIY_COOKIE_SECURE: false
+      GF_SECURITY_COOKIE_SAMESITE: disabled
     replicas: 3
     rbac:
       pspEnabled: false
@@ -45,7 +66,7 @@ spec:
         deleteDatasources:
           - name: Loki
             orgId: 1
-        datasources:          
+        datasources:
           - name: Tempo
             type: tempo
             access: proxy
@@ -66,7 +87,7 @@ spec:
         minio:
           gnetId: 13502
           revision: 10
-          datasource: Prometheus        
+          datasource: Prometheus
         istio-workload:
           gnetId: 7630
           revision: 68
@@ -105,6 +126,6 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
     serviceMonitor:
-      enabled: true   
+      enabled: true
     persistence:
       enabled: false
