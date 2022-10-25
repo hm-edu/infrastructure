@@ -137,4 +137,5 @@ spec:
     - route:
         - destination:
             host: grafana
-            port: 80
+            port:
+              number: 80
