@@ -14,7 +14,7 @@ spec:
     # exclude all
     /*
     # include manifests dir
-    !/config/crds
+    !/config/crd
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
@@ -23,7 +23,7 @@ metadata:
   namespace: system-upgrade
 spec:
   interval: 24h
-  path: "./config/crds"
+  path: "./config/crdß"
   prune: true
   sourceRef:
     kind: GitRepository
