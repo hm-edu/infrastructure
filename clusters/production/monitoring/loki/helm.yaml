@@ -130,7 +130,7 @@ spec:
         size: 10Gi
     monitoring:
       selfMonitoring:
-        enabled: false
+        enabled: true
         grafanaAgent:
           installOperator: false
   valuesFrom:
