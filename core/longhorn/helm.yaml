@@ -23,5 +23,8 @@ spec:
     remediation:
       retries: 5
   values:
+    defaultSettings:
+      replicaAutoBalance: "best-effort"
+      orphanAutoDeletion: "true"
     persistence:
       defaultClassReplicaCount: 2
