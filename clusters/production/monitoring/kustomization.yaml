@@ -8,3 +8,4 @@ resources:
   - thanos
   - tempo
   - flux
+  - services
