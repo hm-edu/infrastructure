@@ -31,6 +31,9 @@ spec:
         - sourceLabels: [__meta_kubernetes_pod_name]
           action: replace
           targetLabel: pod_name
+        - sourceLabels: [__name__]
+          regex: (ssl_issue_(.*))
+          action: keep
   selector:
     matchExpressions:
       - key: app
