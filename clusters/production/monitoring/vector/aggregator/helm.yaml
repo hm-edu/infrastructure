@@ -109,7 +109,7 @@ spec:
             pod: >-
               {{`{{ kubernetes.pod_name }}`}}
             stream: >-
-              {{`{{ kubernetes.stream }}`}}
+              {{`{{ stream }}`}}
         loki_kubernetes:
           type: loki
           inputs:
