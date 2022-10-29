@@ -1,16 +1,23 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
-  name: pki-service-monitor
+  name: pki-service
   namespace: monitoring
-  labels:
-    name: pki-service-monitor
 spec:
-  selector:
-    matchLabels:
-      app: pki-service
   namespaceSelector:
     matchNames:
       - portal
-  endpoints:
-    - port: metrics
+  podMetricsEndpoints:
+    - port: 15020
+      path: /stats/prometheus
+      relabelings:
+        - action: keep
+          regex: Running
+          sourceLabels:
+            - __meta_kubernetes_pod_phase
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - pki-service
