@@ -71,12 +71,12 @@ spec:
           type: filter
           inputs:
             - kubernetes_logs_remap
-          condition: .kubernetes.pod_namespace != "portal" && .kubernetes.container_name != "loki-canary"
+          condition: .kubernetes.pod_namespace != "portal" && .container_name != "loki-canary"
         kubernetes_logs_canary:
           type: filter
           inputs:
             - kubernetes_logs_remap
-          condition: .kubernetes.container_name == "loki-canary"
+          condition: .container_name == "loki-canary"
       sinks:
         loki_journal:
           type: loki
@@ -107,7 +107,7 @@ spec:
           remove_timestamp: true
           labels:
             pod: >-
-              {{`{{ kubernetes.pod_name }}`}}
+              {{`{{ pod_name }}`}}
             stream: >-
               {{`{{ stream }}`}}
         loki_kubernetes:
