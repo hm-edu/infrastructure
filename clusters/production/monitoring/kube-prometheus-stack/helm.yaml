@@ -90,6 +90,12 @@ spec:
       enabled: false
     kubeEtcd:
       enabled: false
+
+    prometheusOperator:
+      admissionWebhooks:
+        patch:
+          podAnnotations:
+            sidecar.istio.io/inject: "false"
     prometheus:
       annotations:
         traffic.sidecar.istio.io/includeInboundPorts: ""
