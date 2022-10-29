@@ -140,6 +140,8 @@ spec:
         enabled: true
         labels:
           grafana_dashboard: "1"
+      serviceMonitor:
+        enabled: true
       selfMonitoring:
         enabled: true
         grafanaAgent:
