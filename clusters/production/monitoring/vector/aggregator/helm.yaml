@@ -51,7 +51,7 @@ spec:
           source: |
             # Standardize 'app' index
             .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
-            
+
         kubernetes_logs_portal:
           type: filter
           inputs:
@@ -66,12 +66,17 @@ spec:
           source: |
             # Try to extract JSON Message
             .message = parse_json!(.message)
-          
+
         kubernetes_logs_other:
           type: filter
           inputs:
             - kubernetes_logs_remap
-          condition: .kubernetes.pod_namespace != "portal"
+          condition: .kubernetes.pod_namespace != "portal" && .kubernetes.container_name != "loki-canary"
+        kubernetes_logs_canary:
+          type: filter
+          inputs:
+            - kubernetes_logs_remap
+          condition: .kubernetes.container_name == "loki-canary"
       sinks:
         loki_journal:
           type: loki
@@ -88,6 +93,23 @@ spec:
           labels:
             hostname: >-
               {{`{{ host }}`}}
+        loki_kubernetes_canary:
+          type: loki
+          inputs:
+            - kubernetes_logs_canary
+          endpoint: http://loki-gateway:80
+          encoding:
+            codec: json
+          batch:
+            max_bytes: 2049000
+          out_of_order_action: accept
+          remove_label_fields: true
+          remove_timestamp: true
+          labels:
+            pod: >-
+              {{`{{ kubernetes.pod_name }}`}}
+            stream: >-
+              {{`{{ kubernetes.stream }}`}}
         loki_kubernetes:
           type: loki
           inputs:
