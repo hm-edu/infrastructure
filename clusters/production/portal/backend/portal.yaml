@@ -255,9 +255,6 @@ spec:
     app: pki-service
   type: ClusterIP
   ports:
-    - name: mettics
-      port: 2222
-      targetPort: 2222
     - name: grpc
       port: 8081
       targetPort: 8081
