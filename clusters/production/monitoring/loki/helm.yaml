@@ -44,12 +44,12 @@ spec:
         limits_config:
           retention_period: 14d
           retention_stream:
-          - selector: '{agent="vector"}'
-            priority: 1
-            period: 24h
-          - selector: '{pod=~"loki-canary-.*"}'
-            priority: 2
-            period: 24h
+            - selector: '{agent="vector"}'
+              priority: 1
+              period: 24h
+            - selector: '{pod=~"loki-canary-.*"}'
+              priority: 2
+              period: 24h
           enforce_metric_name: false
           reject_old_samples: true
           reject_old_samples_max_age: 168h
@@ -136,6 +136,10 @@ spec:
       persistence:
         size: 10Gi
     monitoring:
+      dashboards:
+        enabled: true
+        labels:
+          grafana_dashboard: "1"
       selfMonitoring:
         enabled: true
         grafanaAgent:
