@@ -90,41 +90,13 @@ spec:
       enabled: false
     kubeEtcd:
       enabled: false
-
-    prometheusOperator:
-      admissionWebhooks:
-        patch:
-          podAnnotations:
-            sidecar.istio.io/inject: "false"
     prometheus:
-      annotations:
-        traffic.sidecar.istio.io/includeInboundPorts: ""
-        traffic.sidecar.istio.io/includeOutboundIPRanges: ""
-        proxy.istio.io/config: |
-          proxyMetadata:
-            OUTPUT_CERTS: /etc/istio-output-certs
-        sidecar.istio.io/userVolumeMount: '[{"name": "istio-certs", "mountPath": "/etc/istio-output-certs"}]'
       thanosService:
         enabled: true
       thanosServiceMonitor:
         enabled: true
-      serviceMonitor:
-        selfMonitor: true
-        scheme: "https"
-        tlsConfig:
-          caFile: /etc/prom-certs/root-cert.pem
-          certFile: /etc/prom-certs/cert-chain.pem
-          keyFile: /etc/prom-certs/key.pem
-          insecureSkipVerify: true
       prometheusSpec:
         replicas: 3
-        volumes:
-          - emptyDir:
-              medium: Memory
-            name: istio-certs
-        volumeMounts:
-          - mountPath: /etc/prom-certs/
-            name: istio-certs
         replicaExternalLabelName: __replica__
         externalLabels:
           cluster: hm-edu
