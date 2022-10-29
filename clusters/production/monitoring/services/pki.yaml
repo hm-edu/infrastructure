@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: pki-service-monitor
+  namespace: monitoring
+  labels:
+    name: pki-service-monitor
+spec:
+  selector:
+    matchLabels:
+      app: pki-service
+  namespaceSelector:
+    matchNames:
+      - portal
+  endpoints:
+    - port: metrics

@@ -169,9 +169,9 @@ spec:
     metadata:
       annotations:
         traffic.sidecar.istio.io/excludeOutboundPorts: "5432"
-        prometheus.io/port: '2222'
+        prometheus.io/port: "2222"
         prometheus.io/path: "/"
-        prometheus.io/scrape: 'true'
+        prometheus.io/scrape: "true"
       labels:
         app: pki-service
     spec:
@@ -236,12 +236,12 @@ spec:
     app: domain-rest-interface
   type: ClusterIP
   ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-  - name: grpc
-    port: 8081
-    targetPort: 8081
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: grpc
+      port: 8081
+      targetPort: 8081
 ---
 apiVersion: v1
 kind: Service
@@ -255,9 +255,12 @@ spec:
     app: pki-service
   type: ClusterIP
   ports:
-  - name: grpc
-    port: 8081
-    targetPort: 8081
+    - name: mettics
+      port: 2222
+      targetPort: 2222
+    - name: grpc
+      port: 8081
+      targetPort: 8081
 ---
 apiVersion: v1
 kind: Service
@@ -271,12 +274,12 @@ spec:
     app: eab-rest-interface
   type: ClusterIP
   ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-  - name: grpc
-    port: 8081
-    targetPort: 8081
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: grpc
+      port: 8081
+      targetPort: 8081
 ---
 apiVersion: v1
 kind: Service
@@ -290,6 +293,6 @@ spec:
     app: pki-rest-interface
   type: ClusterIP
   ports:
-  - name: http
-    port: 80
-    targetPort: 8080
+    - name: http
+      port: 80
+      targetPort: 8080
