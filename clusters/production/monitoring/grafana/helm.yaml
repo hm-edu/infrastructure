@@ -56,7 +56,7 @@ spec:
             type: tempo
             access: proxy
             uid: tempo_ds
-            url: http://tempo-tempo-distributed-query-frontend.monitoring.svc.cluster.local:3100
+            url: http://tempo-query-frontend.monitoring.svc.cluster.local:3100
           - name: Prometheus
             type: prometheus
             access: proxy

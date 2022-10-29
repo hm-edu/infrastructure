@@ -53,7 +53,7 @@ spec:
       logAsJson: true
       tracer:
         zipkin:
-          address: tempo-tempo-distributed-distributor.monitoring:9411
+          address: tempo-distributor.monitoring:9411
     meshConfig:
       accessLogFile: /dev/stdout
       accessLogEncoding: JSON

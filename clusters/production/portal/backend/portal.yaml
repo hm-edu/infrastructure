@@ -30,7 +30,7 @@ spec:
             - "https://sso.hm.edu/idp/profile/oidc/keyset"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-tempo-distributed-distributor.monitoring:14268/api/traces
+              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: INSTANCE_IP
               valueFrom:
                 fieldRef:
@@ -80,7 +80,7 @@ spec:
               name: domain-data
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-tempo-distributed-distributor.monitoring:14268/api/traces
+              value: http://tempo-distributor.monitoring:14268/api/traces
           image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-3568ef9-1666845668 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
@@ -139,7 +139,7 @@ spec:
             - "domain-rest-interface:8081"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-tempo-distributed-distributor.monitoring:14268/api/traces
+              value: http://tempo-distributor.monitoring:14268/api/traces
           image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-3568ef9-1666845674 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
@@ -204,7 +204,7 @@ spec:
             - "postgresql://pki:pki@postgres.portal.svc.cluster.local/certificates"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-tempo-distributed-distributor.monitoring:14268/api/traces
+              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: SECTIGO_PASSWORD
               valueFrom:
                 secretKeyRef:
