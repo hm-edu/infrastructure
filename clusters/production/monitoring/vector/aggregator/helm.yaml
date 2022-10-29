@@ -77,13 +77,6 @@ spec:
           inputs:
             - kubernetes_logs_remap
           condition: .container_name == "loki-canary"
-        kubernetes_logs_canary_remap:
-          type: remap
-          drop_on_error: true
-          inputs:
-            - kubernetes_logs_canary
-          source: |
-            . = .message
       sinks:
         loki_journal:
           type: loki
@@ -103,10 +96,10 @@ spec:
         loki_kubernetes_canary:
           type: loki
           inputs:
-            - kubernetes_logs_canary_remap
+            - kubernetes_logs_canary
           endpoint: http://loki-gateway:80
           encoding:
-            codec: json
+            codec: text
           batch:
             max_bytes: 2049000
           out_of_order_action: accept
