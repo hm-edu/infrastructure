@@ -66,6 +66,19 @@ spec:
               index:
                 prefix: loki_index_
                 period: 24h
+            - from: "2022-10-31"
+              store: boltdb-shipper
+              object_store: s3
+              schema: v12
+              index:
+                prefix: loki_index_
+                period: 24h
+
+        storage_config:
+          boltdb_shipper:
+            active_index_directory: /loki/index
+            cache_location: /loki/index_cache
+            shared_store: s3
         common:
           path_prefix: /var/loki
           replication_factor: 3
