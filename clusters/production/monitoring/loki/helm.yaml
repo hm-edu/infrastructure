@@ -75,8 +75,8 @@ spec:
             insecure: true
             s3forcepathstyle: true
           boltdb_shipper:
-            active_index_directory: /loki/index
-            cache_location: /loki/index_cache
+            active_index_directory: /var/loki/index
+            cache_location: /var/loki/index_cache
             shared_store: s3
         common:
           path_prefix: /var/loki
