@@ -61,20 +61,19 @@ spec:
           configs:
             - from: "2021-08-01"
               store: boltdb-shipper
-              object_store: s3
-              schema: v11
-              index:
-                prefix: loki_index_
-                period: 24h
-            - from: "2022-10-31"
-              store: boltdb-shipper
-              object_store: s3
+              object_store: aws
               schema: v12
               index:
                 prefix: loki_index_
                 period: 24h
 
         storage_config:
+          aws:
+            s3: null
+            endpoint: http://minio.minio.svc.cluster.local:9000
+            bucketnames: loki
+            insecure: true
+            s3forcepathstyle: true
           boltdb_shipper:
             active_index_directory: /loki/index
             cache_location: /loki/index_cache
@@ -82,13 +81,6 @@ spec:
         common:
           path_prefix: /var/loki
           replication_factor: 3
-          storage:
-            s3:
-              s3: null
-              endpoint: http://minio.minio.svc.cluster.local:9000
-              bucketnames: loki
-              insecure: true
-              s3forcepathstyle: true
           ring:
             kvstore:
               store: memberlist

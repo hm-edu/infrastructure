@@ -1,10 +1,9 @@
 loki:
     structuredConfig:
-        common:
-            storage:
-                s3:
-                    access_key_id: ENC[AES256_GCM,data:E3uKc6Lza5k=,iv:AXth4HkvoAM0Py75K8096uFiL8ikVjGWSAP1WUH2NqI=,tag:bWUG670R5G+uOkLGzb676Q==,type:str]
-                    secret_access_key: ENC[AES256_GCM,data:dU9Dw1zDfkC5F59xc6zd+EXb9Z1H6oF5i3RnjjpK71Y=,iv:ytFuEz0QLUeIZKVpiRHK2Eo1UpbxSPNfmBbtEvWlmd0=,tag:G/BTLIbGBfQp59pwC2lBUQ==,type:str]
+        storage_config:
+            aws:
+                access_key_id: ENC[AES256_GCM,data:m/XctmL49Cw=,iv:DyShZrfJzmDhrhIc9q5uBzPQ9wsxY8K91OGosvEFxUQ=,tag:mVnM0yVtT5Ac0dVJ3wzLLw==,type:str]
+                secret_access_key: ENC[AES256_GCM,data:FUl+mN+G0iw2SV56EoVPPKQRJVrEHLL1HrjLWac+wDY=,iv:00kwqehefUJFh6og/KupqBMlxAIiLAISQrcTr9o/f4s=,tag:h5+PrzDksd7VkywdfMz+3A==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -14,14 +13,14 @@ sops:
         - recipient: age1n4ar7vyp3nmv844ep8ct4ea4d6uz7xflvug0pyz08ujek0ks2emsxzhn55
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPRVNZdTJ6VFVRUlROd0xo
-            ckFuVlppWjlvTzVyVGRRNUEvVW1aa0FYSFJBCmpaUXNsT2trUWIzN2s3YzI3S2ll
-            V1dpcXd5VCt0YlVTbUFUWkova0ZoVncKLS0tIFVkWnJpWTg5WXVabFB1WXZCWXl5
-            NHdVUG4yRDl3QVJ1RE1sdEFtYkJTY1kKx9iHUSz6OMkJ90r7rSXCyBgNazaSt5Dk
-            ZvS4p1aACkz5Zl+XJ259WfgtNlcAgvENi50qerZ/dgLoPz+khMqbCA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGWWlYTyt1S1hvNnFMN2tl
+            OE11c2hxczErZUd6aXR4RWlHZU1sZXE1UmlRCnpKcnhVaSsrK1JUankvZ3ZxN2hz
+            UWhNR0xWeTg1WW1yWG13dXZqSEdOWUEKLS0tIHd5enIrZ1JjdWtacVdWaXBuUHJW
+            L1JaditsU2dCVTREZXFvZDNRQVY5QzgKCNE8usBX6LJzQSkmJH/6X7SJFq9xB6di
+            lcwXppVP4Z6uCYNZQUCDNcJ7b/jEE3y1FnUTA4wB5s4n642CRbWw8Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-10-21T11:05:57Z"
-    mac: ENC[AES256_GCM,data:o2TyEc3TzYA6Q2VK1Q8upoc2lytwAdwMLosgKpgLGIEOV+BJVXFy7QkAhfcU5RIKIyfQsvBVz5ODE1D0h0C4CzUdZkr4+VFXp3tWN5iUEJUKBmuo4ttGQ9dT4NrOx6VWnQ3bgQxNPWoWi/UVEzTxDZwd7fjfsdrhW1nZxGvSWhY=,iv:0u3/3pkvgr9uzOzvfv13U6urbXkkEzuYSTrMbPHopWk=,tag:HYbAAH0dz0IPBqcF1ZxRtg==,type:str]
+    lastmodified: "2022-10-30T05:10:26Z"
+    mac: ENC[AES256_GCM,data:NzblvYbZnfBBjK1tNePK7K3ebNP3Nqeews//itEaazSZrKBFoNbXH2Nnuesn1fsvVhq8+oWv0NjJAABi05QlIcZaTBcvmFZgb7U0ivnbqh0sWrJaVyioDH9TGl35+akU/XSTiWqViRn2w1VO/eXx9FjDsQKm/cP5GZxH/hPGXEs=,iv:cOfIjCjCLiS99HiXpYpXSMX3saJY8+vxnJSM6zSgZuY=,tag:kppSRN7QA1SZECNgV7+aZg==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.7.3
