@@ -66,7 +66,6 @@ spec:
             type: loki
             access: proxy
             url: http://loki-gateway.monitoring.svc.cluster.local:80
-            isDefault: true
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/13502
