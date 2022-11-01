@@ -27,7 +27,6 @@ spec:
     env:
       GF_DATABASE_HOST: postgres.portal.svc.cluster.local:5432
       GF_DATABASE_TYPE: postgres
-      GF_LOG_LEVEL: debug
     replicas: 3
     rbac:
       pspEnabled: false
