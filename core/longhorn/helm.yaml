@@ -22,6 +22,8 @@ spec:
   upgrade:
     remediation:
       retries: 5
+    cleanupOnFail: true
+    crds: CreateReplace
   values:
     defaultSettings:
       replicaAutoBalance: "best-effort"
