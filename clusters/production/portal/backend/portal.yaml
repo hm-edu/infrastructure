@@ -196,6 +196,8 @@ spec:
             - "30032"
             - --smime_term
             - "1095"
+            - --smime_student_term
+            - "365"
             - --smime_key_length
             - "3072"
             - --smime_key_type
