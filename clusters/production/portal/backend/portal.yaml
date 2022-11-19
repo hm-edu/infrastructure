@@ -16,8 +16,6 @@ spec:
       serviceAccountName: portal-pki-rest
       containers:
         - args:
-            - --level
-            - "debug"
             - --audience
             - "https://api.hm.edu"
             - --ssl_service
@@ -63,8 +61,6 @@ spec:
       serviceAccountName: portal-domain
       containers:
         - args:
-            - --level
-            - "debug"
             - --audience
             - "https://api.hm.edu"
             - --jwks_uri
@@ -123,8 +119,6 @@ spec:
       serviceAccountName: portal-eab
       containers:
         - args:
-            - --level
-            - "debug"
             - --audience
             - "https://api.hm.edu"
             - --jwks_uri
@@ -178,8 +172,6 @@ spec:
       serviceAccountName: portal-pki-internal
       containers:
         - args:
-            - --level
-            - "debug"
             - --sectigo_user
             - "fritterh"
             - --sectigo_customeruri
