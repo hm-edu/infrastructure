@@ -23,6 +23,9 @@ spec:
       retries: 5
     cleanupOnFail: true
     crds: CreateReplace
+  valuesFrom:
+    - kind: Secret
+      name: prometheus-values
   values:
     alertmanager:
       config:
@@ -33,6 +36,7 @@ spec:
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 6h
+          receiver: "email"
           routes:
             - receiver: "null"
               matchers:

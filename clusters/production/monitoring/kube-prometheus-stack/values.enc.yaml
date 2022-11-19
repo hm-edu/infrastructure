@@ -1,0 +1,30 @@
+alertmanager:
+    config:
+        receivers:
+            - name: ENC[AES256_GCM,data:7KP5vA==,iv:Dykhglxzj1pFQXGYOHc+ZzqhVrkAdamzgGqVUecfteA=,tag:geyBSwr12sI3rUsZb9daIA==,type:str]
+            - name: ENC[AES256_GCM,data:G6+CAuU=,iv:T6KnZCu13ycyCWEQp1RzpsP/3I5BoluV3xkD+91ClK0=,tag:tnI9qiWQOIKD43tJKXj7gQ==,type:str]
+              email_configs:
+                - to: ENC[AES256_GCM,data:VPdWacvouxhFb6TGvCOijmRXnVCbszPusA==,iv:VsWOo/h7esTKsuRRW69j1K8Aw5R3ZAZ1UjI3Jj+v15g=,tag:RKSm8LKit856979HcVj0Bw==,type:str]
+                  from: ENC[AES256_GCM,data:rDD/0pXy+meSHUZkGcY=,iv:9p+q2zxjkDAuHxOvg/fnHT3rXdWLztesvt/KvevHE78=,tag:qsLj+/1HtcQspKHkX7pKiA==,type:str]
+                  smarthost: ENC[AES256_GCM,data:JNF4uMkCTKkq/zfOdlMVZpmNjrlEHvbwQtqQD831IA==,iv:QtCnzPDHe3pBtxjufVTqBo2yDzXM6H6VnUbCfCPRmPU=,tag:yam5Ib4pQIqU3fDcOP9L3A==,type:str]
+                  send_resolved: ENC[AES256_GCM,data:YjTDaQ==,iv:W3mN8gPOOj/KTNJqGpS25K39rInJi/JG/DnVcA5E3Ns=,tag:vJaVTxh/F731SDhrEUiLXA==,type:bool]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1n4ar7vyp3nmv844ep8ct4ea4d6uz7xflvug0pyz08ujek0ks2emsxzhn55
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVZW1TRVMxbTAxalAwYVYy
+            RnVwUnBIMUVnYnRwR1FUekhGK2RPT1lBRkY0CnZ4NVpIb2NwVkFIQ1FseU1Uc2ls
+            eGZMOXBJOTZlMEdpOXlJMmFCcjFkMG8KLS0tIHF3SlFCR3NtcG1Qc0Q0eFI5L040
+            ckp5L0ZWcTJGSmoyMHljU3QzQmhSV3cKb7MVBifckYOsI0LnwZkup/cswqwYsPTA
+            5fzDt+Xc9OGLKS1X9WnkSEbuxVG/9QbAAI0kocN5OlK9IXEBcvpBYg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-11-19T14:15:07Z"
+    mac: ENC[AES256_GCM,data:B729SIJI6wWV0OvFcKPd6ZBqrV7JNh84z4piLwOQHPo47NSKu4KUTOGLwMXXQcvQyakC6TATOILmxC4OTTZ/PtCiQQ8vM6ZuHzLc8OAi7Ws6E8mGUhO8WVchi60MRpYKUbta0wwojmmuXZJ/pmaJVHadvlgKHdRY+lIJyWvs0W8=,iv:5o66TPwg+5g2gxuEBlBze0QCHrLoPxEaDypAKd8QzSs=,tag:DjaGHoyoPt5CuypMYdY08Q==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

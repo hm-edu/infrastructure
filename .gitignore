@@ -1,2 +1,3 @@
 clusters/production/minio/values.yaml
 clusters/production/monitoring/grafana/secrets.yaml
+clusters/production/monitoring/kube-prometheus-stack/values.yaml
