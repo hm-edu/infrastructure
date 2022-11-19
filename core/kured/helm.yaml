@@ -25,6 +25,8 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
+    metrics:
+      create: true
     configuration:
       startTime: "10pm"
       endTime: "2am"
