@@ -56,6 +56,10 @@ spec:
             access: proxy
             uid: tempo_ds
             url: http://tempo-query-frontend.monitoring.svc.cluster.local:3100
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://alertmanager-operated.monitoring.svc.cluster.local:9093
           - name: Prometheus
             type: prometheus
             access: proxy
