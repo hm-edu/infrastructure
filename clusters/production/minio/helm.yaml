@@ -35,7 +35,7 @@ spec:
     replicas: 4
     persistence:
       enabled: true
-      size: 10Gi
+      size: 15Gi
     metrics:
       serviceMonitor:
         enabled: true
