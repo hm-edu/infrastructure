@@ -54,6 +54,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
+              storageClassName: nfs-client
               resources:
                 requests:
                   storage: 1Gi
@@ -122,6 +123,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
+              storageClassName: nfs-client
               resources:
                 requests:
                   storage: 15Gi
