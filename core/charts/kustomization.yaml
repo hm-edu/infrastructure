@@ -11,3 +11,4 @@ resources:
   - minio.yaml
   - vector.yaml
   - bitnami.yaml
+  - nfs.yaml
