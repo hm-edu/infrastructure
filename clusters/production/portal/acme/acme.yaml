@@ -2,7 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   namespace: portal
-  name: cert-pv-claim
+  name: cert-nfs-pv-claim
   labels:
     app: cert
 spec:
@@ -122,7 +122,7 @@ spec:
                 path: ca.json
         - name: cert
           persistentVolumeClaim:
-            claimName: cert-pv-claim
+            claimName: cert-nfs-pv-claim
 ---
 apiVersion: v1
 kind: Service
