@@ -35,6 +35,7 @@ spec:
     replicas: 4
     persistence:
       enabled: true
+      storageClass: nfs-client
       size: 15Gi
     metrics:
       serviceMonitor:
