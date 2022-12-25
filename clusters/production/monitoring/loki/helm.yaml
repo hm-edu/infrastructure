@@ -66,6 +66,13 @@ spec:
               index:
                 prefix: loki_index_
                 period: 24h
+            - from: "2022-12-26"
+              store: boltdb-shipper
+              object_store: aws
+              schema: v12
+              index:
+                prefix: loki_index_
+                period: 24h
 
         storage_config:
           aws:
