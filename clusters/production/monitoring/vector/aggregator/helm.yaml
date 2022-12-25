@@ -110,7 +110,7 @@ spec:
           labels:
             app: >-
               {{`{{ custom_app_name }}`}}
-            container_name: >-
+            container: >-
               {{`{{ kubernetes.container_name }}`}}
             namespace: >-
               {{`{{ kubernetes.pod_namespace }}`}}
