@@ -9,3 +9,4 @@ resources:
   - minio.yaml
   - apps.yaml
   - flux-system-automation.yaml
+  - gitlab-runner
