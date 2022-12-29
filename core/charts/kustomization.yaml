@@ -12,3 +12,4 @@ resources:
   - vector.yaml
   - bitnami.yaml
   - nfs.yaml
+  - gitlab.yaml
