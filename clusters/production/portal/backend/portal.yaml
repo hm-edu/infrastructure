@@ -34,7 +34,7 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: status.podIP
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-b658dfd-1672467959 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-cc0e398-1672899372 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
