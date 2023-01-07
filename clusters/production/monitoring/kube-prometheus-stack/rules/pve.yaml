@@ -13,12 +13,20 @@ spec:
       rules:
         - alert: Node down
           expr: up{job="node-exporter"} == 0
-          for: 2m
+          for: 1m
           labels:
             severity: warning
           annotations:
             title: Node {{ $labels.instance }} is down
-            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 2 minutes. Node seems down.
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 1 minutes. Node may be down.
+        - alert: Node down
+          expr: up{job="node-exporter"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            title: Node {{ $labels.instance }} is down
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 5 minutes. Node seems to be down.
         - alert: Bond degraded
           expr: (node_bonding_active - node_bonding_slaves) != 0
           for: 1m
