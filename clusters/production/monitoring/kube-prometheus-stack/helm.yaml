@@ -131,6 +131,7 @@ spec:
                   - "pve03.cc.private.hm.edu:9100"
                   - "pve04.cc.private.hm.edu:9100"
                   - "pve05.cc.private.hm.edu:9100"
+                  - "pve06.cc.private.hm.edu:9100"
         storageSpec:
           volumeClaimTemplate:
             spec:
