@@ -1,0 +1,29 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: pve-rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: Hardware alerts
+      rules:
+        - alert: Node down
+          expr: up{job="node-exporter"} == 0
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            title: Node {{ $labels.instance }} is down
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 2 minutes. Node seems down.
+        - alert: Bond degraded
+          expr: (node_bonding_active - node_bonding_slaves) != 0
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            title: Bond is degraded on {{ $labels.instance }}
+            description: Bond {{ $labels.master }} is degraded on {{ $labels.instance }}
