@@ -25,7 +25,7 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
-    gitlabUrl: https://gitlab.lrz.de
+    gitlabUrl: https://gitlab.lrz.de.
     runners:
       secret: gitlab-runner-secret
     rbac:
