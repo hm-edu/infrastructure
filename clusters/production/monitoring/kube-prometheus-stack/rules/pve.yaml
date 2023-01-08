@@ -35,6 +35,8 @@ spec:
           annotations:
             title: Bond is degraded on {{ $labels.instance }}
             description: Bond {{ $labels.master }} is degraded on {{ $labels.instance }}
+    - name: Update Alerts
+      rules:
         - alert: Proxmox Updates Outstanding
           expr: apt_upgrades_pending{origin="Proxmox:bullseye/stable"} != 0
           for: 1m
