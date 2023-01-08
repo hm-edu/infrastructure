@@ -33,7 +33,7 @@ spec:
           pre_clone_script = "for i in $(seq 1 5);do getent hosts gitlab.lrz.de && break || sleep 1;done"
           [runners.kubernetes]
             helper_image_flavor = "ubuntu"
-            namespace = "gilab-runner"
+            namespace = "gitlab-runner"
             # Drop ndots for quicker resolution
             [[runners.kubernetes.dns_config.options]]
               name = "ndots"
