@@ -25,8 +25,19 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
-    gitlabUrl: https://gitlab.lrz.de.
+    gitlabUrl: https://gitlab.lrz.de
     runners:
       secret: gitlab-runner-secret
+      config: |
+        [[runners]]
+          pre_clone_script = "for i in $(seq 1 5);do getent hosts gitlab.lrz.de && break || sleep 1;done"
+          [runners.kubernetes]
+            helper_image_flavor = "ubuntu"
+            namespace = "gilab-runner"
+            # Drop ndots for quicker resolution
+            [[runners.kubernetes.dns_config.options]]
+              name = "ndots"
+              value = "1"
+
     rbac:
       create: true
