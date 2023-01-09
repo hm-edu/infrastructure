@@ -18,6 +18,7 @@ spec:
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
+        - "meet.hm.edu"
     - port:
         number: 80
         name: http-acme
@@ -46,6 +47,7 @@ spec:
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
+        - "meet.hm.edu"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
