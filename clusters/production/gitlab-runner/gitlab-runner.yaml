@@ -25,7 +25,7 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
-    gitlabUrl: https://gitlab.lrz.de
+    gitlabUrl: https://git01.cc.private.hm.edu
     runners:
       secret: gitlab-runner-secret
       config: |
