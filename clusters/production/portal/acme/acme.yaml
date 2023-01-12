@@ -85,6 +85,10 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
       serviceAccountName: portal-acme
       containers:
         - image: ghcr.io/hm-edu/certificates:master-cc956fe-1673248988 # {"$imagepolicy": "flux-system:certificates"}

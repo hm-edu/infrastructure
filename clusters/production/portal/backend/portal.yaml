@@ -13,6 +13,12 @@ spec:
       labels:
         app: pki-rest-interface
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
       serviceAccountName: portal-pki-rest
       containers:
         - args:
@@ -58,6 +64,12 @@ spec:
       labels:
         app: domain-rest-interface
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
       serviceAccountName: portal-domain
       containers:
         - args:
@@ -116,6 +128,12 @@ spec:
       labels:
         app: eab-rest-interface
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
       serviceAccountName: portal-eab
       containers:
         - args:
@@ -169,6 +187,12 @@ spec:
       labels:
         app: pki-service
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
       serviceAccountName: portal-pki-internal
       containers:
         - args:
