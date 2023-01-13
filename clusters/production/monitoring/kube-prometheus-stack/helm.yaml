@@ -50,7 +50,7 @@ spec:
               - severity = "warning"
             equal: ["alertname", "namespace"]
       alertmanagerSpec:
-        replicas: 3
+        replicas: 1
         podAntiAffinity: hard
         storage:
           volumeClaimTemplate:
@@ -104,7 +104,7 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
-        replicas: 3
+        replicas: 1
         replicaExternalLabelName: __replica__
         externalLabels:
           cluster: hm-edu
