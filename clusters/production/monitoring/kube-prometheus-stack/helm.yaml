@@ -136,6 +136,7 @@ spec:
                   - "api.hm.edu:9100"
                   - "storage.k8s.cc.private.hm.edu:9100"
                   - "sentry.hm.edu:9100"
+                  - "git.cc.private.hm.edu:9100"
         storageSpec:
           volumeClaimTemplate:
             spec:
