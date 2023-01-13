@@ -28,6 +28,8 @@ spec:
     - kind: Secret
       name: prometheus-values
   values:
+    nodeExporter:
+      enabled: false
     alertmanager:
       config:
         global:
