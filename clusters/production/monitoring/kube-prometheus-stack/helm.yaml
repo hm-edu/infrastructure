@@ -133,6 +133,8 @@ spec:
                   - "pve05.cc.private.hm.edu:9100"
                   - "pve06.cc.private.hm.edu:9100"
                   - "mailarchiv.hm.edu:9100"
+                  - "api.hm.edu:9100"
+                  - "storage.k8s.cc.private.hm.edu:9100"
         storageSpec:
           volumeClaimTemplate:
             spec:
