@@ -13,7 +13,7 @@ spec:
       rules:
         - alert: Systemd Service Crashed
           expr: node_systemd_unit_state{state="failed"} == 1
-          for: 0m
+          for: 30s
           labels:
             severity: warning
           annotations:
@@ -65,7 +65,7 @@ spec:
             title: Proxmox Updates Outstanding {{ $labels.instance }}
             description: Proxmox Updates Outstanding for {{ $labels.instance }}
         - alert: Security Updates Outstanding
-          expr: apt_upgrades_pending{origin~=".*security.*"} != 0
+          expr: apt_upgrades_pending{origin=~".*security.*"} != 0
           for: 1m
           labels:
             severity: critical
