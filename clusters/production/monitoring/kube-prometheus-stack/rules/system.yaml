@@ -5,10 +5,21 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: pve-rules
+  name: node-rules
   namespace: monitoring
 spec:
   groups:
+    - name: Applications
+      rules:
+        - alert: Systemd Service Crashed
+          expr: node_systemd_unit_state{state="failed"} == 1
+          for: 0m
+          labels:
+            severity: warning
+          annotations:
+            summary: Host systemd service crashed (instance {{ $labels.instance }})
+            description: "Systemd service crashed\n  value = {{ $value }}\n  labels = {{ $labels }}"
+
     - name: Hardware alerts
       rules:
         - alert: Node down

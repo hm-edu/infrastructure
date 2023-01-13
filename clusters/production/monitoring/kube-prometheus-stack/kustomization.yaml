@@ -4,7 +4,7 @@ namespace: monitoring
 resources:
   - helm.yaml
   - rules/kured.yaml
-  - rules/pve.yaml
+  - rules/system.yaml
 secretGenerator:
   - name: prometheus-values
     files:
