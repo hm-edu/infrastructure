@@ -54,7 +54,7 @@ spec:
             title: Proxmox Updates Outstanding {{ $labels.instance }}
             description: Proxmox Updates Outstanding for {{ $labels.instance }}
         - alert: Security Updates Outstanding
-          expr: apt_upgrades_pending{origin="Debian:bullseye-security/stable-security"} != 0
+          expr: apt_upgrades_pending{origin~=".*security.*"} != 0
           for: 1m
           labels:
             severity: critical
@@ -62,7 +62,7 @@ spec:
             title: Security Updates Outstanding {{ $labels.instance }}
             description: Security Updates Outstanding for {{ $labels.instance }}
         - alert: Normal Updates Outstanding
-          expr: apt_upgrades_pending{origin!~"Proxmox:bullseye/stable|Debian:bullseye-security/stable-security"} != 0
+          expr: apt_upgrades_pending{origin!~".*security.*"} != 0
           for: 1m
           labels:
             severity: warning
