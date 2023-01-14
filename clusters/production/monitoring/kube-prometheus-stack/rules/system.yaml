@@ -81,7 +81,7 @@ spec:
             title: Normal Updates Outstanding {{ $labels.instance }}
             description: Normal Updates Outstanding for {{ $labels.instance }}
         - alert: Reboot required
-          expr: (reboot_required) != 0
+          expr: (node_reboot_required) != 0
           for: 1m
           labels:
             severity: info
@@ -89,7 +89,7 @@ spec:
             title: Reboot required for {{ $labels.instance }}
             description: Reboot required for {{ $labels.instance }} due to kernel update
         - alert: Reboot required
-          expr: (reboot_required) != 0
+          expr: (node_reboot_required) != 0
           for: 48h
           labels:
             severity: warning
@@ -97,7 +97,7 @@ spec:
             title: Reboot required for {{ $labels.instance }}
             description: Reboot required for {{ $labels.instance }} since more than 48h due to kernel update
         - alert: Reboot required
-          expr: (reboot_required) != 0
+          expr: (node_reboot_required) != 0
           for: 96h
           labels:
             severity: critical
