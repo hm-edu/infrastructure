@@ -13,7 +13,7 @@ spec:
       rules:
         - alert: Systemd Service Crashed
           expr: node_systemd_unit_state{state="failed"} == 1
-          for: 30s
+          for: 15s
           labels:
             severity: warning
           annotations:
@@ -24,12 +24,12 @@ spec:
       rules:
         - alert: Node down
           expr: up{job="node-exporter"} == 0
-          for: 1m
+          for: 15s
           labels:
             severity: warning
           annotations:
             title: Node {{ $labels.instance }} is down
-            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 1 minutes. Node may be down.
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 15 seconds. Node may be down.
         - alert: Node down
           expr: up{job="node-exporter"} == 0
           for: 5m
