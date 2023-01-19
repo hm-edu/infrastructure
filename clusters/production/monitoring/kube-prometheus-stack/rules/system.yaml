@@ -65,7 +65,7 @@ spec:
             title: Proxmox Updates Outstanding {{ $labels.instance }}
             description: Proxmox Updates Outstanding for {{ $labels.instance }}
         - alert: Security Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (instance,origin) != 0
+          expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (instance) != 0
           for: 1m
           labels:
             severity: critical
@@ -73,7 +73,7 @@ spec:
             title: Security Updates Outstanding {{ $labels.instance }}
             description: Security Updates Outstanding for {{ $labels.instance }}
         - alert: Normal Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (instance,origin) != 0
+          expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (instance) != 0
           for: 1m
           labels:
             severity: warning
