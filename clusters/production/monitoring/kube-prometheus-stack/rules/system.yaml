@@ -49,7 +49,7 @@ spec:
     - name: Update Alerts
       rules:
         - alert: Proxmox Updates Outstanding
-          expr: apt_upgrades_pending{origin="Proxmox:bullseye/stable"} != 0
+          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (instance) != 0
           for: 1m
           labels:
             severity: info
@@ -57,7 +57,7 @@ spec:
             title: Proxmox Updates Outstanding {{ $labels.instance }}
             description: Proxmox Updates Outstanding for {{ $labels.instance }}
         - alert: Proxmox Updates Outstanding
-          expr: apt_upgrades_pending{origin="Proxmox:bullseye/stable"} != 0
+          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (instance) != 0
           for: 96h
           labels:
             severity: warning
