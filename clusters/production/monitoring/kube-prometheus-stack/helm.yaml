@@ -107,6 +107,7 @@ spec:
         enabled: true
       prometheusSpec:
         additionalScrapeConfigsSecret:
+          enabled: true
           name: hm-monitoring
           key: additional-scrape-configs.yaml
         replicas: 1
