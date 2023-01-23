@@ -106,6 +106,9 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
+        additionalScrapeConfigsSecret:
+          name: hm-monitoring
+          key: additional-scrape-configs.yaml
         replicas: 1
         replicaExternalLabelName: __replica__
         externalLabels:
