@@ -56,19 +56,11 @@ spec:
           annotations:
             title: Proxmox Updates Outstanding {{ $labels.instance }}
             description: Proxmox Updates Outstanding for {{ $labels.instance }}
-        - alert: Proxmox Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (instance) != 0
-          for: 96h
-          labels:
-            severity: warning
-          annotations:
-            title: Proxmox Updates Outstanding {{ $labels.instance }}
-            description: Proxmox Updates Outstanding for {{ $labels.instance }}
         - alert: Security Updates Outstanding
           expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (instance) != 0
           for: 1m
           labels:
-            severity: critical
+            severity: warning
           annotations:
             title: Security Updates Outstanding {{ $labels.instance }}
             description: Security Updates Outstanding for {{ $labels.instance }}
@@ -76,7 +68,7 @@ spec:
           expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (instance) != 0
           for: 1m
           labels:
-            severity: warning
+            severity: info
           annotations:
             title: Normal Updates Outstanding {{ $labels.instance }}
             description: Normal Updates Outstanding for {{ $labels.instance }}
@@ -88,19 +80,3 @@ spec:
           annotations:
             title: Reboot required for {{ $labels.instance }}
             description: Reboot required for {{ $labels.instance }} due to kernel update
-        - alert: Reboot required
-          expr: (node_reboot_required) != 0
-          for: 48h
-          labels:
-            severity: warning
-          annotations:
-            title: Reboot required for {{ $labels.instance }}
-            description: Reboot required for {{ $labels.instance }} since more than 48h due to kernel update
-        - alert: Reboot required
-          expr: (node_reboot_required) != 0
-          for: 96h
-          labels:
-            severity: critical
-          annotations:
-            title: Reboot required for {{ $labels.instance }}
-            description: Reboot required for {{ $labels.instance }} since more than 96h due to kernel update
