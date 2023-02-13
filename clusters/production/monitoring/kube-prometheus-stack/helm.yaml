@@ -35,7 +35,7 @@ spec:
         global:
           resolve_timeout: 3m
         route:
-          group_by: ["alertname", "job", "severity"]
+          group_by: ["host"]
           group_wait: 30s
           group_interval: 60s
           repeat_interval: 6h
@@ -45,6 +45,11 @@ spec:
               matchers:
                 - alertname =~ "InfoInhibitor|Watchdog"
               continue: true
+            - receiver: "null"
+              matchers:
+                - severity = "info"
+              repeat_interval: 48h
+               
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
