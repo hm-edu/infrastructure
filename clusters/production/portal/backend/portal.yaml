@@ -89,7 +89,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-8388e17-1674666540 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-9565e1f-1676357970 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -228,7 +228,7 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: sectigo_password
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-8388e17-1674666543 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-9565e1f-1676357973 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
