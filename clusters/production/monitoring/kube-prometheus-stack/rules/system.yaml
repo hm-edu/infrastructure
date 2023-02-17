@@ -17,7 +17,7 @@ spec:
           labels:
             severity: warning
           annotations:
-            summary: Host systemd service crashed (instance {{ $labels.instance }})
+            summary: Host systemd service crashed (host {{ $labels.host }})
             description: "Systemd service crashed\n  value = {{ $value }}\n  labels = {{ $labels }}"
 
     - name: Hardware alerts
@@ -28,36 +28,36 @@ spec:
           labels:
             severity: warning
           annotations:
-            title: Node {{ $labels.instance }} is down
-            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 15 seconds. Node may be down.
+            title: Node {{ $labels.host }} is down
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.host }} for more than 15 seconds. Node may be down.
         - alert: Node down
           expr: up{job="node-exporter"} == 0
           for: 5m
           labels:
             severity: critical
           annotations:
-            title: Node {{ $labels.instance }} is down
-            description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 5 minutes. Node seems to be down.
+            title: Node {{ $labels.host }} is down
+            description: Failed to scrape {{ $labels.job }} on {{ $labels.host }} for more than 5 minutes. Node seems to be down.
         - alert: Bond degraded
           expr: (node_bonding_active - node_bonding_slaves) != 0
           for: 1m
           labels:
             severity: warning
           annotations:
-            title: Bond is degraded on {{ $labels.instance }}
-            description: Bond {{ $labels.master }} is degraded on {{ $labels.instance }}
+            title: Bond is degraded on {{ $labels.host }}
+            description: Bond {{ $labels.master }} is degraded on {{ $labels.host }}
     - name: Update Alerts
       rules:
         - alert: Proxmox Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (instance) != 0
+          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (host) != 0
           for: 1m
           labels:
             severity: info
           annotations:
-            title: Proxmox Updates Outstanding {{ $labels.instance }}
-            description: Proxmox Updates Outstanding for {{ $labels.instance }}
+            title: Proxmox Updates Outstanding {{ $labels.host }}
+            description: Proxmox Updates Outstanding for {{ $labels.host }}
         - alert: Security Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (instance) != 0
+          expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (host) != 0
           for: 1m
           labels:
             severity: warning
@@ -65,7 +65,7 @@ spec:
             title: Security Updates Outstanding {{ $labels.instance }}
             description: Security Updates Outstanding for {{ $labels.instance }}
         - alert: Normal Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (instance) != 0
+          expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (host) != 0
           for: 1m
           labels:
             severity: info
