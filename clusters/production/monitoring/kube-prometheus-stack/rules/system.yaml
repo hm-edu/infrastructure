@@ -68,7 +68,7 @@ spec:
           expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (host) != 0
           for: 1m
           labels:
-            severity: info
+            severity: warning
           annotations:
             title: Normal Updates Outstanding {{ $labels.instance }}
             description: Normal Updates Outstanding for {{ $labels.instance }}
@@ -76,7 +76,7 @@ spec:
           expr: (node_reboot_required) != 0
           for: 1m
           labels:
-            severity: info
+            severity: warning
           annotations:
             title: Reboot required for {{ $labels.instance }}
             description: Reboot required for {{ $labels.instance }} due to kernel update
