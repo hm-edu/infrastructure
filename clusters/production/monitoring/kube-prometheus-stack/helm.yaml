@@ -51,7 +51,7 @@ spec:
               repeat_interval: 48h
             - receiver: "email"
               matchers: 
-                - alertname ~= "(Normal|Security|Proxmox) Updates Outstanding"
+                - alertname =~ "(Normal|Security|Proxmox) Updates Outstanding"
               group_by: ["alertname"]
               group_wait: 5m
               group_interval: 10m
