@@ -9,18 +9,6 @@ spec:
   servers:
     - port:
         number: 80
-        name: http
-        protocol: HTTP
-      tls:
-        httpsRedirect: false
-      hosts:
-        - "pki.hm.edu"
-        - "domain.api.hm.edu"
-        - "pki.api.hm.edu"
-        - "eab.api.hm.edu"
-        - "meet.hm.edu"
-    - port:
-        number: 80
         name: http-acme
         protocol: HTTP
       tls:
@@ -36,6 +24,17 @@ spec:
       hosts:
         - acme.hm.edu
     - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "pki.hm.edu"
+        - "domain.api.hm.edu"
+        - "pki.api.hm.edu"
+        - "eab.api.hm.edu"
+    - port:
         number: 443
         name: https
         protocol: HTTPS
@@ -47,4 +46,37 @@ spec:
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
         - "meet.hm.edu"
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: meet-cert
+      hosts:
+        - "meet.hm.edu"
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "stats.it.hm.edu"
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: stat-cert
+      hosts:
+        - "stats.it.hm.edu"
