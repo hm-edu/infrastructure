@@ -130,9 +130,9 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - logging.k8s.cc.private.hm.edu
+    - stats.it.hm.edu
   gateways:
-    - istio-ingress/gateway-internal
+    - istio-ingress/gateway-portal
   http:
     - route:
         - destination:

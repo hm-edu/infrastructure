@@ -19,6 +19,7 @@ spec:
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
         - "meet.hm.edu"
+        - "stats.it.hm.edu"
     - port:
         number: 80
         name: http-acme
@@ -48,30 +49,4 @@ spec:
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
         - "meet.hm.edu"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: gateway-internal
-  namespace: istio-ingress
-spec:
-  selector:
-    istio: ingressgateway-internal
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      tls:
-        httpsRedirect: true
-      hosts:
-        - "logging.k8s.cc.private.hm.edu"
-    - port:
-        number: 443
-        name: https
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: internal-cert
-      hosts:
-        - "logging.k8s.cc.private.hm.edu"
+        - "stats.it.hm.edu"
