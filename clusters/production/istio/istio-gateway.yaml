@@ -12,7 +12,7 @@ spec:
         name: http
         protocol: HTTP
       tls:
-        httpsRedirect: true
+        httpsRedirect: false
       hosts:
         - "pki.hm.edu"
         - "domain.api.hm.edu"
@@ -24,7 +24,7 @@ spec:
         name: http-acme
         protocol: HTTP
       tls:
-        httpsRedirect: true
+        httpsRedirect: false
       hosts:
         - acme.hm.edu
     - port:

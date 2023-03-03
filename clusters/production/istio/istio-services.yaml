@@ -139,3 +139,24 @@ spec:
             host: meet
             port:
               number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: workaround-to-renew-certs
+  namespace: istio-ingress
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - gateway-portal
+  http:
+    - match:
+        - scheme:
+            exact: http
+          withoutHeaders:
+            :path:
+              prefix: /.well-known/acme-challenge/
+      redirect:
+        scheme: https
+        redirectCode: 302
