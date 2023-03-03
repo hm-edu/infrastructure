@@ -19,6 +19,7 @@ spec:
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
         - "meet.hm.edu"
+        - "stats.it.hm.edu"
     - port:
         number: 80
         name: http-acme
@@ -48,3 +49,4 @@ spec:
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
         - "meet.hm.edu"
+        - "stats.it.hm.edu"
