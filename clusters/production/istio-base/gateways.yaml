@@ -20,3 +20,30 @@ spec:
           port: 443
           protocol: TCP
           nodePort: 30001
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingressgateway-internal
+  namespace: istio-ingress
+spec:
+  values:
+    kind: DaemonSet
+    podAnnotations: 
+      "proxy.istio.io/config": '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
+    service:
+      externalTrafficPolicy: Local
+      type: NodePort
+      ports:
+        - name: http2
+          port: 80
+          protocol: TCP
+          nodePort: 30002
+        - name: https
+          port: 443
+          protocol: TCP
+          nodePort: 30003
+        - name: status-port
+          port: 15021
+          protocol: TCP
+          nodePort: 30004
