@@ -149,7 +149,7 @@ spec:
   hosts:
     - stats.it.hm.edu
   gateways:
-    - istio-ingress/gateway-internal
+    - istio-ingress/gateway-portal
   http:
     - route:
         - destination:
