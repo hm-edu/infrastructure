@@ -30,6 +30,8 @@ spec:
     replicas: 3
     rbac:
       pspEnabled: false
+    admin:
+      existingSecret: grafana-admin
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
