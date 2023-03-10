@@ -41,7 +41,7 @@ spec:
         ha_peers: grafana-headless:9094
         ha_listen_address: ${POD_IP}:9094
         ha_advertise_address: ${POD_IP}:9094
-
+    headlessService: true
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
