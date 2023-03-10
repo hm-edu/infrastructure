@@ -35,12 +35,13 @@ spec:
     imageRenderer: 
       enabled: true
     grafana.ini:
-       unified_alerting:
-        enabled: true
-        capture: true
-        ha_peers: grafana-headless:9094
-        ha_listen_address: ${POD_IP}:9094
-        ha_advertise_address: ${POD_IP}:9094
+        unified_alerting:
+          enabled: true
+          ha_peers: grafana-headless:9094
+          ha_listen_address: ${POD_IP}:9094
+          ha_advertise_address: ${POD_IP}:9094
+        unified_alerting.sreenshots:
+          capture: true
     headlessService: true
     dashboardProviders:
       dashboardproviders.yaml:
