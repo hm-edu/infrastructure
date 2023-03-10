@@ -40,8 +40,11 @@ spec:
           ha_peers: grafana-headless:9094
           ha_listen_address: ${POD_IP}:9094
           ha_advertise_address: ${POD_IP}:9094
-        unified_alerting.sreenshots:
+        unified_alerting.screenshots:
           capture: true
+          upload_external_image_storage: false
+        external_image_storage:
+          provider: local
     headlessService: true
     dashboardProviders:
       dashboardproviders.yaml:
