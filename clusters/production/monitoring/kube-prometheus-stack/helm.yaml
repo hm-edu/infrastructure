@@ -61,6 +61,12 @@ spec:
               group_by: ["alertname"]
               group_wait: 5m
               group_interval: 10m
+            - receiver: "email"
+              matchers: 
+                - alertname =~ "Node down"
+              group_by: ["alertname","host"]
+              group_wait: 1s
+              group_interval: 1s
                
         inhibit_rules:
           - source_matchers:
