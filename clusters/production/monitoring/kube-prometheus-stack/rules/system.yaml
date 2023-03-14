@@ -38,37 +38,3 @@ spec:
           annotations:
             title: Bond is degraded on {{ $labels.host }}
             description: Bond {{ $labels.master }} is degraded on {{ $labels.host }}
-    - name: Update Alerts
-      rules:
-        - alert: Proxmox Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin="Proxmox:bullseye/stable"}) by (host) != 0
-          for: 1m
-          labels:
-            severity: info
-          annotations:
-            title: Proxmox Updates Outstanding {{ $labels.host }}
-            description: Proxmox Updates Outstanding for {{ $labels.host }}
-        - alert: Security Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin=~".*(s|S)ecurity.*"}) by (host) != 0
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            title: Security Updates Outstanding {{ $labels.instance }}
-            description: Security Updates Outstanding for {{ $labels.instance }}
-        - alert: Normal Updates Outstanding
-          expr: sum(apt_upgrades_pending{origin!~".*(s|S)ecurity.*"}) by (host) != 0
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            title: Normal Updates Outstanding {{ $labels.instance }}
-            description: Normal Updates Outstanding for {{ $labels.instance }}
-        - alert: Reboot required
-          expr: (node_reboot_required) != 0
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            title: Reboot required for {{ $labels.instance }}
-            description: Reboot required for {{ $labels.instance }} due to kernel update
