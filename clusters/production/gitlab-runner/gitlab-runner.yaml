@@ -34,7 +34,8 @@ spec:
           [runners.kubernetes]
             helper_image_flavor = "ubuntu"
             namespace = "gitlab-runner"
-            # Drop ndots for quicker resolution
+            cap_add = ["NET_ADMIN"]
+            # Drop ndots for quicker resolution            
             [[runners.kubernetes.dns_config.options]]
               name = "ndots"
               value = "1"
