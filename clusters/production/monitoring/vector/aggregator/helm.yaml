@@ -32,15 +32,16 @@ spec:
       tag: 0.29.0-debian
     role: Stateless-Aggregator
     replicas: 3
+    env:
+      - name: NODE_IP
+        valueFrom:
+          fieldRef:
+            status.hostIP
     customConfig:
       data_dir: /vector-data-dir
       api:
         enabled: false
       sources:
-        journal_logs:
-          type: vector
-          address: 0.0.0.0:6000
-          version: "2"
         kubernetes_logs:
           type: vector
           address: 0.0.0.0:6010
@@ -53,52 +54,11 @@ spec:
           source: |
             # Standardize 'app' index
             .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
-  
-        kubernetes_logs_other:
-          type: filter
-          inputs:
-            - kubernetes_logs_remap
-          condition: .container_name != "loki-canary"
-        kubernetes_logs_canary:
-          type: filter
-          inputs:
-            - kubernetes_logs_remap
-          condition: .container_name == "loki-canary"
       sinks:
-        loki_journal:
-          type: loki
-          inputs:
-            - journal_logs
-          endpoint: http://loki-gateway:80
-          encoding:
-            codec: json
-          batch:
-            max_bytes: 2049000
-          out_of_order_action: accept
-          remove_label_fields: true
-          remove_timestamp: true
-          labels:
-            hostname: >-
-              {{`{{ host }}`}}
-        loki_kubernetes_canary:
-          type: loki
-          inputs:
-            - kubernetes_logs_canary
-          endpoint: http://loki-gateway:80
-          encoding:
-            codec: text
-          out_of_order_action: accept
-          remove_label_fields: true
-          remove_timestamp: true
-          labels:
-            pod: >-
-              {{`{{ pod_name }}`}}
-            stream: >-
-              {{`{{ stream }}`}}
         loki_kubernetes:
           type: loki
           inputs:
-            - kubernetes_logs_other
+            - kubernetes_logs_remap
           endpoint: http://loki-gateway:80
           encoding:
             codec: text
