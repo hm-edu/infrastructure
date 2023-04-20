@@ -24,8 +24,6 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   dependsOn:
-    - name: loki
-      namespace: monitoring
     - name: vector-aggregator
       namespace: monitoring
   values:

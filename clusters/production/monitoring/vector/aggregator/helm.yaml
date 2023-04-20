@@ -23,9 +23,6 @@ spec:
       retries: 5
     cleanupOnFail: true
     crds: CreateReplace
-  dependsOn:
-    - name: loki
-      namespace: monitoring
   values:
     image:
       repository: timberio/vector
