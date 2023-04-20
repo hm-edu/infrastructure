@@ -30,7 +30,7 @@ spec:
     role: Stateless-Aggregator
     replicas: 3
     env:
-      - name: NODE_IP
+      NODE_IP:
         valueFrom:
           fieldRef:
             status.hostIP
