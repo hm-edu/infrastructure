@@ -30,7 +30,7 @@ spec:
     role: Stateless-Aggregator
     replicas: 3
     env:
-      NODE_IP:
+      - name: NODE_IP
         valueFrom:
           fieldRef:
             apiVersion: v1
