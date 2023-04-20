@@ -33,7 +33,8 @@ spec:
       NODE_IP:
         valueFrom:
           fieldRef:
-            status.hostIP
+            apiVersion: v1
+            fieldPath: status.hostIP
     customConfig:
       data_dir: /vector-data-dir
       api:
