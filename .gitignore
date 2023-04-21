@@ -3,3 +3,4 @@ clusters/production/monitoring/grafana/secrets.yaml
 clusters/production/monitoring/kube-prometheus-stack/values.yaml
 clusters/production/gitlab-runner/secrets.yaml
 clusters/production/gitlab-runner-lrz/secrets.yaml
+clusters/production/monitoring/vector/aggregator/secrets.yaml

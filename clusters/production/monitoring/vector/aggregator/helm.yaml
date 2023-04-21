@@ -35,6 +35,11 @@ spec:
           fieldRef:
             apiVersion: v1
             fieldPath: status.hostIP
+      - name: SPLUNK_HEC_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: vector
+            key: splunk-hec-token
     customConfig:
       data_dir: /vector-data-dir
       api:
@@ -53,26 +58,17 @@ spec:
             # Standardize 'app' index
             .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
       sinks:
-        loki_kubernetes:
-          type: loki
-          inputs:
-            - kubernetes_logs_remap
-          endpoint: http://loki-gateway:80
-          encoding:
-            codec: text
+        splunk_hec_logs:
           batch:
             max_bytes: 2049000
-          out_of_order_action: accept
-          remove_timestamp: true
-          labels:
-            app: >-
-              {{`{{ custom_app_name }}`}}
-            container: >-
-              {{`{{ kubernetes.container_name }}`}}
-            namespace: >-
-              {{`{{ kubernetes.pod_namespace }}`}}
-            node: >-
-              {{`{{ kubernetes.pod_node_name }}`}}
+          encoding:
+            codec: text
+          endpoint: http://$NODE_IP:8088
+          default_token: $SPLUNK_HEC_TOKEN
+          inputs:
+          - kubernetes_logs_remap
+          index: k8s
+          type: splunk_hec_logs
     service:
       enabled: true
       type: NodePort
