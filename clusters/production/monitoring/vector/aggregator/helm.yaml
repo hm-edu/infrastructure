@@ -58,11 +58,11 @@ spec:
             # Standardize 'app' index
             .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
       sinks:
-        splunk_hec_logs:
+        splunk:
           batch:
             max_bytes: 2049000
           encoding:
-            codec: text
+            codec: json
           endpoint: http://$NODE_IP:8088
           default_token: $SPLUNK_HEC_TOKEN
           inputs:
