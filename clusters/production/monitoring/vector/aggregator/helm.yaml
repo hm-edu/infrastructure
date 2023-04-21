@@ -39,7 +39,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: vector
-            key: splunk-hec-token
+            key: splunk_hec_token
     customConfig:
       data_dir: /vector-data-dir
       api:
