@@ -66,9 +66,11 @@ spec:
           endpoint: http://$NODE_IP:8088
           default_token: $SPLUNK_HEC_TOKEN
           inputs:
-          - kubernetes_logs_remap
+          - kubernetes_logs
           index: k8s
           type: splunk_hec_logs
+          healthcheck:
+            enabled: false
     service:
       enabled: true
       type: NodePort
