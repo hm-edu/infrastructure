@@ -73,7 +73,7 @@ spec:
             enabled: false
     containerPorts:
       - name: vector
-        port: 6010
+        containerPort: 6010
         protocol: TCP
     service:
       enabled: true
