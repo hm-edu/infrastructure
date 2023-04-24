@@ -72,7 +72,12 @@ spec:
           healthcheck:
             enabled: false
     service:
-      enabled: false
+      enabled: true
+      type: NodePort
+      ports: 
+        - name: vector
+          port: 6010
+          protocol: TCP
   postRenderers:
     - kustomize:
         patchesJson6902:
