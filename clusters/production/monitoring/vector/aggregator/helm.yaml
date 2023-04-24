@@ -71,6 +71,10 @@ spec:
           type: splunk_hec_logs
           healthcheck:
             enabled: false
+    containerPorts:
+      - name: vector
+        port: 6010
+        protocol: TCP
     service:
       enabled: true
       type: NodePort
