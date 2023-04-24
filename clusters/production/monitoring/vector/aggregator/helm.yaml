@@ -72,8 +72,7 @@ spec:
           healthcheck:
             enabled: false
     service:
-      enabled: true
-      type: NodePort
+      enabled: false
   postRenderers:
     - kustomize:
         patchesJson6902:
