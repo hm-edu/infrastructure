@@ -67,6 +67,7 @@ spec:
             only_fields:
               - container_name
               - custom_app_name
+              - pod_name
               - kubernetes.pod_namespace
               - message
           endpoint: http://$NODE_IP:8088
