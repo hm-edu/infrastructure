@@ -66,6 +66,7 @@ spec:
             codec: json
             only_fields:
               - container_name
+              - custom_app_name
               - kubernetes.pod_namespace
               - message
           endpoint: http://$NODE_IP:8088
