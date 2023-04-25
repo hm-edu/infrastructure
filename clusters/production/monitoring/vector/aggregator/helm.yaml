@@ -84,18 +84,7 @@ spec:
         protocol: TCP
     service:
       enabled: true
-      type: NodePort
       ports: 
         - name: vector
           port: 6010
           protocol: TCP
-  postRenderers:
-    - kustomize:
-        patchesJson6902:
-          - target:
-              kind: Service
-              name: vector-aggregator
-            patch:
-              - op: replace
-                path: /spec/externalTrafficPolicy
-                value: Local
