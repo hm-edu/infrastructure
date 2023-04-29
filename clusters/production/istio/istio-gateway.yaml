@@ -80,3 +80,20 @@ spec:
         credentialName: stat-cert
       hosts:
         - "stats.it.hm.edu"
+    - port:
+        number: 80
+        name: http-net
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "net.api.hm.edu"
+    - port:
+        number: 443
+        name: https-net
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: net-cert
+      hosts:
+        - "net.api.hm.edu"
