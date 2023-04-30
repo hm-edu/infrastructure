@@ -9,6 +9,10 @@ spec:
   interval: 1m0s
   secretRef:
     name: regcred
+  accessFrom:
+    namespaceSelectors:
+      - matchLabels:
+          kubernetes.io/metadata.name: flux-system
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
