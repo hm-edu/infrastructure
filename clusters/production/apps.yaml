@@ -19,6 +19,23 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  path: ./clusters/production/network
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: monitoring
+  namespace: flux-system
+spec:
+  interval: 10m
   path: ./clusters/production/monitoring
   prune: true
   sourceRef:

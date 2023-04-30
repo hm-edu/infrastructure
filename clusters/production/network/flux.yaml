@@ -1,0 +1,28 @@
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: net-service
+  namespace: network
+spec:
+  image: git.cc.private.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk
+  interval: 1m0s
+  secretRef:
+    name: regcred
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: net-service-policy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: net-service
+    namespace: network
+  filterTags:
+    ## use "pattern: '[a-f0-9]+-(?P<ts>[0-9]+)'" if you copied the workflow example using github.run_number
+    pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc
