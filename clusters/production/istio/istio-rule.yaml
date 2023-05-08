@@ -48,7 +48,7 @@ metadata:
   name: tailscale-mtls
   namespace: network
 spec:
-  host: tailscale-webhook-service.portal.svc.cluster.local
+  host: tailscale-webhook-service.network.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
