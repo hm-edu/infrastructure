@@ -34,6 +34,34 @@ spec:
         - image: git.cc.private.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk:main-acc9466c-1682601265 # {"$imagepolicy": "flux-system:net-service-policy"}
           imagePullPolicy: Always
           name: app
+          env:
+            - name: TS_WEBHOOK_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webhook-settings
+                  key: TS_WEBHOOK_KEY
+            - name: SPL_SOURCETYPE
+              valueFrom:
+                secretKeyRef:
+                  name: webhook-settings
+                  key: SPL_SOURCETYPE
+            - name: SPL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: webhook-settings
+                  key: SPL_HOST
+            - name: SPL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: webhook-settings
+                  key: SPL_TOKEN
+            - name: FWD_HOSTNAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.hostIP
+            - name: FWD_PORT
+              value: "8088"
           ports:
             - containerPort: 80
               protocol: TCP
