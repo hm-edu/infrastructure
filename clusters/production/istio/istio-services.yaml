@@ -160,6 +160,23 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
+  name: tailscale
+  namespace: network
+spec:
+  hosts:
+    - net.api.hm.edu
+  gateways:
+    - istio-ingress/gateway-portal
+  http:
+    - route:
+        - destination:
+            host: tailscale-webhook-service
+            port:
+              number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
   name: workaround-to-renew-certs
   namespace: istio-ingress
 spec:
