@@ -45,7 +45,7 @@ spec:
                 secretKeyRef:
                   name: webhook-settings
                   key: SPL_SOURCETYPE
-            - name: SPL_HOST
+            - name: SPL_HOSTNAME
               valueFrom:
                 secretKeyRef:
                   name: webhook-settings
