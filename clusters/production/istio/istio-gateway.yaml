@@ -94,6 +94,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: net-cert
+        credentialName: tailscale-cert
       hosts:
         - "net.api.hm.edu"
