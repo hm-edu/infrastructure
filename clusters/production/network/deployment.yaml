@@ -21,6 +21,8 @@ spec:
       labels:
         app: tailscale-webhook
     spec:
+      imagePullSecrets:
+        - name: regcred
       securityContext:
         fsGroup: 1000
         runAsUser: 1000
