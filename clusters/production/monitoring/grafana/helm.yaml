@@ -61,9 +61,6 @@ spec:
     datasources:
       datasources.yaml:
         apiVersion: 1
-        deleteDatasources:
-          - name: Loki
-            orgId: 1
         datasources:
           - name: Tempo
             type: tempo
@@ -81,10 +78,6 @@ spec:
             access: proxy
             url: http://thanos-query.monitoring.svc.cluster.local:9090
             isDefault: true
-          - name: Loki
-            type: loki
-            access: proxy
-            url: http://loki-gateway.monitoring.svc.cluster.local:80
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/13502
