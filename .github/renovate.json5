@@ -167,7 +167,7 @@
       "labels": [
         "renovate/helm",
         "renovate/patch"
-      ]
+      ],
       "automerge": true
     }
   ]
