@@ -7,6 +7,5 @@ resources:
   - istio
   - flux-system
   - internal.yaml
-  - minio.yaml
   - apps.yaml
   - flux-system-automation.yaml
