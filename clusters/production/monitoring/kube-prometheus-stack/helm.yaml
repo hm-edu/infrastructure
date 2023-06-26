@@ -50,7 +50,6 @@ spec:
                 - alertname =~ "Systemd Service Crashed"
                 - host =~ "bbb-member\d+.hm.edu"
                 - name =~ "(fwupd-refresh.service|certbot.service)"
-              continue: true
             - receiver: "null"
               matchers:
                 - alertname =~ "(KubeAPIDown|KubeletDown)"
