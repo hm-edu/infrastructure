@@ -47,6 +47,15 @@ spec:
               continue: true
             - receiver: "null"
               matchers:
+                - alertname =~ "Systemd Service Crashed"
+                - host =~ "bbb-member\d+.hm.edu"
+                - name =~ "(fwupd-refresh.service|certbot.service)"
+              continue: true
+            - receiver: "null"
+              matchers:
+                - alertname =~ "(KubeAPIDown|KubeletDown)"
+            - receiver: "null"
+              matchers:
                 - severity = "info"
               repeat_interval: 48h
             - receiver: "email"
