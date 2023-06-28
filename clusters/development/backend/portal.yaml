@@ -27,7 +27,7 @@ spec:
             - --domain_service
             - "domain-rest-interface:8081"
             - --jwks_uri
-            - "https://sso-test.hm.edu/idp/profile/oidc/keyset"
+            - "https://sso.hm.edu/idp/profile/oidc/keyset"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://jaeger-collector.istio-system.svc:14268/api/traces
@@ -68,7 +68,7 @@ spec:
             - --audience
             - "https://api.hmtest.de"
             - --jwks_uri
-            - "https://sso-test.hm.edu/idp/profile/oidc/keyset"
+            - "https://sso.hm.edu/idp/profile/oidc/keyset"
             - --db
             - "postgresql://pki:pki@postgres.portal.svc.cluster.local/domain"
             - --preseed
@@ -128,7 +128,7 @@ spec:
             - --audience
             - "https://api.hmtest.de"
             - --jwks_uri
-            - "https://sso-test.hm.edu/idp/profile/oidc/keyset"
+            - "https://sso.hm.edu/idp/profile/oidc/keyset"
             - --db
             - "postgresql://acme:acme@postgres.portal.svc.cluster.local/eab"
             - --acme_db
