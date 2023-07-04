@@ -17,6 +17,13 @@ spec:
         - image: ghcr.io/hm-edu/portal-frontend:main-86e6cac-1688456599 # {"$imagepolicy": "flux-system:frontend"}
           imagePullPolicy: Always
           name: app
+          env:
+            - name: EAB_HOST
+              value: "https://eab.api.hmtest.de"
+            - name: PKI_HOST
+              value: "https://pki.api.hmtest.de"
+            - name: DOMAIN_HOST
+              value: "https://domain.api.hmtest.de"
           envFrom:
             - secretRef:
                 name: frontend
