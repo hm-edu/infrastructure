@@ -112,10 +112,12 @@ spec:
               name: cert
             - mountPath: /home/step/config
               name: cert-config
-          envFrom:
-            - secretRef:
-                name: certificates
           env:
+            - name: MQTT_PASWORD
+              valueFrom:
+                secretKeyRef:
+                  name: certificates
+                  key: MQTT_PASWORD
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://jaeger-collector.istio-system.svc:14268/api/traces
       volumes:
