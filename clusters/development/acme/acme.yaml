@@ -113,7 +113,7 @@ spec:
             - mountPath: /home/step/config
               name: cert-config
           env:
-            - name: MQTT_PASWORD
+            - name: MQTT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: certificates
