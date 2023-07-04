@@ -27,8 +27,6 @@ spec:
     env:
       GF_DATABASE_HOST: postgres.portal.svc.cluster.local:5432
       GF_DATABASE_TYPE: postgres
-      GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP: "true"
-      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
     replicas: 3
     rbac:
       pspEnabled: false
