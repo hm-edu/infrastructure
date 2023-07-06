@@ -19,6 +19,9 @@ jobs:
           flux install \
             --components-extra=image-reflector-controller,image-automation-controller \
             --export > ./clusters/development/flux-system/gotk-components.yaml
+          flux install \
+            --components-extra=image-reflector-controller,image-automation-controller \
+            --export > ./clusters/production/flux-system/gotk-components.yaml
 
           VERSION="$(flux -v)"
           echo "::set-output name=flux_version::$VERSION"
