@@ -4,7 +4,7 @@ kind: Namespace
 metadata:
   name: system-upgrade
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: system-upgrade-controller
@@ -21,7 +21,7 @@ spec:
     # include manifests dir
     !/manifests
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: system-upgrade-controller
