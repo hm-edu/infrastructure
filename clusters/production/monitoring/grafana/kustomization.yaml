@@ -4,5 +4,7 @@ kind: Kustomization
 resources:
   - secrets.sops.yaml
   - helm.yaml
-patchesStrategicMerge:
-  - patches/env.yaml
+patches:
+  - path: patches/env.yaml
+    target:
+      kind: HelmRelease
