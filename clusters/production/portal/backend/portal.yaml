@@ -32,6 +32,8 @@ spec:
             - "domain-rest-interface:8081"
             - --jwks_uri
             - "https://sso.hm.edu/idp/profile/oidc/keyset"
+            - --cors_allowed_origins
+            - "https://pki.hm.edu"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
@@ -83,6 +85,8 @@ spec:
             - "/data/data.json"
             - --ssl_service
             - "pki-service:8081"
+            - --cors_allowed_origins
+            - "https://pki.hm.edu"
           volumeMounts:
             - mountPath: /data
               name: domain-data
@@ -149,6 +153,8 @@ spec:
             - "acme/acme"
             - --domain_service
             - "domain-rest-interface:8081"
+            - --cors_allowed_origins
+            - "https://pki.hm.edu"
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces

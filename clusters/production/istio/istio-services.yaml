@@ -14,18 +14,6 @@ spec:
             host: pki-rest-interface
             port:
               number: 80
-      corsPolicy:
-        allowOrigins:
-          - exact: https://pki.hm.edu
-        allowMethods:
-          - POST
-          - GET
-          - OPTIONS
-          - DELETE
-        allowCredentials: false
-        allowHeaders:
-          - Authorization
-          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -60,18 +48,6 @@ spec:
             host: domain-rest-interface
             port:
               number: 80
-      corsPolicy:
-        allowOrigins:
-          - exact: https://pki.hm.edu
-        allowMethods:
-          - POST
-          - GET
-          - OPTIONS
-          - DELETE
-        allowCredentials: false
-        allowHeaders:
-          - Authorization
-          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -89,18 +65,6 @@ spec:
             host: eab-rest-interface
             port:
               number: 80
-      corsPolicy:
-        allowOrigins:
-          - exact: https://pki.hm.edu
-        allowMethods:
-          - POST
-          - GET
-          - OPTIONS
-          - DELETE
-        allowCredentials: false
-        allowHeaders:
-          - Authorization
-          - Content-Type
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
