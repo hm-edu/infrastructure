@@ -75,6 +75,8 @@ spec:
       serviceAccountName: portal-domain
       containers:
         - args:
+            - --level
+            - "debug"
             - --audience
             - "https://api.hm.edu"
             - --jwks_uri
