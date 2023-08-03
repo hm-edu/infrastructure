@@ -160,7 +160,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-588af68-1690957280 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-f2319a5-1691083006 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
