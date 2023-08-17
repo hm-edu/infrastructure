@@ -212,7 +212,7 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: sectigo_password
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-d6418c3-1691737160 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-b87baa0-1692248925 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
