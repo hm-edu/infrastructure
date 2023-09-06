@@ -35,7 +35,7 @@ spec:
             - --cors_allowed_origins
             - "https://pki.hm.edu"
           env:
-            - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
             - name: INSTANCE_IP
               valueFrom:
@@ -93,7 +93,7 @@ spec:
             - mountPath: /data
               name: domain-data
           env:
-            - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
           image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-64ed6af-1693737971 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
@@ -158,7 +158,7 @@ spec:
             - --cors_allowed_origins
             - "https://pki.hm.edu"
           env:
-            - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
           image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-64ed6af-1693737974 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
@@ -217,19 +217,19 @@ spec:
             - --smime_profile
             - "16307"
             - --smime_org_id
-            - "30032"
+            - "21250"
             - --smime_term
-            - "1095"
+            - "730"
             - --smime_student_term
             - "365"
             - --smime_key_length
-            - "3072"
+            - "4096"
             - --smime_key_type
             - "RSA"
             - --db
             - "postgresql://pki:pki@postgres.portal.svc.cluster.local/certificates"
           env:
-            - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
             - name: SECTIGO_PASSWORD
               valueFrom:
