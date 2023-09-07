@@ -72,10 +72,15 @@ spec:
             - receiver: "email"
               matchers: 
                 - alertname =~ "Node down"
-              group_by: ["alertname","host"]
+              group_by: ["alertname", "host"]
               group_wait: 1s
               group_interval: 1s
                
+            - receiver: "email"
+              matchers:
+                - host =~ "\s+"
+              group_by: ["alertname"]
+              continue: true
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
