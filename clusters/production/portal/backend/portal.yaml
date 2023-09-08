@@ -215,7 +215,7 @@ spec:
             - --ssl_profile
             - "15863"
             - --smime_profile
-            - "21250"
+            - "21222"
             - --smime_org_id
             - "30032"
             - --smime_term
