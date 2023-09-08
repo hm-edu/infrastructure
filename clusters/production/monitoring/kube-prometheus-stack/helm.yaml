@@ -35,12 +35,17 @@ spec:
         global:
           resolve_timeout: 3m
         route:
-          group_by: ["host"]
+          group_by: ["alertname"]
           group_wait: 30s
           group_interval: 60s
           repeat_interval: 6h
           receiver: "email"
-          routes:
+          routes:        
+            - receiver: "email"
+              matchers:
+                - host != "" 
+              group_by: ["host"]
+              continue: true
             - receiver: "null"
               matchers:
                 - alertname =~ "InfoInhibitor|Watchdog"
@@ -74,13 +79,7 @@ spec:
                 - alertname =~ "Node down"
               group_by: ["alertname", "host"]
               group_wait: 1s
-              group_interval: 1s
-               
-            - receiver: "email"
-              matchers:
-                - host =~ "\s+"
-              group_by: ["alertname"]
-              continue: true
+              group_interval: 1s       
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
