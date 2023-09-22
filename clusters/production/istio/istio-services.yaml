@@ -76,7 +76,7 @@ spec:
     - acme.hm.edu
   gateways:
     - istio-ingress/gateway-portal
-  tls:
+  http:
     - route:
         - destination:
             host: certificates
