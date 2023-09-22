@@ -10,8 +10,8 @@ spec:
         operation: MERGE
         value:
           listener_filters:
-            - name: envoy.listener.proxy_protocol
-            - name: envoy.listener.tls_inspector
+            - name: envoy.filters.listener.proxy_protocol
+            - name: envoy.filters.listener.tls_inspector
   workloadSelector:
     labels:
       istio: ingressgateway
