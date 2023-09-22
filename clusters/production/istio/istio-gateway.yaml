@@ -9,22 +9,6 @@ spec:
   servers:
     - port:
         number: 80
-        name: http-acme
-        protocol: HTTP
-      tls:
-        httpsRedirect: false
-      hosts:
-        - acme.hm.edu
-    - port:
-        number: 443
-        name: https-acme
-        protocol: HTTPS
-      tls:
-        mode: PASSTHROUGH
-      hosts:
-        - acme.hm.edu
-    - port:
-        number: 80
         name: http
         protocol: HTTP
       tls:
@@ -34,6 +18,7 @@ spec:
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
         - "eab.api.hm.edu"
+        - "acme.hm.edu"
     - port:
         number: 443
         name: https
@@ -45,6 +30,7 @@ spec:
         - "pki.hm.edu"
         - "domain.api.hm.edu"
         - "pki.api.hm.edu"
+        - "acme.hm.edu"
         - "eab.api.hm.edu"
     - port:
         number: 80

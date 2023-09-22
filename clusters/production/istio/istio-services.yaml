@@ -77,15 +77,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   tls:
-    - match:
-        - port: 443
-          sniHosts:
-            - acme.hm.edu
-      route:
+    - route:
         - destination:
             host: certificates
             port:
-              number: 443
+              number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
