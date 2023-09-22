@@ -25,7 +25,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: portal-cert
+        credentialName: pki-cert
       hosts:
         - "pki.hm.edu"
         - "domain.api.hm.edu"
