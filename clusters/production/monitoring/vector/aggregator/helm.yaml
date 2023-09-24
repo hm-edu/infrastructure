@@ -58,6 +58,25 @@ spec:
             # Standardize 'app' index
             .custom_app_name = .pod_labels."app.kubernetes.io/name" || .pod_labels.app || .pod_labels."k8s-app" || "unknown"
             .host = "k8s.cc.private.hm.edu"
+        kubernetes_logs_portal:
+          type: filter
+          inputs:
+            - kubernetes_logs_remap
+          condition: .kubernetes.pod_namespace == "portal"
+        kubernetes_logs_portal_remap:
+          type: remap
+          drop_on_error: true
+          reroute_dropped: true
+          inputs:
+            - kubernetes_logs_portal
+          source: |
+            # Try to extract JSON Message
+            .message = parse_json!(.message)
+        kubernetes_logs_other:
+          type: filter
+          inputs:
+            - kubernetes_logs_remap
+          condition: .kubernetes.pod_namespace != "portal"
       sinks:
         splunk:
           batch:
@@ -73,7 +92,9 @@ spec:
           endpoint: http://$NODE_IP:8088
           default_token: $SPLUNK_HEC_TOKEN
           inputs:
-          - kubernetes_logs_remap
+            - kubernetes_logs_portal_remap
+            - kubernetes_logs_portal_remap.dropped
+            - kubernetes_logs_other
           index: main
           type: splunk_hec_logs
           healthcheck:
