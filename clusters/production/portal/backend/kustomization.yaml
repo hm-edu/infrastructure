@@ -1,7 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- portal-image-registry.yaml
-- portal-image-policy.yaml
-- portal-accounts.yaml
-- portal.yaml
+  - secrets.sops.yaml
+  - portal-image-registry.yaml
+  - portal-image-policy.yaml
+  - portal-accounts.yaml
+  - portal.yaml

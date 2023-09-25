@@ -95,6 +95,11 @@ spec:
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
+            - name: ADMINS
+              valueFrom:
+                secretKeyRef:
+                  name: domain-interface
+                  key: admins
           image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-e0e8193-1695621242 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
