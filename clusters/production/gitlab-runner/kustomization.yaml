@@ -9,3 +9,5 @@ secretGenerator:
   - name: gitlab-runner-values
     files:
       - values.yaml=values.enc.yaml
+configurations:
+  - kustomizeconfig.yaml
