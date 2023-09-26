@@ -24,21 +24,14 @@ spec:
       retries: 5
     cleanupOnFail: true
     crds: CreateReplace
+  valuesFrom:
+    - kind: Secret
+      name: gitlab-runner-values
   values:
     gitlabUrl: https://git.cc.private.hm.edu
     runners:
       secret: gitlab-runner-secret
-      config: |
-        [[runners]]
-          pre_clone_script = "for i in $(seq 1 5);do getent hosts gitlab.lrz.de && break || sleep 1;done"
-          [runners.kubernetes]
-            helper_image_flavor = "ubuntu"
-            namespace = "gitlab-runner"
-            cap_add = ["NET_ADMIN"]
-            # Drop ndots for quicker resolution            
-            [[runners.kubernetes.dns_config.options]]
-              name = "ndots"
-              value = "1"
+
 
     rbac:
       create: true
