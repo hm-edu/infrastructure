@@ -233,6 +233,8 @@ spec:
             - "RSA"
             - --db
             - "postgresql://pki:pki@postgres.portal.svc.cluster.local/certificates"
+            - --enable_notifications
+            - "true"
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
@@ -241,6 +243,21 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: sectigo_password
+            - name: MAIL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: mail
+                  key: mail_host
+            - name: MAIL_BCC
+              valueFrom:
+                secretKeyRef:
+                  name: mail
+                  key: mail_bcc
+            - name: MAIL_FROM
+              valueFrom:
+                secretKeyRef:
+                  name: mail
+                  key: mail_from
           image: ghcr.io/hm-edu/portal-backend/pki-service:main-4fb9aec-1695874418 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
