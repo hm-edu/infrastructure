@@ -1,24 +1,6 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: proxy-protocol
-  namespace: istio-ingress
-spec:
-  configPatches:
-    - applyTo: LISTENER
-      patch:
-        operation: MERGE
-        value:
-          listener_filters:
-            - name: envoy.filters.listener.proxy_protocol
-            - name: envoy.filters.listener.tls_inspector
-  workloadSelector:
-    labels:
-      istio: ingressgateway
----
-apiVersion: networking.istio.io/v1alpha3
-kind: EnvoyFilter
-metadata:
   name: secure-headers
   namespace: istio-ingress
 spec:
