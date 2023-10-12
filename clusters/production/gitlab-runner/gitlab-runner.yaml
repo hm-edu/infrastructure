@@ -28,7 +28,7 @@ spec:
     - kind: Secret
       name: gitlab-runner-values
   values:
-    gitlabUrl: https://git.cc.private.hm.edu
+    gitlabUrl: https://git.it.hm.edu
     runners:
       secret: gitlab-runner-secret
 
