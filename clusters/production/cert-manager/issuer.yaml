@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: acme-issuer-dns
+  namespace: istio-ingress
+spec:
+  acme:
+    email: noreply@hm.edu
+    externalAccountBinding:
+      keyID: DS0s7e1p48iBcayDZva5MCQYFpFHlBDr
+      keySecretRef:
+        key: secret
+        name: eab-secret-dns
+    privateKeySecretRef:
+      name: acme-prod-cluster-dns
+    server: https://acme.hm.edu/acme/acme/directory
+    solvers:
+    - dns01:
+        acmeDNS:
+          host: https://certauth.cs.hm.edu
+          accountSecretRef:
+            name: acme-dns
+            key: acmedns.json
