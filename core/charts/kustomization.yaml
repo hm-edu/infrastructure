@@ -13,3 +13,4 @@ resources:
   - bitnami.yaml
   - nfs.yaml
   - gitlab.yaml
+  - workspaces.yaml
