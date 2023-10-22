@@ -83,3 +83,22 @@ spec:
         credentialName: tailscale-cert
       hosts:
         - "net.api.hm.edu"
+    - port:
+        number: 80
+        name: http-workspaces
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "workspaces.it.hm.edu"
+        - "*.workspaces.it.hm.edu"
+    - port:
+        number: 443
+        name: https-workspaces
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: workspaces-cert
+      hosts:
+        - "workspaces.it.hm.edu"
+        - "*.workspaces.it.hm.edu"
