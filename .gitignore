@@ -7,3 +7,4 @@ clusters/production/monitoring/vector/aggregator/secrets.yaml
 clusters/production/network/secrets.yaml
 clusters/production/portal/backend/secrets.yaml
 clusters/production/gitlab-runner/values.yaml
+clusters/production/gitlab-agent/values.yaml
