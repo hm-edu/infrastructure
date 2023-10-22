@@ -42,7 +42,7 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: status.podIP
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-333ac25-1697808136 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-1133146-1697965145 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -100,7 +100,7 @@ spec:
                 secretKeyRef:
                   name: domain-interface
                   key: admins
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-885a897-1697807823 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-1133146-1697965134 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -258,7 +258,7 @@ spec:
                 secretKeyRef:
                   name: mail
                   key: mail_from
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-333ac25-1697808131 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-1133146-1697965134 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
