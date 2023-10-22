@@ -1,7 +1,6 @@
 nameReference:
   - kind: Secret
     version: v1
-    namespace: gitlab-agent
     fieldSpecs:
       - path: spec/valuesFrom/name
         kind: HelmRelease
