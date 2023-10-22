@@ -9,6 +9,6 @@ spec:
     - "workspaces.it.hm.edu"
     - "*.workspaces.it.hm.edu"
   issuerRef:
-    kind: ClusterIssuer
+    kind: Issuer
     name: acme-issuer-dns
   secretName: workspaces-cert
