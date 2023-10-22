@@ -113,6 +113,8 @@ spec:
             - mountPath: /home/step/config
               name: cert-config
           env:
+            - name: ACME_DNS
+              value: "129.187.208.40:53"
             - name: STEP_TLS_INSECURE
               value: "1"
             - name: STEP_LOGGER_ONLY_TRACE_HEALTH_ENDPOINT
