@@ -31,8 +31,6 @@ spec:
     gitlabUrl: https://git.it.hm.edu
     runners:
       secret: gitlab-runner-secret
-
-
     rbac:
       create: true
       rules:
