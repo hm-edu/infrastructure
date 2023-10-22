@@ -6,8 +6,8 @@ metadata:
 spec:
   commonName: workspaces.it.hm.edu
   dnsNames:
-    - workspaces.it.hm.edu
-    - *.workspaces.it.hm.edu
+    - "workspaces.it.hm.edu"
+    - "*.workspaces.it.hm.edu"
   issuerRef:
     kind: ClusterIssuer
     name: acme-issuer-dns
