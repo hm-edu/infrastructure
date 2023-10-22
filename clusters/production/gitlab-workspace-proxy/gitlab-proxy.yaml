@@ -1,13 +1,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: gitlab-workspace-proxy
+  name: gitlab-workspaces-proxy
   namespace: gitlab-agent
 spec:
   interval: 15m
   chart:
     spec:
-      chart: gitlab-workspace-proxy
+      chart: gitlab-workspaces-proxy
       version: 0.1.9
       sourceRef:
         kind: HelmRepository
@@ -25,4 +25,4 @@ spec:
     crds: CreateReplace
   valuesFrom:
     - kind: Secret
-      name: gitlab-workspace-values
+      name: gitlab-workspaces-values

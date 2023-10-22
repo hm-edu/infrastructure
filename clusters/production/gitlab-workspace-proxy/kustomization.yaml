@@ -4,7 +4,7 @@ namespace: gitlab-agent
 resources:
   - gitlab-proxy.yaml
 secretGenerator:
-  - name: gitlab-workspace-values
+  - name: gitlab-workspaces-values
     files:
       - values.yaml=values.enc.yaml
 configurations:
