@@ -7,7 +7,7 @@ spec:
   acme:
     email: noreply@hm.edu
     externalAccountBinding:
-      keyID: DS0s7e1p48iBcayDZva5MCQYFpFHlBDr
+      keyID: WZsr6KK6Bows4SGuXvkYCVvUc2v362rj
       keySecretRef:
         key: secret
         name: eab-secret-dns
