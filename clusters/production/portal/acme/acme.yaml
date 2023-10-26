@@ -61,7 +61,12 @@ data:
         "renegotiation": false
       },
       "storage": "/opt/step",
-      "managementHost": "eab-rest-interface:8081"
+      "managementHost": "eab-rest-interface:8081",
+      "validationBroker: {
+        "host": "validation.pki.hm.edu",
+        "user": "server.hm.edu",
+        "organization": "hm.edu"
+      }
     }
 ---
 apiVersion: apps/v1
@@ -119,6 +124,11 @@ spec:
               value: "true"
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
+          envFrom:
+            - secretRef:
+                name: acme
+                key: MQTT_PASSWORD
+
       volumes:
         - name: cert-config
           configMap:

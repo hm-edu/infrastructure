@@ -10,3 +10,4 @@ clusters/production/gitlab-runner/values.yaml
 clusters/production/gitlab-agent/values.yaml
 clusters/production/cert-manager/secrets.yaml
 clusters/production/gitlab-workspace-proxy/values.yaml
+clusters/production/portal/acme/secrets.yaml
