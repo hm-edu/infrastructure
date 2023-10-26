@@ -65,7 +65,7 @@ data:
       "validationBroker": {
         "host": "validation.pki.hm.edu",
         "username": "server.hm.edu",
-        "organization": "hm.edu"
+        "organization": "hm"
       }
     }
 ---
