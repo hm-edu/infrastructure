@@ -62,7 +62,7 @@ data:
       },
       "storage": "/opt/step",
       "managementHost": "eab-rest-interface:8081",
-      "validationBroker: {
+      "validationBroker": {
         "host": "validation.pki.hm.edu",
         "user": "server.hm.edu",
         "organization": "hm.edu"
