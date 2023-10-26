@@ -64,7 +64,7 @@ data:
       "managementHost": "eab-rest-interface:8081",
       "validationBroker": {
         "host": "validation.pki.hm.edu",
-        "user": "server.hm.edu",
+        "username": "server.hm.edu",
         "organization": "hm.edu"
       }
     }
