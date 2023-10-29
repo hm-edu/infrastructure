@@ -5,6 +5,7 @@ resources:
   - helm.yaml
   - rules/kured.yaml
   - rules/system.yaml
+  - rules/blackbox.yaml
 secretGenerator:
   - name: prometheus-values
     files:
