@@ -9,17 +9,6 @@ metadata:
   namespace: monitoring
 spec:
   groups:
-    - name: Applications
-      rules:
-        - alert: Systemd Service Crashed
-          expr: node_systemd_unit_state{state="failed"} == 1
-          for: 15s
-          labels:
-            severity: warning
-          annotations:
-            summary: Host systemd service crashed (host {{ $labels.host }})
-            description: "Systemd service crashed\n  value = {{ $value }}\n  labels = {{ $labels }}"
-
     - name: Hardware alerts
       rules:
         - alert: Node down
