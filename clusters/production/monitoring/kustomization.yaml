@@ -9,3 +9,4 @@ resources:
   - tempo
   - flux
   - services
+  - blackbox-exporter
