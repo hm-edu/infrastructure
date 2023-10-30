@@ -28,8 +28,8 @@ spec:
             summary: Blackbox SSL certificate will expire soon (instance {{ $labels.instance }})
             description: "SSL certificate expires in less than 20 days\n  value = {{ $value }}\n  labels = {{ $labels }}"
         - alert: BlackboxProbeSlowHttp
-          expr: avg_over_time(probe_http_duration_seconds[1m]) > 1
-          for: 1m
+          expr: avg_over_time(probe_http_duration_seconds[5m]) > 1
+          for: 5m
           labels:
             severity: warning
           annotations:
