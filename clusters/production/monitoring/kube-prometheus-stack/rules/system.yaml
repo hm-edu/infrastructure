@@ -11,19 +11,19 @@ spec:
   groups:
     - name: Hardware alerts
       rules:
-        - alert: Node down
+        - alert: NodeDown
           expr: up{job="node-exporter"} == 0
           for: 15s
           labels:
             severity: critical
           annotations:
-            title: Node {{ $labels.host }} is down
+            summary: Node {{ $labels.host }} is down
             description: Failed to scrape {{ $labels.job }} on {{ $labels.host }} for more than 15 seconds. Node may be down.
-        - alert: Bond degraded
+        - alert: BondDegraded
           expr: (node_bonding_active - node_bonding_slaves) != 0
           for: 1m
           labels:
             severity: warning
           annotations:
-            title: Bond is degraded on {{ $labels.host }}
+            summary: Bond is degraded on {{ $labels.host }}
             description: Bond {{ $labels.master }} is degraded on {{ $labels.host }}

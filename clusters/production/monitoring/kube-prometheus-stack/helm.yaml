@@ -40,7 +40,13 @@ spec:
           group_interval: 60s
           repeat_interval: 6h
           receiver: "email"
-          routes:        
+          routes:
+            - receiver: "email"
+              matchers: 
+                - host == "" 
+                - instance =~ ".*hm.edu"
+              group_by: ["instance"]
+              continue: true
             - receiver: "email"
               matchers:
                 - host != "" 
