@@ -152,7 +152,7 @@ spec:
           name: hm-monitoring
           key: additional-scrape-configs.yaml
         replicas: 1
-        shards: 3
+        shards: 4
         replicaExternalLabelName: __replica__
         externalLabels:
           cluster: hm-edu
@@ -181,4 +181,4 @@ spec:
             cpu: 10m
             memory: 2000Mi
           limits:
-            memory: 4000Mi
+            memory: 8000Mi
