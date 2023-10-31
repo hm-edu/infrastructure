@@ -34,7 +34,7 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: status.podIP
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-efb62c3-1698387199 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-133d23a-1698775088 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -79,7 +79,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://jaeger-collector.istio-system.svc:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-efb62c3-1698387203 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-133d23a-1698775089 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -138,7 +138,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://jaeger-collector.istio-system.svc:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-efb62c3-1698387201 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-133d23a-1698775090 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -210,7 +210,7 @@ spec:
                 secretKeyRef:
                   name: sectigo
                   key: sectigo_password
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-efb62c3-1698387198 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-133d23a-1698775093 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
