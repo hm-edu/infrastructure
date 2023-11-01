@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 51.10.0
+      version: 52.1.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -160,6 +160,10 @@ spec:
           image: quay.io/thanos/thanos:v0.32.5
           # renovate: datasource=docker depName=quay.io/thanos/thanos
           version: "v0.32.5"
+          objectStorageConfig:
+            existingSecret:
+              name: thanos-objstore-secret
+              key: objstore.yml
         podAntiAffinity: hard
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
