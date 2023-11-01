@@ -40,7 +40,8 @@ spec:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
     queryFrontend:
-      enabled: false
+      enabled: true
+      replicaCount: 2
     bucketweb:
       enabled: true
       replicaCount: 2
