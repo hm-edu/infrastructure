@@ -56,7 +56,11 @@ spec:
         enabled: true
         size: 10Gi
     storegateway:
-      enabled: false
+      enabled: true
+      replicaCount: 2
+      persistence:
+        enabled: true
+        size: 10Gi
     ruler:
       enabled: false
     metrics:

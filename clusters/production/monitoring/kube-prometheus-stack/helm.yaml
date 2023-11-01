@@ -169,7 +169,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 180d
+        retention: 14d
         retentionSize: 500GB
         enableAdminAPI: true
         walCompression: true
