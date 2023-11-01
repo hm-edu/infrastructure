@@ -26,6 +26,9 @@ spec:
   dependsOn:
     - name: kube-prometheus-stack
       namespace: monitoring
+  valuesFrom:
+    - kind: Secret
+      name: thanos-values
   values:
     query:
       enabled: true
@@ -39,9 +42,19 @@ spec:
     queryFrontend:
       enabled: false
     bucketweb:
-      enabled: false
+      enabled: true
+      replicaCount: 2
     compactor:
-      enabled: false
+      enabled: true
+      extraFlags:
+        - --compact.concurrency=4
+        - --delete-delay=30m
+      retentionResolutionRaw: 90d
+      retentionResolution5m: 180d
+      retentionResolution1h: 360d
+      persistence:
+        enabled: true
+        size: 10Gi
     storegateway:
       enabled: false
     ruler:
