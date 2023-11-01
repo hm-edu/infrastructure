@@ -43,7 +43,7 @@ spec:
           routes:
             - receiver: "email"
               matchers: 
-                - host == "" 
+                - host = ""
                 - instance =~ ".*hm.edu"
               group_by: ["instance"]
               continue: true
