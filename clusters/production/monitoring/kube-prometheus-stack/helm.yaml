@@ -35,18 +35,12 @@ spec:
         global:
           resolve_timeout: 3m
         route:
-          group_by: ["alertname"]
+          group_by: ["alertname", "instance"]
           group_wait: 30s
           group_interval: 60s
           repeat_interval: 6h
           receiver: "email"
           routes:
-            - receiver: "email"
-              matchers: 
-                - host = ""
-                - instance =~ ".*hm.edu"
-              group_by: ["instance"]
-              continue: true
             - receiver: "email"
               matchers:
                 - host != "" 
@@ -56,11 +50,6 @@ spec:
               matchers:
                 - alertname =~ "InfoInhibitor|Watchdog"
               continue: true
-            - receiver: "null"
-              matchers:
-                - alertname =~ "Systemd Service Crashed"
-                - host =~ "bbb-member\d+.hm.edu"
-                - name =~ "(fwupd-refresh.service|certbot.service)"
             - receiver: "null"
               matchers:
                 - alertname =~ "(KubeAPIDown|KubeletDown)"
