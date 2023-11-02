@@ -35,6 +35,7 @@ spec:
       service:
         annotations:
           tailscale.com/expose: "true"
+          tailscale.com/tags: "tag:k8s-operator,tag:k8s-monitoring"
     query:
       enabled: true
       replicaCount: 3
