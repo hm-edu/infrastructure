@@ -30,6 +30,11 @@ spec:
     - kind: Secret
       name: thanos-values
   values:
+    receive:
+      enabled: true
+      service:
+        annotations:
+          tailscale.com/expose: "true"
     query:
       enabled: true
       replicaCount: 3
