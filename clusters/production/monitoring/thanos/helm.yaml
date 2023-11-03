@@ -69,7 +69,7 @@ spec:
         enabled: true
         size: 10Gi
     ruler:
-      enabled: false
+      enabled: true
     metrics:
       enabled: true
       serviceMonitor:
