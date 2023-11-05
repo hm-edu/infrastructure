@@ -76,6 +76,17 @@ spec:
       persistence:
         enabled: true
         size: 10Gi
+      config: |-
+        groups:
+          - name: PrometheusWatcher
+            rules:
+              - alert: PrometheusDown
+                annotations:
+                  summary: A Prometheus has disappeared from Prometheus target discovery
+                expr: absent(up{job="kube-prometheus-stack-prometheus"})
+                for: 5m
+                labels:
+                  severity: critical
     metrics:
       enabled: true
       serviceMonitor:
