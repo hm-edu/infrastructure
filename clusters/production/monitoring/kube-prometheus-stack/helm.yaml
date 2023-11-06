@@ -162,6 +162,7 @@ spec:
         retentionSize: 500GB
         enableAdminAPI: true
         walCompression: true
+        enableRemoteWriteReceiver: true
         storageSpec:
           volumeClaimTemplate:
             spec:
