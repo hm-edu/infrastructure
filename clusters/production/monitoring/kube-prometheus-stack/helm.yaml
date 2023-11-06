@@ -131,6 +131,10 @@ spec:
     kubeEtcd:
       enabled: false
     prometheus:
+      service:
+        annotations:
+          tailscale.com/expose: "true"
+          tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
       thanosService:
         enabled: true
       thanosServiceMonitor:
@@ -160,9 +164,12 @@ spec:
         probeSelectorNilUsesHelmValues: false
         retention: 14d
         retentionSize: 500GB
-        enableAdminAPI: true
+        enableAdminAPI: false
         walCompression: true
         enableRemoteWriteReceiver: true
+        enableFeatures:
+        - auto-gomaxprocs
+        - memory-snapshot-on-shutdown 
         storageSpec:
           volumeClaimTemplate:
             spec:
