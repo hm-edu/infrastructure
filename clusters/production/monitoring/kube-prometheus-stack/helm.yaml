@@ -170,6 +170,7 @@ spec:
         enableFeatures:
         - auto-gomaxprocs
         - memory-snapshot-on-shutdown 
+        - otlp-write-receiver
         storageSpec:
           volumeClaimTemplate:
             spec:
