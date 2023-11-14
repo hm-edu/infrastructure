@@ -258,7 +258,7 @@ spec:
                 secretKeyRef:
                   name: mail
                   key: mail_from
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-7e6d064-1699944329 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-2474996-1699946459 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
