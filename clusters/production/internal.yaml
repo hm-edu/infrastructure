@@ -10,7 +10,7 @@ spec:
     branch: main
   secretRef:
     name: git-internal
-  url: ssh://git@ssh.git.cc.private.hm.edu/zit/k8s
+  url: ssh://git@ssh.git.it.hm.edu/zit/k8s
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
