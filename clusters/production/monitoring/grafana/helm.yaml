@@ -76,6 +76,7 @@ spec:
             url: http://alertmanager-operated.monitoring.svc.cluster.local:9093
             jsonData:
               implementation: prometheus
+              handleGrafanaManagedAlerts: true
           - name: Prometheus
             type: prometheus
             access: proxy
