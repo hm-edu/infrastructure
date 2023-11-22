@@ -56,19 +56,7 @@ spec:
             - receiver: "null"
               matchers:
                 - severity = "info"
-              repeat_interval: 48h
-            - receiver: "email"
-              matchers: 
-                - alertname =~ "(Normal|Security|Proxmox) Updates Outstanding"
-              group_by: ["alertname"]
-              group_wait: 5m
-              group_interval: 10m
-            - receiver: "email"
-              matchers: 
-                - alertname =~ "Reboot required"
-              group_by: ["alertname"]
-              group_wait: 5m
-              group_interval: 10m
+              repeat_interval: 48h           
             - receiver: "email"
               matchers: 
                 - alertname =~ "Node down"
