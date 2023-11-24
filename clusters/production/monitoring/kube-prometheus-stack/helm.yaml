@@ -59,7 +59,10 @@ spec:
               repeat_interval: 48h
             - receiver: "email-project"
               matchers:
-                - instance =~".*(172.24.22.22:8000|172.24.22.21:8000|conwiki|jira).*"
+                - instance =~".*(conwiki|jira).*"
+            - receiver: "email-gisa"
+              matchers:
+                - instance =~".*(172.24.22.22:8000|172.24.22.21:8000).*"
             
         inhibit_rules:
           - source_matchers:
