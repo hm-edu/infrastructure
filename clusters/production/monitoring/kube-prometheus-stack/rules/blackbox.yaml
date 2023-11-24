@@ -18,7 +18,7 @@ spec:
             severity: critical
           annotations:
             summary: Blackbox probe failed (instance {{ $labels.instance }})
-            description: "Probe failed\n  value = {{ $value }}\n  labels = {{ $labels }}"
+            description: "Probe failed"
         - alert: BlackboxSslCertificateWillExpireSoon
           expr: 3 <= round((last_over_time(probe_ssl_earliest_cert_expiry[10m]) - time()) / 86400, 0.1) < 20
           for: 0m
@@ -26,7 +26,8 @@ spec:
             severity: warning
           annotations:
             summary: Blackbox SSL certificate will expire soon (instance {{ $labels.instance }})
-            description: "SSL certificate expires in less than 20 days\n  value = {{ $value }}\n  labels = {{ $labels }}"
+            description: "SSL certificate expires in less than 20 days"
+            value: "{{ $value }} days"
         - alert: BlackboxProbeSlowHttp
           expr: avg_over_time(probe_http_duration_seconds[5m]) > 1
           for: 5m
@@ -34,12 +35,14 @@ spec:
             severity: warning
           annotations:
             summary: Blackbox probe slow HTTP (instance {{ $labels.instance }})
-            description: "HTTP request took more than 1s\n  value = {{ $value }}\n  labels = {{ $labels }}"
+            description: "HTTP request took more than 1s"
+            value: "{{ $value }}s"
         - alert: BlackboxProbeHttpFailure
-          expr: probe_http_status_code <= 199 OR probe_http_status_code >= 400
+          expr: (probe_http_status_code <= 199 OR probe_http_status_code >= 400) AND probe_http_status_code != 0
           for: 0m
           labels:
             severity: critical
           annotations:
             summary: Blackbox probe HTTP failure (instance {{ $labels.instance }})
-            description: "HTTP status code is not 200-399\n  value = {{ $value }}\n  labels = {{ $labels }}"
+            description: "HTTP status code is not 200-399"
+            status: "$value"
