@@ -139,9 +139,9 @@ spec:
         externalLabels:
           cluster: hm-edu
         thanos:
-          image: quay.io/thanos/thanos:v0.32.5
+          image: quay.io/thanos/thanos:v0.33.0
           # renovate: datasource=docker depName=quay.io/thanos/thanos
-          version: "v0.32.5"
+          version: "v0.33.0"
           objectStorageConfig:
             existingSecret:
               name: thanos-objstore-secret
