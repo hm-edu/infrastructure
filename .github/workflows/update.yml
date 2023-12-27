@@ -9,7 +9,7 @@ jobs:
   components:
     strategy:
       matrix:
-        cluster: [development, production]
+        cluster: [production]
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
