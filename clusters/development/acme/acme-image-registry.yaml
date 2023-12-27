@@ -1,9 +1,0 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageRepository
-metadata:
-  name: certificates
-  namespace: flux-system
-spec:
-  image: ghcr.io/hm-edu/certificates
-  interval: 1m0s
----
