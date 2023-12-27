@@ -75,7 +75,7 @@ spec:
             access: proxy
             url: http://alertmanager-operated.monitoring.svc.cluster.local:9093
             jsonData:
-              implementation: thanos
+              implementation: prometheus
               handleGrafanaManagedAlerts: true
           - name: Prometheus
             type: prometheus
