@@ -75,13 +75,15 @@ spec:
             access: proxy
             url: http://alertmanager-operated.monitoring.svc.cluster.local:9093
             jsonData:
-              implementation: prometheus
+              implementation: thanos
               handleGrafanaManagedAlerts: true
           - name: Prometheus
             type: prometheus
             access: proxy
             url: http://thanos-query.monitoring.svc.cluster.local:9090
             isDefault: true
+            jsonData:
+              prometheusType: Thanos
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/13502
