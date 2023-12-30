@@ -38,8 +38,8 @@ spec:
           configMap:
             name: rittal-monitoring
             items:
-              - key: rittal-config.yaml
-                path: rittal-config.yaml        
+              - key: config.yaml
+                path: config.yaml        
 ---
 apiVersion: v1
 kind: Service
