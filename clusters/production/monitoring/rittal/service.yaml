@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rittal-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: rittal-exporter
+  template:
+    metadata:
+      labels:
+        app: rittal-exporter
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
+      containers:
+        - image: ghcr.io/hm-edu/rittal-exporter:1.0.0@sha256:0b648a330ba71c94e2b7c8605a988567e3e93dd2cebccf8f326cf487463c4c87
+          imagePullPolicy: Always
+          name: app
+          command: ["/usr/local/bin/rittal-exporter"]
+          ports:
+            - containerPort: 9191
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/rittal-exporter/
+              name: rittal-monitoring
+      volumes:
+        - name: rittal-monitoring
+          configMap:
+            name: rittal-monitoring
+            items:
+              - key: rittal-config.yaml
+                path: rittal-config.yaml        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: rittal-exporter
+  labels:
+    app: rittal-exporter
+spec:
+  type: ClusterIP
+  ports:
+    - name: exporter
+      port: 9191
+      targetPort: 9191
+  selector:
+    app: rittal-exporter

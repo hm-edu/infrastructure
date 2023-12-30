@@ -10,3 +10,4 @@ resources:
   - flux
   - services
   - blackbox-exporter
+  - rittal-exporter
