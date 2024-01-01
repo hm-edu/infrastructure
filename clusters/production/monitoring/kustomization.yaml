@@ -7,7 +7,6 @@ resources:
   - grafana
   - thanos
   - tempo
-  - flux
   - services
   - blackbox-exporter
   - rittal-exporter
