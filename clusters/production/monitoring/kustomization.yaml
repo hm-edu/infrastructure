@@ -10,3 +10,4 @@ resources:
   - services
   - blackbox-exporter
   - rittal-exporter
+  - certspotter

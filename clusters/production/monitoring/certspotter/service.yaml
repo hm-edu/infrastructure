@@ -1,0 +1,75 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: monitoring
+  name: certspotter-nfs-pv-claim
+  labels:
+    app: certspotter
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 50Mi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: monitoring
+  name: certspotter-watcher-config
+  labels:
+    app: certspotter
+data:
+  watcher: |
+    .hm.edu
+    .hmtest.de
+    .fh-muenchen.de
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: certspotter
+  namespace: monitoring
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: certspotter
+  template:
+    metadata:
+      labels:
+        app: certspotter
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
+      containers:
+        - image: ghcr.io/hm-edu/certspotter:1.0.0@sha256:fab6770bff7776b740c55f5d15a83b5ef7a4491d848c4286e3f41c2b7dd85b89
+          imagePullPolicy: Always
+          name: app
+          command: ["/usr/local/bin/certspotter", "-jsonLog", "-stdout", "-no_save", "-start_at_end", "-watchlist", "/etc/certspotter/watcher", "-state_dir", "/opt/certspotter"]
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+          volumeMounts:
+            - mountPath: /opt/certspotter
+              name: certspotter
+            - mountPath: /etc/certspotter
+              name: certspotter-watcher-config
+      volumes:
+        - name: certspotter-watcher-config
+          configMap:
+            name: certspotter-watcher-config
+            items:
+              - key: watcher
+                path: watcher
+        - name: certspotter
+          persistentVolumeClaim:
+            claimName: certspotter-nfs-pv-claim
