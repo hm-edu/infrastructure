@@ -163,7 +163,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-8a01d10-1703242389 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-72c7d74-1704206400 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
