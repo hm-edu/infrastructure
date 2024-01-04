@@ -23,7 +23,7 @@ spec:
         runAsNonRoot: true
         readonlyRootFilesystem: true
       containers:
-        - image: ghcr.io/hm-edu/login-exporter:1.0.0@sha256:1144858702cdcd066f790bbf90aeb6456ddf25192a0d98fc7d175da7ae3cf8f5
+        - image: ghcr.io/hm-edu/login-exporter:1.1.0@sha256:ec77786af5ab3cf2dc63fe6229bc520bdce029c209edd52967a6c748142bd649
           imagePullPolicy: Always
           name: app
           command: ["/app/exporter", "--log_file", "/tmp/exporter.log", "--listen_ip", "0.0.0.0"]
