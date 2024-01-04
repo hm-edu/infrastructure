@@ -26,7 +26,7 @@ spec:
         - image: ghcr.io/hm-edu/login-exporter:1.0.0@sha256:1144858702cdcd066f790bbf90aeb6456ddf25192a0d98fc7d175da7ae3cf8f5
           imagePullPolicy: Always
           name: app
-          command: ["/app/exporter", "-log_file", "/tmp/exporter.log"]
+          command: ["/app/exporter", "--log_file", "/tmp/exporter.log"]
           ports:
             - containerPort: 9980
               protocol: TCP
