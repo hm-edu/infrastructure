@@ -45,4 +45,4 @@ spec:
           annotations:
             summary: Blackbox probe HTTP failure (instance {{ $labels.instance }})
             description: "HTTP status code is not 200-399"
-            status: "$value"
+            status: {{ $value }} 

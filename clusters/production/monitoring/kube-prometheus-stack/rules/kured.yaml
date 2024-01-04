@@ -9,7 +9,7 @@ metadata:
   namespace: monitoring
 spec:
   groups:
-    - name: kured.rules
+    - name: Kured Rules
       rules:
         - alert: RebootRequired
           annotations:

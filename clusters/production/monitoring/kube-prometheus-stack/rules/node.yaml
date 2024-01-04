@@ -9,7 +9,7 @@ metadata:
   namespace: monitoring
 spec:
   groups:
-    - name: Hardware alerts
+    - name: Node Alerts
       rules:
         - alert: NodeDown
           expr: up{job="node-exporter"} == 0
