@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: login-exporter
+  template:
+    metadata:
+      labels:
+        app: login-exporter
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
+      containers:
+        - image: ghcr.io/hm-edu/login-exporter:1.0.0@sha256:1144858702cdcd066f790bbf90aeb6456ddf25192a0d98fc7d175da7ae3cf8f5
+          imagePullPolicy: Always
+          name: app
+          command: ["/app/login-exporter"]
+          ports:
+            - containerPort: 9980
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/prometheus/
+              name: login-exporter-config
+      volumes:
+        - name: login-exporter-config
+          configMap:
+            name: login-exporter-config
+            items:
+              - key: login.yml
+                path: login.yml        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: login-exporter
+  labels:
+    app: login-exporter
+spec:
+  type: ClusterIP
+  ports:
+    - name: exporter
+      port: 9980
+      targetPort: 9980
+  selector:
+    app: login-exporter

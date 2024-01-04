@@ -13,3 +13,4 @@ clusters/production/gitlab-workspace-proxy/values.yaml
 clusters/production/portal/acme/secrets.yaml
 clusters/production/monitoring/thanos/values.yaml
 clusters/production/tailscale/secrets.yaml
+clusters/production/monitoring/login-exporter/secrets.yaml

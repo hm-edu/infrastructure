@@ -11,3 +11,4 @@ resources:
   - blackbox-exporter
   - rittal-exporter
   - certspotter
+  - login-exporter
