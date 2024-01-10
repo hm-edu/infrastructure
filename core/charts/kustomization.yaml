@@ -14,3 +14,4 @@ resources:
   - nfs.yaml
   - gitlab.yaml
   - workspaces.yaml
+  - tailscale.yaml

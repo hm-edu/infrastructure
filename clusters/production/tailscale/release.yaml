@@ -8,11 +8,12 @@ spec:
   releaseName: tailscale-operator
   chart:
     spec:
-      chart: ./cmd/k8s-operator/deploy/chart
-      version: 0.1.0
+      chart: tailscale-operator
+      version: 1.56.1
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: tailscale
+        namespace: flux-system
   install:
     remediation: # perform remediation when helm install fails
       retries: 3
