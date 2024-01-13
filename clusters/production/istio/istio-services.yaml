@@ -86,23 +86,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: meet
-  namespace: meet
-spec:
-  hosts:
-    - meet.hm.edu
-  gateways:
-    - istio-ingress/gateway-portal
-  http:
-    - route:
-        - destination:
-            host: meet
-            port:
-              number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
   name: stats
   namespace: default
 spec:

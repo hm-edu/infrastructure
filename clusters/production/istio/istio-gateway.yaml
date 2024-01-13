@@ -34,23 +34,6 @@ spec:
         - "eab.api.hm.edu"
     - port:
         number: 80
-        name: http-meet
-        protocol: HTTP
-      tls:
-        httpsRedirect: false
-      hosts:
-        - "meet.hm.edu"
-    - port:
-        number: 443
-        name: https-meet
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: meet-cert
-      hosts:
-        - "meet.hm.edu"
-    - port:
-        number: 80
         name: http-stats
         protocol: HTTP
       tls:
