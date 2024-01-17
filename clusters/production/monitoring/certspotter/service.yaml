@@ -56,7 +56,7 @@ spec:
           command: ["/usr/local/bin/certspotter", "-jsonLog", "-stdout", "-no_save", "-start_at_end", "-watchlist", "/etc/certspotter/watcher", "-state_dir", "/opt/certspotter"]
           resources:
             limits:
-              cpu: "0.5"
+              cpu: "2"
               memory: "512Mi"
           volumeMounts:
             - mountPath: /opt/certspotter
