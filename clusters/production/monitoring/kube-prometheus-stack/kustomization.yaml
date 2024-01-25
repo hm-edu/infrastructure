@@ -3,10 +3,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - helm.yaml
-  - rules/kured.yaml
-  - rules/node.yaml
-  - rules/blackbox.yaml
-  - rules/sso.yaml
   - targets/flux.yaml
 secretGenerator:
   - name: prometheus-values
