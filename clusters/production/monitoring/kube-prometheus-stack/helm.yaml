@@ -69,7 +69,7 @@ spec:
               - severity = "critical"
             target_matchers:
               - severity = "warning"
-            equal: ["alertname", "namespace"]
+            equal: ["alertname", "instance"]
       alertmanagerSpec:
         replicas: 1
         podAntiAffinity: hard
