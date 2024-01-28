@@ -33,15 +33,15 @@ spec:
     admin:
       existingSecret: grafana-admin
     imageRenderer: 
-      enabled: true
+      enabled: false
     grafana.ini:
         unified_alerting:
-          enabled: true
+          enabled: false
           ha_peers: grafana-headless:9094
           ha_listen_address: ${POD_IP}:9094
           ha_advertise_address: ${POD_IP}:9094
         unified_alerting.screenshots:
-          capture: true
+          capture: false
           upload_external_image_storage: false
         external_image_storage:
           provider: local
