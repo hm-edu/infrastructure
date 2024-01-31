@@ -419,6 +419,8 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
+        scrapeConfigSelector:          
+          prometheus: system-monitoring
         retention: 14d
         retentionSize: 500GB
         enableAdminAPI: false
