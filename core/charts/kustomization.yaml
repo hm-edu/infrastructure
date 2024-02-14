@@ -6,7 +6,6 @@ resources:
   - istio.yaml
   - prometheus-community-charts.yaml
   - grafana.yaml
-  - longhorn.yaml
   - cert-manager.yaml
   - minio.yaml
   - vector.yaml
