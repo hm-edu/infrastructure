@@ -350,6 +350,9 @@ spec:
           enabled: true
           name: hm-monitoring
           key: additional-scrape-configs.yaml
+        alertingEndpoints:
+          - name: alertmanager
+            namespace: monitoring
         replicas: 1
         shards: 4
         replicaExternalLabelName: __replica__
