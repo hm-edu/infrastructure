@@ -24,66 +24,11 @@ spec:
       retries: 5
     cleanupOnFail: true
     crds: CreateReplace
-  valuesFrom:
-    - kind: Secret
-      name: prometheus-values
   values:
     nodeExporter:
       enabled: false
     alertmanager:
-      service:
-        annotations:
-          tailscale.com/expose: "true"
-          tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
-      config:
-        global:
-          resolve_timeout: 3m
-        route:
-          group_by: ["alertname", "instance"]
-          group_wait: 30s
-          group_interval: 60s
-          repeat_interval: 6h
-          receiver: "email"
-          routes:
-            - receiver: "email"
-              matchers:
-                - host != "" 
-              group_by: ["host"]
-              continue: true
-            - receiver: "null"
-              matchers:
-                - alertname =~ "InfoInhibitor|Watchdog"
-              continue: true
-            - receiver: "null"
-              matchers:
-                - alertname =~ "(KubeAPIDown|KubeletDown)"
-            - receiver: "null"
-              matchers:
-                - severity = "info"
-              repeat_interval: 48h
-            - receiver: "email-project"
-              matchers:
-                - instance =~".*(conwiki|jira).*"
-            - receiver: "email-gisa"
-              matchers:
-                - instance =~".*(172.24.22.22:8000|172.24.22.21:8000).*"
-            
-        inhibit_rules:
-          - source_matchers:
-              - severity = "critical"
-            target_matchers:
-              - severity = "warning"
-            equal: ["alertname", "instance"]
-      alertmanagerSpec:
-        replicas: 1
-        podAntiAffinity: hard
-        storage:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: nfs-client
-              resources:
-                requests:
-                  storage: 1Gi
+      enabled: false
     kube-state-metrics:
       rbac:
         extraRules:

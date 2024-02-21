@@ -4,9 +4,3 @@ namespace: monitoring
 resources:
   - helm.yaml
   - targets/flux.yaml
-secretGenerator:
-  - name: prometheus-values
-    files:
-      - values.yaml=values.enc.yaml
-configurations:
-  - kustomizeconfig.yaml
