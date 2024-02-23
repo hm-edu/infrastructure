@@ -45,17 +45,10 @@
       "matchPackageNames": [
         "ghcr.io/fluxcd/image-reflector-controller",
         "ghcr.io/fluxcd/image-automation-controller",
-        "ghcr.io/fluxcd/source-controller"
-      ],
-      "enabled": false
-    },
-    {
-      "description": "Disable kubernetes-api",
-      "matchManagers": [
-        "kubernetes"
-      ],
-      "matchDatasources": [
-        "kubernetes-api"
+        "ghcr.io/fluxcd/source-controller",
+        "ghcr.io/fluxcd/kustomize-controller",
+        "ghcr.io/fluxcd/helm-controller",
+        "ghcr.io/fluxcd/notification-controller"
       ],
       "enabled": false
     },
