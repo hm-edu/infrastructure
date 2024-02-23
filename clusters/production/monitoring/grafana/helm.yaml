@@ -175,6 +175,7 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - grafana-opensearch-datasource
+      - esnet-matrix-panel
     serviceMonitor:
       enabled: true
     persistence:
