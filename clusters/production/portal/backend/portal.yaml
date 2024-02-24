@@ -98,7 +98,7 @@ spec:
                 secretKeyRef:
                   name: domain-interface
                   key: admins
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-bd9746c-1708667497 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-0ffb4d3-1708797048 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
