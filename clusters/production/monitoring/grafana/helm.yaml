@@ -178,5 +178,8 @@ spec:
       - esnet-matrix-panel
     serviceMonitor:
       enabled: true
+    serviceAccount:
+      create: true
+      autoMount: true
     persistence:
       enabled: false
