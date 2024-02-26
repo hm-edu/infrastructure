@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager-hookshot-adapter
+  namespace: monitoring
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: alertmanager-hookshot-adapter
+  template:
+    metadata:
+      labels:
+        app: alertmanager-hookshot-adapter
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        readonlyRootFilesystem: true
+      containers:
+        - image: ghcr.io/hm-edu/alertmanager-hookshot-adapter:v1.1.0@sha256:9a89257bff359ee657d30fd604916bd5e714797a5e492e1b0beb4ef75dc0aad6
+          imagePullPolicy: Always
+          name: app
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: GRAFANA_URL
+              value: "https://stats.it.hm.edu/alerting/silence/new?alertmanager=Alertmanager&"
+            - name: UPSTREAM
+              value: "https://hooks.matrix.hm.edu" 
+          resources:
+            limits:
+              cpu: "2"
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: alertmanager-hookshot-adapter
+  labels:
+    app: alertmanager-hookshot-adapter
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: alertmanager-hookshot-adapter

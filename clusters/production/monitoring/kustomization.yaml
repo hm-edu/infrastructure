@@ -12,3 +12,4 @@ resources:
   - rittal-exporter
   - certspotter
   - login-exporter
+  - alertmanager-hookshot-adapter
