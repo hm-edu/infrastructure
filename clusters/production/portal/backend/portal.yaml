@@ -42,7 +42,7 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: status.podIP
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-0a79070-1709268087 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-3e17cf5-1709553570 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -163,7 +163,7 @@ spec:
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
-          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-0a79070-1709268099 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-3e17cf5-1709553578 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -256,7 +256,7 @@ spec:
                 secretKeyRef:
                   name: mail
                   key: mail_from
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-0a79070-1709268097 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-3e17cf5-1709553572 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
