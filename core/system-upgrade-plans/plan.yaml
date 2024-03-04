@@ -6,7 +6,7 @@ metadata:
   labels:
     rke2-upgrade: agent
 spec:
-  channel: https://update.rke2.io/v1-release/channels/v1.26
+  channel: https://update.rke2.io/v1-release/channels/v1.27
   concurrency: 1
   cordon: true
   drain:
@@ -39,7 +39,7 @@ metadata:
   name: server-plan
   namespace: system-upgrade
 spec:
-  channel: https://update.rke2.io/v1-release/channels/v1.26
+  channel: https://update.rke2.io/v1-release/channels/v1.27
   concurrency: 1
   cordon: true
   nodeSelector:
