@@ -354,7 +354,7 @@ spec:
           - name: alertmanager
             namespace: monitoring
             port: http
-        replicas: 1
+        replicas: 2
         shards: 4
         replicaExternalLabelName: __replica__
         externalLabels:
