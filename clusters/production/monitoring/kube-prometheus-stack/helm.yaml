@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 57.1.0
+      version: 56.9.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -354,7 +354,7 @@ spec:
           - name: alertmanager
             namespace: monitoring
             port: http
-        replicas: 2
+        replicas: 1
         shards: 4
         replicaExternalLabelName: __replica__
         externalLabels:
