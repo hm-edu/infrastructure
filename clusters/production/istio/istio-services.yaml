@@ -120,6 +120,23 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
+  name: pwpush
+  namespace: pwpush
+spec:
+  hosts:
+    - pwpush.it.hm.edu
+  gateways:
+    - istio-ingress/gateway-portal
+  http:
+    - route:
+        - destination:
+            host: pwpush-http
+            port:
+              number: 5100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
   name: gitlab-workspaces
   namespace: gitlab-agent
 spec:
