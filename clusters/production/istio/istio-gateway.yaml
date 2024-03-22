@@ -51,7 +51,7 @@ spec:
         - "stats.it.hm.edu"
     - port:
         number: 80
-        name: http-pwpusher
+        name: http-pw-pusher
         protocol: HTTP
       tls:
         httpsRedirect: false
@@ -59,11 +59,11 @@ spec:
         - "pwpusher.it.hm.edu"
     - port:
         number: 443
-        name: https-pwpusher
+        name: https-pw-pusher
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: pwpusher-cert
+        credentialName: pw-pusher-cert
       hosts:
         - "pwpusher.it.hm.edu"
     - port:
