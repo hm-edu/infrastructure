@@ -12,3 +12,15 @@ spec:
     kind: Issuer
     name: acme-issuer-dns
   secretName: workspaces-cert
+--- 
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pw-pusher-cert
+  namespace: istio-ingress
+spec:
+  commonName: pwpusher.it.hm.edu
+  issuerRef:
+    kind: ClusterIssuer
+    name: acme-prod
+  secretName: pw-pusher-cert
