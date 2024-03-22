@@ -124,7 +124,7 @@ metadata:
   namespace: pwpush
 spec:
   hosts:
-    - pwpush.it.hm.edu
+    - pwpusher.it.hm.edu
   gateways:
     - istio-ingress/gateway-portal
   http:
