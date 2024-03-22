@@ -20,6 +20,8 @@ metadata:
   namespace: istio-ingress
 spec:
   commonName: pwpusher.it.hm.edu
+  dnsNames:
+    - "pwpusher.it.hm.edu"
   issuerRef:
     kind: ClusterIssuer
     name: acme-prod
