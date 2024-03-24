@@ -96,7 +96,7 @@ spec:
         readonlyRootFilesystem: true
       serviceAccountName: portal-acme
       containers:
-        - image: ghcr.io/hm-edu/certificates:master-3a3767b-1711267720 # {"$imagepolicy": "flux-system:certificates"}
+        - image: ghcr.io/hm-edu/certificates:master-6781a70-1711278780 # {"$imagepolicy": "flux-system:certificates"}
           imagePullPolicy: Always
           name: app
           command: ["/usr/local/bin/step-ca"]
