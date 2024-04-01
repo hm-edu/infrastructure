@@ -98,6 +98,11 @@ spec:
                 secretKeyRef:
                   name: domain-interface
                   key: admins
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: pki-backend
+                  key: sentry_dsn
           image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-71c344e-1711442488 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
