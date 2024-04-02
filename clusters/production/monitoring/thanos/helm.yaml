@@ -41,13 +41,13 @@ spec:
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
+    queryFrontend:
+      enabled: true
+      replicaCount: 2
       service:
         annotations:
           tailscale.com/expose: "true"
           tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
-    queryFrontend:
-      enabled: true
-      replicaCount: 2
     bucketweb:
       enabled: true
       replicaCount: 2
