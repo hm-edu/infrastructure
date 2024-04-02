@@ -31,11 +31,7 @@ spec:
       name: thanos-values
   values:
     receive:
-      enabled: true
-      service:
-        annotations:
-          tailscale.com/expose: "true"
-          tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
+      enabled: false
     query:
       enabled: true
       replicaCount: 3
@@ -45,6 +41,10 @@ spec:
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
+      service:
+        annotations:
+          tailscale.com/expose: "true"
+          tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
     queryFrontend:
       enabled: true
       replicaCount: 2
