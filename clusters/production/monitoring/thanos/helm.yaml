@@ -44,8 +44,8 @@ spec:
     queryFrontend:
       enabled: true
       replicaCount: 2
-      ingress:
-        hostname: thanos-query-frontend.admin.hm.edu
+      extraFlags:
+        - --alert.query-url=http://thanos-query-frontend.admin.hm.edu:9090
       service:
         annotations:
           tailscale.com/expose: "true"
