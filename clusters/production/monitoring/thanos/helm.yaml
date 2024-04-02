@@ -74,7 +74,7 @@ spec:
       enabled: true
       replicaCount: 2
       replicaLabel: __replica__
-      alertmanagers: ["http://alertmanager-operated.monitoring.svc.cluster.local:9093"]
+      alertmanagers: ["http://alertmanager.monitoring.svc.cluster.local:9093"]
       persistence:
         enabled: true
         size: 10Gi

@@ -342,6 +342,7 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
+        externalUrl: http://thanos-query-frontend.admin.hm.edu:9090
         additionalScrapeConfigsSecret:
           enabled: true
           name: hm-monitoring
