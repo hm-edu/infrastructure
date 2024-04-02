@@ -337,10 +337,6 @@ spec:
     kubeEtcd:
       enabled: false
     prometheus:
-      service:
-        annotations:
-          tailscale.com/expose: "true"
-          tailscale.com/tags: "tag:k8s,tag:k8s-monitoring"
       thanosService:
         enabled: true
       thanosServiceMonitor:
