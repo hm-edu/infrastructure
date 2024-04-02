@@ -38,14 +38,14 @@ spec:
       podAntiAffinityPreset: hard
       replicaLabel:
         - __replica__
+      extraFlags:
+        - --alert.query-url=http://thanos-query-frontend.admin.hm.edu:9090
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
     queryFrontend:
       enabled: true
       replicaCount: 2
-      extraFlags:
-        - --alert.query-url=http://thanos-query-frontend.admin.hm.edu:9090
       service:
         annotations:
           tailscale.com/expose: "true"
