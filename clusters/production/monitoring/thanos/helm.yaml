@@ -36,6 +36,7 @@ spec:
       enabled: true
       replicaCount: 3
       podAntiAffinityPreset: hard
+      resourcesPreset: xlarge
       replicaLabel:
         - __replica__
       extraFlags:
@@ -46,6 +47,7 @@ spec:
     queryFrontend:
       enabled: true
       replicaCount: 2
+      resourcesPreset: xlarge
       service:
         annotations:
           tailscale.com/expose: "true"
@@ -55,6 +57,7 @@ spec:
       replicaCount: 2
     compactor:
       enabled: true
+      resourcesPreset: xlarge
       extraFlags:
         - --compact.concurrency=4
         - --delete-delay=30m
@@ -67,6 +70,7 @@ spec:
     storegateway:
       enabled: true
       replicaCount: 2
+      resourcesPreset: xlarge
       persistence:
         enabled: true
         size: 10Gi
