@@ -80,7 +80,7 @@ spec:
       persistence:
         enabled: true
         size: 10Gi
-      queryUrl: http://thanos-query-frontend.admin.hm.edu:9090
+      queryURL: http://thanos-query-frontend.admin.hm.edu:9090
       config: |-
         groups:
           - name: PrometheusWatcher
