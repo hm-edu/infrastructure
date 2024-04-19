@@ -38,9 +38,7 @@ spec:
       podAntiAffinityPreset: hard
       resourcesPreset: xlarge
       replicaLabel:
-        - __replica__
-      extraFlags:
-        - --alert.query-url=http://thanos-query-frontend.admin.hm.edu:9090
+        - __replica__\
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
@@ -82,6 +80,7 @@ spec:
       persistence:
         enabled: true
         size: 10Gi
+      queryUrl: http://thanos-query-frontend.admin.hm.edu:9090
       config: |-
         groups:
           - name: PrometheusWatcher
