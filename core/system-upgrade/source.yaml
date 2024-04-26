@@ -1,9 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: system-upgrade
----
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
