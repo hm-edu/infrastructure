@@ -34,6 +34,31 @@ spec:
         - "eab.api.hm.edu"
     - port:
         number: 80
+        name: http-hof
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "portal.pki.hof-university.de"
+        - "eab.pki.hof-university.de"
+        - "domains.pki.hof-university.de"
+        - "rest.pki.hof-university.de"
+        - "acme.pki.hof-university.de"
+    - port:
+        number: 443
+        name: https-hof
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: pki-hof-cert
+      hosts:
+        - "portal.pki.hof-university.de"
+        - "eab.pki.hof-university.de"
+        - "domains.pki.hof-university.de"
+        - "rest.pki.hof-university.de"
+        - "acme.pki.hof-university.de"
+    - port:
+        number: 80
         name: http-stats
         protocol: HTTP
       tls:
