@@ -23,7 +23,7 @@ spec:
         runAsNonRoot: true
         readonlyRootFilesystem: true
       containers:
-        - image: ghcr.io/hm-edu/alertmanager-hookshot-adapter:v1.9.0@sha256:b9a56542ec368643c2e56fc99c532b25c1c37e10ceaf2597a8c9a9dacf50dfa1
+        - image: ghcr.io/hm-edu/alertmanager-hookshot-adapter:v1.9.1@sha256:b6f139db0db05720b3dac671efd5623e3fb931172e8daeb27408d7d30986c9ed
           imagePullPolicy: Always
           name: app
           ports:
