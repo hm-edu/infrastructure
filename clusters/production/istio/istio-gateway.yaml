@@ -127,3 +127,20 @@ spec:
       hosts:
         - "workspaces.it.hm.edu"
         - "*.workspaces.it.hm.edu"
+    - port:
+        number: 80
+        name: http-kimai
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "kimai.it.hm.edu"
+    - port:
+        number: 443
+        name: https-kimai
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: kimai-cert
+      hosts:
+        - "kimai.it.hm.edu"
