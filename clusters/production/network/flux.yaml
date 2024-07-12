@@ -4,7 +4,7 @@ metadata:
   name: net-service
   namespace: network
 spec:
-  image: git.cc.private.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk
+  image: git.it.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk
   interval: 1m0s
   secretRef:
     name: regcred
