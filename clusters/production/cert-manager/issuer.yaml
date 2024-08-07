@@ -17,7 +17,7 @@ spec:
     solvers:
     - dns01:
         acmeDNS:
-          host: https://certauth.cs.hm.edu
+          host: https://certauth.it.hm.edu
           accountSecretRef:
             name: acme-dns
             key: acmedns.json
