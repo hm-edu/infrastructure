@@ -124,6 +124,8 @@ spec:
               value: "true"
             - name: OTEL_EXPORTER_JAEGER_ENDPOINT
               value: http://tempo-distributor.monitoring:14268/api/traces
+            - name: DNS_RESOLVER
+              value: "129.187.244.11"
           envFrom:
             - secretRef:
                 name: acme
