@@ -30,13 +30,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kimai-cert
+  name: sso-test-cert
   namespace: istio-ingress
 spec:
-  commonName: kimai.it.hm.edu
+  commonName: sso-test.it.hm.edu
   dnsNames:
-    - "kimai.it.hm.edu"
+    - "sso-test.it.hm.edu"
   issuerRef:
     kind: ClusterIssuer
     name: acme-prod
-  secretName: kimai-cert
+  secretName: sso-test-cert

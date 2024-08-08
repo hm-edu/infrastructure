@@ -129,18 +129,18 @@ spec:
         - "*.workspaces.it.hm.edu"
     - port:
         number: 80
-        name: http-kimai
+        name: http-sso-test
         protocol: HTTP
       tls:
         httpsRedirect: false
       hosts:
-        - "kimai.it.hm.edu"
+        - "sso-test.it.hm.edu"
     - port:
         number: 443
-        name: https-kimai
+        name: https-sso-test
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: kimai-cert
+        credentialName: sso-test-cert
       hosts:
-        - "kimai.it.hm.edu"
+        - "sso-test.it.hm.edu"
