@@ -25,3 +25,4 @@ spec:
       retries: 5
   values:
     installCRDs: true
+    maxConcurrentChallenges: 1
