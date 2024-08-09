@@ -116,6 +116,13 @@ spec:
         httpsRedirect: false
       hosts:
         - "workspaces.it.hm.edu"
+    - port:
+        number: 80
+        name: http-workspaces-wild
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
         - "*.workspaces.it.hm.edu"
     - port:
         number: 443
@@ -126,6 +133,14 @@ spec:
         credentialName: workspaces-cert
       hosts:
         - "workspaces.it.hm.edu"
+    - port:
+        number: 443
+        name: https-workspaces-wild
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: workspaces-wild-cert
+      hosts:
         - "*.workspaces.it.hm.edu"
     - port:
         number: 80

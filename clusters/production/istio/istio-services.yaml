@@ -142,6 +142,22 @@ metadata:
 spec:
   hosts:
     - workspaces.it.hm.edu
+  gateways:
+    - istio-ingress/gateway-portal
+  http:
+    - route:
+        - destination:
+            host: gitlab-workspaces-proxy-http
+            port:
+              number: 80
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: gitlab-workspaces-wildcard
+  namespace: gitlab-agent
+spec:
+  hosts:
     - "*.workspaces.it.hm.edu"
   gateways:
     - istio-ingress/gateway-portal
