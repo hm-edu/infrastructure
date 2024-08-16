@@ -38,7 +38,7 @@ spec:
       podAntiAffinityPreset: hard
       resourcesPreset: xlarge
       replicaLabel:
-        - __replica__\
+        - __replica__
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
