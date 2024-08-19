@@ -31,7 +31,7 @@ spec:
         readonlyRootFilesystem: true
       serviceAccountName: tailscale-webhook-sa
       containers:
-        - image: git.it.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk:main-a18c7e40-1718553844 # {"$imagepolicy": "flux-system:net-service-policy"}
+        - image: git.it.hm.edu:5050/zit/splunk/tailscale-webhook-to-splunk:main-49c608ec-1724047184 # {"$imagepolicy": "flux-system:net-service-policy"}
           imagePullPolicy: Always
           name: app
           env:
