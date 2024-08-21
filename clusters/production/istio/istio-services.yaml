@@ -184,7 +184,7 @@ spec:
             exact: http
           withoutHeaders:
             uri:
-              prefix: /.well-known/acme-challenge/
+              prefix: ([a-zA-Z0-9+.-]+)/.well-known/acme-challenge/
       redirect:
         scheme: https
         redirectCode: 302
