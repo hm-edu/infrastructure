@@ -25,37 +25,40 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
-   config:
-    modules:
-      http_2xx:
-        prober: http
-        timeout: 5s
-        http:
-          ip_protocol_fallback: true
-          method: GET
-          follow_redirects: true
-          enable_http2: true
-        tcp:
-          ip_protocol_fallback: true
-        icmp:
-          ip_protocol_fallback: true
-          ttl: 64
-        dns:
-          ip_protocol_fallback: true
-          recursion_desired: true
-      icmp_test:
-        prober: icmp
-        timeout: 5s
-        http:
-          ip_protocol_fallback: true
-          follow_redirects: true
-          enable_http2: true
-        tcp:
-          ip_protocol_fallback: true
-        icmp:
-          preferred_ip_protocol: ip4
-          ip_protocol_fallback: true
-          ttl: 64
-        dns:
-          ip_protocol_fallback: true
-          recursion_desired: true
+    config:
+      modules:
+        http_2xx:
+          prober: http
+          timeout: 5s
+          http:
+            valid_http_versions:
+              - HTTP/1.1
+              - HTTP/2.0
+            preferred_ip_protocol: ip4
+            ip_protocol_fallback: true
+            follow_redirects: true
+            enable_http2: true
+          tcp:
+            ip_protocol_fallback: true
+          icmp:
+            ip_protocol_fallback: true
+            ttl: 64
+          dns:
+            ip_protocol_fallback: true
+            recursion_desired: true
+        icmp_test:
+          prober: icmp
+          timeout: 5s
+          http:
+            ip_protocol_fallback: true
+            follow_redirects: true
+            enable_http2: true
+          tcp:
+            ip_protocol_fallback: true
+          icmp:
+            preferred_ip_protocol: ip4
+            ip_protocol_fallback: true
+            ttl: 64
+          dns:
+            ip_protocol_fallback: true
+            recursion_desired: true
