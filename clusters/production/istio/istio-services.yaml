@@ -183,7 +183,7 @@ spec:
         - scheme:
             exact: http
           withoutHeaders:
-            :path:
+            uri:
               prefix: /.well-known/acme-challenge/
       redirect:
         scheme: https
