@@ -58,6 +58,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/flux
+          - name: netapp
+            orgId: 1
+            folder: netapp
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/netapp
           - name: thanos
             orgId: 1
             folder: Thanos
@@ -101,6 +109,32 @@ spec:
             jsonData:
               prometheusType: Thanos
     dashboards:
+      netapp:
+        cluster: 
+          netapp-cluster: 
+            url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/cluster.json
+            datasource: Prometheus
+          netapp-disk: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/disk.json
+            datasource: Prometheus
+          netapp-node: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/node.json
+            datasource: Prometheus
+          netapp-shelf: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/shelf.json
+            datasource: Prometheus
+          netapp-s3: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/s3ObjectStorage.json
+            datasource: Prometheus
+          netapp-aggregate: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/aggregate.json
+            datasource: Prometheus
+          netapp-svm: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/svm.json
+            datasource: Prometheus
+          netapp-volume: 
+            url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/volume.json
+            datasource: Prometheus
       thanos:
         thanos-bucket-replicate:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/thanos/dashboards/bucket-replicate.json
