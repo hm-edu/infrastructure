@@ -116,37 +116,37 @@ spec:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-disk: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/disk.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/disk.json
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
         netapp-node: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/node.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/node.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-shelf: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/shelf.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/shelf.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-s3: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/s3ObjectStorage.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/s3ObjectStorage.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-aggregate: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/aggregate.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/aggregate.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-svm: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/svm.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/svm.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
         netapp-volume: 
-          url: https://github.com/NetApp/harvest/blob/main/grafana/dashboards/cmode/volume.json
+          url: https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/volume.json
           datasource:
           - name: DS_PROMETHEUS
             value: Prometheus  
