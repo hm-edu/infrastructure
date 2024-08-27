@@ -9,6 +9,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: pki-rest-interface
@@ -26,6 +31,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: frontend
@@ -43,6 +53,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: domain-rest-interface
@@ -60,6 +75,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: eab-rest-interface
@@ -77,6 +97,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: certificates
@@ -94,6 +119,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: grafana
@@ -111,6 +141,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: tailscale-webhook-service
@@ -128,6 +163,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: pwpush-http
@@ -145,6 +185,11 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: gitlab-workspaces-proxy-http
@@ -162,29 +207,13 @@ spec:
   gateways:
     - istio-ingress/gateway-portal
   http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
     - route:
         - destination:
             host: gitlab-workspaces-proxy-http
             port:
               number: 80
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: workaround-to-renew-certs
-  namespace: istio-ingress
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - gateway-portal
-  http:
-    - match:
-        - scheme:
-            exact: http
-          withoutHeaders:
-            uri:
-              prefix: ([a-zA-Z0-9+.-]+)/.well-known/acme-challenge/
-      redirect:
-        scheme: https
-        redirectCode: 302
