@@ -1,0 +1,131 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: x509-certificate-exporter
+  namespace: kube-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: x509-certificate-exporter
+      version: 3.15.0
+      sourceRef:
+        kind: HelmRepository
+        name: enix
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+    cleanupOnFail: true
+    crds: CreateReplace
+  values:
+    exposePerCertificateErrorMetrics: true
+    exposeRelativeMetrics: true
+    grafana:
+      createDashboard: false
+      sidecarLabel: grafana_dashboard
+      sidecarLabelValue: "1"
+    hostNetwork: false
+    hostPathsExporter:
+      daemonSets:
+        cp:
+          nodeSelector:
+            kubernetes.io/os: linux
+            node-role.kubernetes.io/control-plane: "true"
+          tolerations:
+            - effect: NoSchedule
+              key: cattle.io/os
+              operator: Equal
+              value: linux
+            - effect: NoExecute
+              operator: Exists
+            - effect: NoSchedule
+              operator: Exists
+          watchFiles:
+            - /var/lib/rancher/rke2/server/tls/client-admin.crt
+            - /var/lib/rancher/rke2/server/tls/client-auth-proxy.crt
+            - /var/lib/rancher/rke2/server/tls/client-ca.crt
+            - /var/lib/rancher/rke2/server/tls/client-ca.nochain.crt
+            - /var/lib/rancher/rke2/server/tls/client-controller.crt
+            - /var/lib/rancher/rke2/server/tls/client-kube-apiserver.crt
+            - /var/lib/rancher/rke2/server/tls/client-kube-proxy.crt
+            - /var/lib/rancher/rke2/server/tls/client-rke2-cloud-controller.crt
+            - /var/lib/rancher/rke2/server/tls/client-rke2-controller.crt
+            - /var/lib/rancher/rke2/server/tls/client-scheduler.crt
+            - /var/lib/rancher/rke2/server/tls/client-supervisor.crt
+            - /var/lib/rancher/rke2/server/tls/request-header-ca.crt
+            - /var/lib/rancher/rke2/server/tls/server-ca.crt
+            - /var/lib/rancher/rke2/server/tls/server-ca.nochain.crt
+            - /var/lib/rancher/rke2/server/tls/serving-kube-apiserver.crt
+            - /var/lib/rancher/rke2/server/tls/kube-controller-manager/kube-controller-manager.crt
+            - /var/lib/rancher/rke2/server/tls/kube-scheduler/kube-scheduler.crt
+        etcd:
+          nodeSelector:
+            kubernetes.io/os: linux
+            node-role.kubernetes.io/etcd: "true"
+          tolerations:
+            - effect: NoSchedule
+              key: cattle.io/os
+              operator: Equal
+              value: linux
+            - effect: NoExecute
+              operator: Exists
+            - effect: NoSchedule
+              operator: Exists
+          watchFiles:
+            - /var/lib/rancher/rke2/server/tls/etcd/client.crt
+            - /var/lib/rancher/rke2/server/tls/etcd/peer-ca.crt
+            - /var/lib/rancher/rke2/server/tls/etcd/peer-server-client.crt
+            - /var/lib/rancher/rke2/server/tls/etcd/server-ca.crt
+            - /var/lib/rancher/rke2/server/tls/etcd/server-client.crt
+        worker:
+          nodeSelector:
+            kubernetes.io/os: linux
+            node-role.kubernetes.io/worker: "true"
+          tolerations:
+            - effect: NoSchedule
+              key: cattle.io/os
+              operator: Equal
+              value: linux
+            - effect: NoExecute
+              operator: Exists
+            - effect: NoSchedule
+              operator: Exists
+          watchFiles:
+            - /var/lib/rancher/rke2/agent/client-ca.crt
+            - /var/lib/rancher/rke2/agent/client-kube-proxy.crt
+            - /var/lib/rancher/rke2/agent/client-kubelet.crt
+            - /var/lib/rancher/rke2/agent/client-rke2-controller.crt
+            - /var/lib/rancher/rke2/agent/server-ca.crt
+            - /var/lib/rancher/rke2/agent/serving-kubelet.crt
+      debugMode: false
+      hostPathVolumeType: Directory
+      resources:
+      limits:
+        cpu: 100m
+        memory: 40Mi
+      requests:
+        cpu: 10m
+        memory: 20Mi
+      restartPolicy: Always
+      securityContext:
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      runAsGroup: 0
+      runAsUser: 0
+    prometheusPodMonitor:
+      create: true
+    prometheusRules:
+      create: true
+    prometheusServiceMonitor:
+      create: true
+    secretsExporter:
+      enabled: true

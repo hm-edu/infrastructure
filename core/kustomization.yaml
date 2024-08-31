@@ -8,3 +8,4 @@ resources:
   - kured.yaml
   - cert-manager.yaml
   - reloader.yaml
+  - x509-certificate-exporter.yaml

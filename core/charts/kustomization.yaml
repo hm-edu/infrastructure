@@ -15,3 +15,4 @@ resources:
   - workspaces.yaml
   - tailscale.yaml
   - reloader.yaml
+  - enix.yaml
