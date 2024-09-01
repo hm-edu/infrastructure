@@ -85,7 +85,6 @@ spec:
         worker:
           nodeSelector:
             kubernetes.io/os: linux
-            node-role.kubernetes.io/worker: "true"
           tolerations:
             - effect: NoSchedule
               key: cattle.io/os
