@@ -370,8 +370,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         scrapeConfigSelector:          
-          matchLabels:
-            prometheus: system-monitoring
+          matchLabels: null
         retention: 14d
         retentionSize: 500GB
         enableAdminAPI: false
