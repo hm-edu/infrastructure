@@ -43,6 +43,20 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: netbox-cert
+  namespace: istio-ingress
+spec:
+  commonName: netbox.it.hm.edu
+  dnsNames:
+    - "netbox.it.hm.edu"
+  issuerRef:
+    kind: ClusterIssuer
+    name: acme-prod
+  secretName: pw-pusher-cert
+--- 
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: sso-test-cert
   namespace: istio-ingress
 spec:
