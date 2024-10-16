@@ -16,3 +16,4 @@ resources:
   - tailscale.yaml
   - reloader.yaml
   - enix.yaml
+  - netbox.yaml
