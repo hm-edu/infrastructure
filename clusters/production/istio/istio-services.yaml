@@ -177,6 +177,28 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  name: netbox
+  namespace: netbox
+spec:
+  hosts:
+    - netbox.it.hm.edu
+  gateways:
+    - istio-ingress/gateway-portal
+  http:
+    - match:
+        - scheme:
+            exact: http
+      redirect:
+        scheme: https
+    - route:
+        - destination:
+            host: netbox
+            port:
+              number: 80
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
   name: gitlab-workspaces
   namespace: gitlab-agent
 spec:
