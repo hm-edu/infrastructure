@@ -52,7 +52,7 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: acme-prod
-  secretName: pw-pusher-cert
+  secretName: netbox-cert
 --- 
 apiVersion: cert-manager.io/v1
 kind: Certificate
