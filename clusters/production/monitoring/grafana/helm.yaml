@@ -22,6 +22,8 @@ spec:
     remediation:
       retries: 5
   values:
+    image:
+      tag: "11.2.2-security-01"
     envFromSecrets:
       - name: grafana
     env:
