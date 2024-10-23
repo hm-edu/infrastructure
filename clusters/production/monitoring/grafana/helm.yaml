@@ -226,6 +226,7 @@ spec:
       - grafana-opensearch-datasource
       - esnet-matrix-panel
       - marcusolsson-static-datasource
+      - yesoreyeram-infinity-datasource
     serviceMonitor:
       enabled: true
     serviceAccount:
