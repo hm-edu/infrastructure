@@ -34,9 +34,18 @@ spec:
     rbac:
       create: true
       rules:
-          - resources: ["configmaps", "events", "pods", "pods/attach", "pods/exec", "secrets", "services"]
-            verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
-          - resources: ["pods/exec"]
-            verbs: ["create", "patch", "delete"]
-          - resources: ["pods/log"]
-            verbs: ["get", "list"]
+        - resources:
+            [
+              "configmaps",
+              "events",
+              "pods",
+              "pods/attach",
+              "pods/exec",
+              "secrets",
+              "services",
+            ]
+          verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
+        - resources: ["pods/exec"]
+          verbs: ["create", "patch", "delete"]
+        - resources: ["pods/log"]
+          verbs: ["get", "list"]
