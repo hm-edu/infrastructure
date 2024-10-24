@@ -76,6 +76,23 @@ spec:
         - "stats.it.hm.edu"
     - port:
         number: 80
+        name: http-netbox-helper
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "netbox-helper.it.hm.edu"
+    - port:
+        number: 443
+        name: https-netbox-helper
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: netbox-helper-cert
+      hosts:
+        - "netbox-helper.it.hm.edu"
+    - port:
+        number: 80
         name: http-netbox
         protocol: HTTP
       tls:
