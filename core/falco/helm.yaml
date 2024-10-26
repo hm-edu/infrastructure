@@ -28,4 +28,4 @@ spec:
     falcosidekick:
       enabled: true
       webui:
-        enabled: enabled
+        enabled: true
