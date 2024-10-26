@@ -9,3 +9,4 @@ resources:
   - cert-manager.yaml
   - reloader.yaml
   - x509-certificate-exporter.yaml
+  - falco.yaml
