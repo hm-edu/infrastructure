@@ -23,7 +23,7 @@ spec:
         runAsNonRoot: true
         readonlyRootFilesystem: true
       containers:
-        - image: ghcr.io/hm-edu/rittal-exporter:v1.5.16@sha256:cb193a8e47c46bb7a37231d01419bfa5082219c0eff84a42f15eb106403f2138
+        - image: ghcr.io/hm-edu/rittal-exporter:v1.5.17@sha256:09f42f9321f98f63a2f11ddedd23b58232a830a788f889e92bdd51b4abf19550
           imagePullPolicy: Always
           name: app
           command: ["/usr/local/bin/rittal-exporter"]
