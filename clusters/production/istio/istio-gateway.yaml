@@ -34,6 +34,31 @@ spec:
         - "eab.api.hm.edu"
     - port:
         number: 80
+        name: http-bamberg
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "pki-service.uni-bamberg.de"
+        - "eab.pki-service.uni-bamberg.de"
+        - "domains.pki-service.uni-bamberg.de"
+        - "certs.pki-service.uni-bamberg.de"
+        - "acme.pki-service.uni-bamberg.de"
+    - port:
+        number: 443
+        name: https-bamberg
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: pki-bamberg-cert
+      hosts:
+        - "pki-service.uni-bamberg.de"
+        - "eab.pki-service.uni-bamberg.de"
+        - "domains.pki-service.uni-bamberg.de"
+        - "certs.pki-service.uni-bamberg.de"
+        - "acme.pki-service.uni-bamberg.de"
+    - port:
+        number: 80
         name: http-hof
         protocol: HTTP
       tls:
