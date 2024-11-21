@@ -47,7 +47,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-7edb18d-1732192553 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-8bd84fd-1732196064 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
