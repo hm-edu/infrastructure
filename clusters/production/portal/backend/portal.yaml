@@ -178,7 +178,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-4f7fb44-1732429251 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/eab-rest-interface:main-6e0d187-1732434071 # {"$imagepolicy": "flux-system:eab-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
