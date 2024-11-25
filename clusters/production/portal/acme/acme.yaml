@@ -122,8 +122,11 @@ spec:
               value: "1"
             - name: STEP_LOGGER_ONLY_TRACE_HEALTH_ENDPOINT
               value: "true"
-            - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-              value: http://tempo-distributor.monitoring:14268/api/traces
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: pki-backend
+                  key: sentry_dsn
             - name: DNS_RESOLVER
               value: "129.187.244.11"
           envFrom:
