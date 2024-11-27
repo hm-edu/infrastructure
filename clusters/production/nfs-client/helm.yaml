@@ -58,5 +58,5 @@ spec:
     nfs:
       server: 10.20.10.10
       path: /k8s
-    storageClassName:
+    storageClass:
      name: nfs-na
