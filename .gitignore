@@ -14,3 +14,5 @@ clusters/production/portal/acme/secrets.yaml
 clusters/production/monitoring/thanos/values.yaml
 clusters/production/tailscale/secrets.yaml
 clusters/production/monitoring/login-exporter/secrets.yaml
+clusters/production/gitlab-agent-sso/values.yaml
+clusters/production/gitlab-agent-sso-stage/values.yaml
