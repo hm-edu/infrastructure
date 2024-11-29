@@ -232,6 +232,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: sso-test-cert
+        credentialName: sso-cert
       hosts:
         - "sso.it.hm.edu"
