@@ -89,11 +89,6 @@ spec:
           - name: Loki
             orgId: 1
         datasources:
-          - name: Tempo
-            type: tempo
-            access: proxy
-            uid: tempo_ds
-            url: http://tempo-query-frontend.monitoring.svc.cluster.local:3100
           - name: Alertmanager
             type: alertmanager
             access: proxy

@@ -35,8 +35,6 @@ spec:
             - --cors_allowed_origins
             - "https://pki.hm.edu"
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: INSTANCE_IP
               valueFrom:
                 fieldRef:
@@ -96,8 +94,6 @@ spec:
             - mountPath: /data
               name: domain-data
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: ADMINS
               valueFrom:
                 secretKeyRef:
@@ -171,8 +167,6 @@ spec:
             - --cors_allowed_origins
             - "https://pki.hm.edu"
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
@@ -249,8 +243,6 @@ spec:
             - --enable_notifications
             - "true"
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://tempo-distributor.monitoring:14268/api/traces
             - name: SECTIGO_PASSWORD
               valueFrom:
                 secretKeyRef:
