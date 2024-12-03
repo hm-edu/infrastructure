@@ -95,3 +95,18 @@ spec:
     kind: ClusterIssuer
     name: acme-prod
   secretName: sso-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sso-cert-hm
+  namespace: istio-ingress
+spec:
+  commonName: "sso.hm.edu"
+  dnsNames:
+    - "sso.hm.edu"
+  issuerRef:
+    kind: Issuer
+    name: acme-issuer-dns
+  secretName: sso-cert-hm
+---
