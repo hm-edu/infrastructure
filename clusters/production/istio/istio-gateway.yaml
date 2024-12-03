@@ -220,6 +220,23 @@ spec:
         - "sso-test.it.hm.edu"
     - port:
         number: 80
+        name: http-sso-test-hm
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "sso-test.hm.edu"
+    - port:
+        number: 443
+        name: https-sso-test-hm
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: sso-test-cert-hm
+      hosts:
+        - "sso-test.hm.edu"
+    - port:
+        number: 80
         name: http-sso
         protocol: HTTP
       tls:
@@ -235,3 +252,20 @@ spec:
         credentialName: sso-cert
       hosts:
         - "sso.it.hm.edu"
+    - port:
+        number: 80
+        name: http-sso-hm
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "sso.hm.edu"
+    - port:
+        number: 443
+        name: https-sso-hm
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: sso-cert-hm
+      hosts:
+        - "sso.hm.edu"
