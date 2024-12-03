@@ -99,6 +99,20 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: sso-test-cert-hm
+  namespace: istio-ingress
+spec:
+  commonName: "sso-test.hm.edu"
+  dnsNames:
+    - "sso-test.hm.edu"
+  issuerRef:
+    kind: Issuer
+    name: acme-issuer-dns
+  secretName: sso-test-cert-hm
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: sso-cert-hm
   namespace: istio-ingress
 spec:
