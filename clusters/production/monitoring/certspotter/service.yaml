@@ -50,7 +50,7 @@ spec:
         runAsNonRoot: true
         readonlyRootFilesystem: true
       containers:
-        - image: ghcr.io/hm-edu/certspotter:1.6.0@sha256:cc3ea91102128723c224c288f95c3852e91f7d72730f546ff305932e64e11190
+        - image: ghcr.io/hm-edu/certspotter:1.6.1@sha256:8e6e643067800b9401ff1d87801d32ea367745b88ccb6cc7d5fd188f1690e034
           imagePullPolicy: Always
           name: app
           command: ["/usr/local/bin/certspotter", "-jsonLog", "-stdout", "-no_save", "-start_at_end", "-watchlist", "/etc/certspotter/watcher", "-state_dir", "/opt/certspotter"]
