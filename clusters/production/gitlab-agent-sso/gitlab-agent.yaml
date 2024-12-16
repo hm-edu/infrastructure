@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: gitlab-agent
-  namespace: gitlab-agent-shibboleth
+  namespace: gitlab-agent-shibboleth-prod
 spec:
   interval: 15m
   chart:
