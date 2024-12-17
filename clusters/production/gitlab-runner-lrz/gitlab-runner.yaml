@@ -39,7 +39,14 @@ spec:
             [[runners.kubernetes.dns_config.options]]
               name = "ndots"
               value = "1"
-
+            [[runners.kubernetes.volumes.empty_dir]]
+              name = "tmp"
+              mount_path = "/tmp"
+              medium = "Memory"
+            [[runners.kubernetes.volumes.empty_dir]]
+              name = "tailscale-run"
+              mount_path = "/var/run/tailscale"
+              medium = "Memory"
     rbac:
       create: true
       rules:
