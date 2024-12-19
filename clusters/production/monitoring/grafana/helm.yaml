@@ -103,6 +103,7 @@ spec:
             isDefault: true
             jsonData:
               prometheusType: Thanos
+              customQueryParameters: max_source_resolution=auto
     dashboards:
       netapp:      
         netapp-cluster: 
