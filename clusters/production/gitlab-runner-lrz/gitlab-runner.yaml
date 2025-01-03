@@ -31,6 +31,8 @@ spec:
       config: |
         [[runners]]
           pre_clone_script = "for i in $(seq 1 5);do getent hosts gitlab.lrz.de && break || sleep 1;done"
+          [runners.feature_flags]
+            FF_USE_ADVANCED_POD_SPEC_CONFIGURATION = true
           [runners.kubernetes]
             helper_image_flavor = "ubuntu"
             namespace = "gitlab-runner-lrz"
