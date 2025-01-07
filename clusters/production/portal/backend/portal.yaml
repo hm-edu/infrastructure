@@ -217,6 +217,18 @@ spec:
             - "true"
             - --smime_key_length
             - "4096"
+            - --user
+            - "$USER"
+            - --password
+            - "$PASSWORD"
+            - --totp_seed
+            - "$TOTP_SEED"
+            - --validation_user
+            - "$VALIDATION_USER"
+            - --validation_password
+            - "$VALIDATION_PASSWORD"
+            - --validation_totp_seed
+            - "$VALIDATION_TOTP_SEED"
           env:
             - name: USER
               valueFrom:
