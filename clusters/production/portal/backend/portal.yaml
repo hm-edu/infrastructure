@@ -40,7 +40,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-fbc5750-1734503718 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:acme-client@sha256:0a4730ab8baa99292b039a1d26d9340c7618d903cb0b3d983ebd1df92f4293f6
           imagePullPolicy: Always
           name: app
           ports:
@@ -211,38 +211,43 @@ spec:
       serviceAccountName: portal-pki-internal
       containers:
         - args:
-            - --sectigo_user
-            - "hm-pki-portal"
-            - --sectigo_customeruri
-            - "DFN"
-            - --ssl_org_id
-            - "30032"
-            - --ssl_term
-            - "365"
-            - --ssl_profile
-            - "15863"
-            - --smime_profile
-            - "21222"
-            - --smime_org_id
-            - "30032"
-            - --smime_term
-            - "730"
-            - --smime_student_term
-            - "365"
-            - --smime_key_length
-            - "4096"
-            - --smime_key_type
-            - "RSA"
             - --db
             - "postgresql://pki:pki@postgres.portal.svc.cluster.local/certificates"
             - --enable_notifications
             - "true"
+            - --smime_key_length
+            - "4096"
           env:
-            - name: SECTIGO_PASSWORD
+            - name: USER
               valueFrom:
                 secretKeyRef:
-                  name: sectigo
-                  key: sectigo_password
+                  name: harica
+                  key: user
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harica
+                  key: password
+            - name: TOTP_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: harica
+                  key: totp_seed
+            - name: VALIDATION_USER
+              valueFrom:
+                secretKeyRef:
+                  name: harica
+                  key: validation_user
+            - name: VALIDATION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harica
+                  key: validation_password
+            - name: VALIDATION_TOTP_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: harica
+                  key: validation_totp_seed
             - name: MAIL_HOST
               valueFrom:
                 secretKeyRef:
@@ -263,7 +268,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-service:main-fbc5750-1734503713 # {"$imagepolicy": "flux-system:pki-service-policy"}
+          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:eb2e3ba83e13855c48378799aa9f74af29c02331f1d19552998011f66e591af7
           imagePullPolicy: Always
           name: app
           ports:
