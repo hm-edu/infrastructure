@@ -217,18 +217,6 @@ spec:
             - "true"
             - --smime_key_length
             - "4096"
-            - --user
-            - "$USER"
-            - --password
-            - "$PASSWORD"
-            - --totp_seed
-            - "$TOTP_SEED"
-            - --validation_user
-            - "$VALIDATION_USER"
-            - --validation_password
-            - "$VALIDATION_PASSWORD"
-            - --validation_totp_seed
-            - "$VALIDATION_TOTP_SEED"
           env:
             - name: USER
               valueFrom:
@@ -280,7 +268,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:eb2e3ba83e13855c48378799aa9f74af29c02331f1d19552998011f66e591af7
+          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:81bfe624368b099dd6d4370f75de979889f223ae9448393e1644246dc3a4a857
           imagePullPolicy: Always
           name: app
           ports:
