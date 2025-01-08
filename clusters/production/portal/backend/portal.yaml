@@ -268,7 +268,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:8825e7193e103319d386022f95f611a5b48a208dc0a812ca85315f084a415e20
+          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:788bea99176e0839ad5223b1686c4ebe01f37ce075c2783146ec56fb66779594
           imagePullPolicy: Always
           name: app
           ports:
