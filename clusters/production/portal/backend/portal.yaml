@@ -40,7 +40,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:acme-client@sha256:fd8c65c385cc5744c115e57d3d02e82d24464fa4b29619c5cf1236f257375261
+          image: ghcr.io/hm-edu/portal-backend/pki-rest-interface:main-34e2dbc-1736417411 # {"$imagepolicy": "flux-system:pki-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -99,7 +99,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:acme-client@sha256:fa23a80445f9b25c1d757aaf01508e1228c9e1190b2399a18e54c5e8f240193a
+          image: ghcr.io/hm-edu/portal-backend/domain-rest-interface:main-34e2dbc-1736417405 # {"$imagepolicy": "flux-system:domain-rest-interface-policy"}
           imagePullPolicy: Always
           name: app
           ports:
@@ -268,7 +268,7 @@ spec:
                 secretKeyRef:
                   name: pki-backend
                   key: sentry_dsn
-          image: ghcr.io/hm-edu/portal-backend/pki-service:acme-client@sha256:dca3d5316c981a7b9a195c3cec033aec4df9622dd10a9d4cb4126064001639ff
+          image: ghcr.io/hm-edu/portal-backend/pki-service:main-34e2dbc-1736417413 # {"$imagepolicy": "flux-system:pki-service-policy"}
           imagePullPolicy: Always
           name: app
           ports:
