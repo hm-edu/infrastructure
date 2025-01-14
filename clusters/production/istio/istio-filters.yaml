@@ -43,7 +43,9 @@ spec:
           typed_config:
             '@type': type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
             inlineCode: |
-
+              function envoy_on_request(request_handle)
+                request_handle:headers():add("x-envoy-external-address", request_handle:headers():get("x-forwarded-for"));
+              end
               function envoy_on_response(response_handle)
                 function hasFrameAncestors(rh)
                   s = rh:headers():get("Content-Security-Policy");
