@@ -44,7 +44,11 @@ spec:
             '@type': type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
             inlineCode: |
               function envoy_on_request(request_handle)
-                request_handle:headers():add("x-envoy-external-address", request_handle:headers():get("x-forwarded-for"));
+                if not request_handle:headers():get("x-envoy-external-address") then
+                  if request_handle:headers():get("x-forwarded-for") and request_handle:headers():get("x-envoy-internal") and request_handle:headers():get("x-envoy-internal") == "true" then
+                    request_handle:headers():add("x-envoy-external-address", request_handle:headers():get("x-forwarded-for"));
+                  end
+                end
               end
               function envoy_on_response(response_handle)
                 function hasFrameAncestors(rh)
