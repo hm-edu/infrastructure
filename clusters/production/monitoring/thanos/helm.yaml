@@ -65,9 +65,9 @@ spec:
     compactor:
       enabled: true
       resourcesPreset: xlarge
-      extraFlags:
-        - --compact.concurrency=4
+      extraFlags:        
         - --delete-delay=30m
+      concurrency: 4
       retentionResolutionRaw: 90d
       retentionResolution5m: 180d
       retentionResolution1h: 360d
