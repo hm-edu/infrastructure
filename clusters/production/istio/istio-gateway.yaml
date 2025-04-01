@@ -237,6 +237,23 @@ spec:
         - "sso-test.hm.edu"
     - port:
         number: 80
+        name: http-student-id
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "student-id.it.hm.edu"
+    - port:
+        number: 443
+        name: https-student-id
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: student-id-cert
+      hosts:
+        - "student-id.it.hm.edu"
+    - port:
+        number: 80
         name: http-sso
         protocol: HTTP
       tls:
