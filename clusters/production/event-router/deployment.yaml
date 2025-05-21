@@ -30,7 +30,7 @@ apiVersion: v1
 data:
   config.json: |- 
     {
-      "sink": "json"
+      "sink": "stdout",
     }
 kind: ConfigMap
 metadata:
