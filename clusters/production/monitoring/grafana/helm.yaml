@@ -35,6 +35,15 @@ spec:
     imageRenderer: 
       enabled: false
     grafana.ini:
+        feature_toggles:
+          # Git Sync for Dashboards
+          provisioning: true
+          kubernetesClientDashboardsFolders: true
+          kubernetesDashboards: true
+          # Dynamic Dashboards
+          dashboardNewLayouts: true
+          # Blazing-fast Table Panel
+          tableNextGen: true
         unified_alerting:
           enabled: true
           ha_peers: grafana-headless:9094
