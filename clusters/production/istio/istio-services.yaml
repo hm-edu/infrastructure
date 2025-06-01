@@ -131,6 +131,22 @@ spec:
               number: 80
 ---
 apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  host: grafana.default.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpCookie:
+          # set a new session cookie with istio 
+          name: GRAFANA_CONSISTENT_HASH
+          path: /
+          ttl: 480m
+---
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: tailscale
