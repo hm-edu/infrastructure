@@ -30,7 +30,7 @@ spec:
     env:
       GF_DATABASE_HOST: postgres.portal.svc.cluster.local:5432
       GF_DATABASE_TYPE: postgres
-    replicas: 3
+    replicas: 1
     rbac:
       pspEnabled: false
     admin:
