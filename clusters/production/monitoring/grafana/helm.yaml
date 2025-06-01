@@ -40,8 +40,6 @@ spec:
           provisioning: true
           kubernetesClientDashboardsFolders: true
           kubernetesDashboards: true
-          # Dynamic Dashboards
-          dashboardNewLayouts: true
           # Blazing-fast Table Panel
           tableNextGen: true
         unified_alerting:
