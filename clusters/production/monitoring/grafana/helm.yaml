@@ -23,7 +23,8 @@ spec:
       retries: 5
   values:
     image:
-      tag: 12.1.0-244117
+      image: grafana/grafana-dev
+      tag: 12.1.0-246571
     envFromSecrets:
       - name: grafana
     env:
