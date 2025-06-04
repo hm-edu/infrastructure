@@ -29,20 +29,6 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: pw-pusher-cert
-  namespace: istio-ingress
-spec:
-  commonName: pwpusher.it.hm.edu
-  dnsNames:
-    - "pwpusher.it.hm.edu"
-  issuerRef:
-    kind: ClusterIssuer
-    name: acme-prod
-  secretName: pw-pusher-cert
---- 
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
   name: netbox-cert
   namespace: istio-ingress
 spec:

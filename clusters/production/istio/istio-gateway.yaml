@@ -135,23 +135,6 @@ spec:
         - "netbox.it.hm.edu"
     - port:
         number: 80
-        name: http-pw-pusher
-        protocol: HTTP
-      tls:
-        httpsRedirect: false
-      hosts:
-        - "pwpusher.it.hm.edu"
-    - port:
-        number: 443
-        name: https-pw-pusher
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: pw-pusher-cert
-      hosts:
-        - "pwpusher.it.hm.edu"
-    - port:
-        number: 80
         name: http-net
         protocol: HTTP
       tls:

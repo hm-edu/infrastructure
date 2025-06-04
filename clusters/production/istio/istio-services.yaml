@@ -171,28 +171,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: pwpush
-  namespace: pwpush
-spec:
-  hosts:
-    - pwpusher.it.hm.edu
-  gateways:
-    - istio-ingress/gateway-portal
-  http:
-    - match:
-        - scheme:
-            exact: http
-      redirect:
-        scheme: https
-    - route:
-        - destination:
-            host: pwpush-http
-            port:
-              number: 5100
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
   name: netbox
   namespace: netbox
 spec:
