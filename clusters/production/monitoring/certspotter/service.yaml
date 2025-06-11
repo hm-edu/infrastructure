@@ -63,6 +63,8 @@ spec:
               name: certspotter
             - mountPath: /etc/certspotter
               name: certspotter-watcher-config
+            - mountPath: /.cache
+              name: certspotter-cache
       volumes:
         - name: certspotter-watcher-config
           configMap:
@@ -70,6 +72,8 @@ spec:
             items:
               - key: watcher
                 path: watcher
+        - name: certspotter-cache
+          emptyDir: {}
         - name: certspotter
           persistentVolumeClaim:
             claimName: certspotter-nfs-pv-claim
