@@ -39,7 +39,7 @@ metadata:
   name: server-plan
   namespace: system-upgrade
 spec:
-  channel: https://update.rke2.io/v1-release/channels/v1.29
+  channel: https://update.rke2.io/v1-release/channels/v1.30
   concurrency: 1
   cordon: true
   nodeSelector:
