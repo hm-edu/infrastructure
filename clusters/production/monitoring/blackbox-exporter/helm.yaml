@@ -41,3 +41,11 @@ spec:
             preferred_ip_protocol: ip4
             ip_protocol_fallback: true
             ttl: 64
+        tls_connect:
+          prober: tcp
+          timeout: 5s
+          tcp:
+            tls: true
+        tcp_connect:
+          prober: tcp
+          timeout: 5s
