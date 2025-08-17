@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: grafana/grafana-dev
-      tag: 12.1.0-256519
+      tag: 12.2.0-258077
     envFromSecrets:
       - name: grafana
     env:
