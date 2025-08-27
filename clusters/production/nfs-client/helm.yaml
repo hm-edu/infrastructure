@@ -26,7 +26,7 @@ spec:
     crds: CreateReplace
   values:
     nfs:
-      server: 10.20.210.20
+      server: 10.19.24.34
       path: /data
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
