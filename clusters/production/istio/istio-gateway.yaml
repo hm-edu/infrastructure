@@ -186,6 +186,23 @@ spec:
         - "sso-test.hm.edu"
     - port:
         number: 80
+        name: http-id-card-test
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "id-card-test.it.hm.edu"
+    - port:
+        number: 443
+        name: https-id-card-test
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: id-card-test-cert
+      hosts:
+        - "id-card-test.it.hm.edu"
+    - port:
+        number: 80
         name: http-id-card
         protocol: HTTP
       tls:
