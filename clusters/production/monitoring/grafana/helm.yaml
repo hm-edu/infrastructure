@@ -22,6 +22,9 @@ spec:
     remediation:
       retries: 5
   values:
+    image:
+      repository: grafana/grafana
+      tag: 12.2
     envFromSecrets:
       - name: grafana
     env:
