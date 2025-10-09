@@ -1,4 +1,4 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: pki-rest-interface
@@ -7,7 +7,7 @@ spec:
   image: ghcr.io/hm-edu/portal-backend/pki-rest-interface
   interval: 1m0s
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: eab-rest-interface
@@ -16,7 +16,7 @@ spec:
   image: ghcr.io/hm-edu/portal-backend/eab-rest-interface
   interval: 1m0s
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: domain-rest-interface
@@ -25,7 +25,7 @@ spec:
   image: ghcr.io/hm-edu/portal-backend/domain-rest-interface
   interval: 1m0s
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: pki-service
