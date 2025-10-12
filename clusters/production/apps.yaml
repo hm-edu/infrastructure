@@ -185,21 +185,4 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: gitlab-workspace-proxy
-  namespace: flux-system
-spec:
-  interval: 10m
-  path: ./clusters/production/gitlab-workspace-proxy
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
 
