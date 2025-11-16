@@ -34,6 +34,15 @@ spec:
             valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
             follow_redirects: true
             preferred_ip_protocol: "ip4"
+        http_scep_403:
+          prober: http
+          timeout: 5s
+          http:
+            valid_status_codes: [403]
+            method: GET
+            fail_if_ssl: false
+            fail_if_not_ssl: true
+            preferred_ip_protocol: "ip4"
         icmp_test:
           prober: icmp
           timeout: 5s
