@@ -50,7 +50,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: pki-bamberg-cert
+        credentialName: pki-cert-bamberg
       hosts:
         - "pki-service.uni-bamberg.de"
         - "eab.pki-service.uni-bamberg.de"
