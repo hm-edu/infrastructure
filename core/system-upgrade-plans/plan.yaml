@@ -6,7 +6,7 @@ metadata:
   labels:
     rke2-upgrade: agent
 spec:
-  channel: https://update.rke2.io/v1-release/channels/v1.30
+  channel: https://update.rke2.io/v1-release/channels/v1.31
   concurrency: 1
   cordon: true
   drain:
