@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: grafana/grafana
-      tag: "12.3"
+      tag: "12.4"
     envFromSecrets:
       - name: grafana
     env:
