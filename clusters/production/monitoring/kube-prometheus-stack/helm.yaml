@@ -387,6 +387,9 @@ spec:
               resources:
                 requests:
                   storage: 100Gi
+        startupProbe:
+          failureThreshold: 100
+          periodSeconds: 30
         resources:
           requests:
             cpu: 10m
