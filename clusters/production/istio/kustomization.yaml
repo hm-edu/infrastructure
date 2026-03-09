@@ -7,3 +7,27 @@ resources:
 - istio-gateway.yaml
 - istio-policies.yaml
 - istio-filters.yaml
+- thanos-receive-basic-auth.secrets.sops.yaml
+patches:
+  - path: patches/stats-thanos-receive-auth.yaml
+    target:
+      group: networking.istio.io
+      version: v1beta1
+      kind: VirtualService
+      name: stats
+      namespace: default
+replacements:
+  - source:
+      kind: Secret
+      name: thanos-receive-basic-auth
+      namespace: istio-ingress
+      fieldPath: stringData.authorization
+    targets:
+      - select:
+          group: networking.istio.io
+          version: v1beta1
+          kind: VirtualService
+          name: stats
+          namespace: default
+        fieldPaths:
+          - spec.http.1.match.0.headers.authorization.exact

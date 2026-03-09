@@ -1,0 +1,28 @@
+- op: add
+  path: /spec/http/1
+  value:
+    match:
+      - uri:
+          prefix: /api/v1/receive
+        headers:
+          authorization:
+            exact: __THANOS_RECEIVE_AUTH_HEADER__
+    route:
+      - destination:
+          host: thanos-receive.monitoring.svc.cluster.local
+          port:
+            number: 19291
+- op: add
+  path: /spec/http/2
+  value:
+    match:
+      - uri:
+          prefix: /api/v1/receive
+    headers:
+      response:
+        set:
+          www-authenticate: 'Basic realm="thanos-receive"'
+    directResponse:
+      status: 401
+      body:
+        string: Unauthorized
