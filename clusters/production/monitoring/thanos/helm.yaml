@@ -52,6 +52,12 @@ spec:
       persistence:
         enabled: true
         size: 20Gi
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
+      startupProbe:
+        enabled: false
       extraFlags:
         - --http.config=/etc/thanos/receive-http-config/config.yaml
       extraVolumes:
