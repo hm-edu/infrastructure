@@ -7,7 +7,7 @@ resources:
 - istio-gateway.yaml
 - istio-policies.yaml
 - istio-filters.yaml
-- thanos-receive-basic-auth.secrets.sops.yaml
+- secrets.sops.yaml
 patches:
   - path: patches/stats-thanos-receive-auth.yaml
     target:
