@@ -124,6 +124,14 @@ spec:
             exact: http
       redirect:
         scheme: https
+    - match:
+        - uri:
+            prefix: /api/v1/receive
+      route:
+        - destination:
+            host: thanos-receive.monitoring.svc.cluster.local
+            port:
+              number: 19291
     - route:
         - destination:
             host: grafana
