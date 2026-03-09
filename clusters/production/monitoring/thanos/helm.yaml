@@ -47,27 +47,7 @@ spec:
       repository: thanos/thanos
       tag: v0.41.0
     receive:
-      enabled: true
-      resourcesPreset: large
-      persistence:
-        enabled: true
-        size: 20Gi
-      livenessProbe:
-        enabled: false
-      readinessProbe:
-        enabled: false
-      startupProbe:
-        enabled: false
-      extraFlags:
-        - --http.config=/etc/thanos/receive-http-config/config.yaml
-      extraVolumes:
-        - name: receive-http-config
-          secret:
-            secretName: thanos-receive-http-config
-      extraVolumeMounts:
-        - name: receive-http-config
-          mountPath: /etc/thanos/receive-http-config
-          readOnly: true
+      enabled: false
     query:
       enabled: true
       replicaCount: 3
