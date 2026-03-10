@@ -47,7 +47,11 @@ spec:
       repository: thanos/thanos
       tag: v0.41.0
     receive:
-      enabled: false
+      enabled: true
+      resourcesPreset: large
+      persistence:
+        enabled: true
+        size: 20Gi
     query:
       enabled: true
       replicaCount: 3
