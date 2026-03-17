@@ -45,6 +45,7 @@ spec:
           kubernetesDashboards: true
           # Blazing-fast Table Panel
           tableNextGen: true
+          newPanelPadding: false
         unified_alerting:
           enabled: true
           ha_peers: grafana-headless:9094
