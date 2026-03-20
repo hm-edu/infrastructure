@@ -203,6 +203,23 @@ spec:
         - "id-card-test.it.hm.edu"
     - port:
         number: 80
+        name: http-idm-api
+        protocol: HTTP
+      tls:
+        httpsRedirect: false
+      hosts:
+        - "idm-api.it.hm.edu"
+    - port:
+        number: 443
+        name: https-idm-api
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: idm-api-cert
+      hosts:
+        - "idm-api.it.hm.edu"
+    - port:
+        number: 80
         name: http-id-card
         protocol: HTTP
       tls:

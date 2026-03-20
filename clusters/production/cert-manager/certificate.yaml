@@ -71,6 +71,20 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: idm-api-cert
+  namespace: istio-ingress
+spec:
+  commonName: idm-api.it.hm.edu
+  dnsNames:
+    - "idm-api.it.hm.edu"
+  issuerRef:
+    kind: ClusterIssuer
+    name: acme-prod
+  secretName: idm-api-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: id-card-test-cert
   namespace: istio-ingress
 spec:
