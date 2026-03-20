@@ -1,34 +1,6 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: workspaces-cert
-  namespace: istio-ingress
-spec:
-  commonName: workspaces.it.hm.edu
-  dnsNames:
-    - "workspaces.it.hm.edu"
-  issuerRef:
-    kind: ClusterIssuer
-    name: acme-prod
-  secretName: workspaces-cert
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: workspaces-wild-cert
-  namespace: istio-ingress
-spec:
-  commonName: "*.workspaces.it.hm.edu"
-  dnsNames:
-    - "*.workspaces.it.hm.edu"
-  issuerRef:
-    kind: Issuer
-    name: acme-issuer-dns
-  secretName: workspaces-wild-cert
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
   name: sso-test-cert
   namespace: istio-ingress
 spec:

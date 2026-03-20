@@ -8,7 +8,6 @@ In general it utilizes Flux CD and contains definitions:
 * Istio
 * PKI-Portal
 * Gitlab Runners
-* Gitlab Workspaces
 * Grafana & Prometheus
 * Cert-Manager
 

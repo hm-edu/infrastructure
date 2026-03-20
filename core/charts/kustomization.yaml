@@ -12,7 +12,6 @@ resources:
   - bitnami.yaml
   - nfs.yaml
   - gitlab.yaml
-  - workspaces.yaml
   - tailscale.yaml
   - reloader.yaml
   - enix.yaml
