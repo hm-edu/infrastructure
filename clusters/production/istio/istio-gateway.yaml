@@ -75,7 +75,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: pki-hof-cert
+        credentialName: pki-cert-hof
       hosts:
         - "portal.pki.hof-university.de"
         - "eab.pki.hof-university.de"
