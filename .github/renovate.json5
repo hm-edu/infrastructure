@@ -1,170 +1,167 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "enabled": true,
-  "semanticCommits": "enabled",
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": [
-    "prIgnoreNotification"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  enabled: true,
+  semanticCommits: 'enabled',
+  dependencyDashboard: true,
+  dependencyDashboardTitle: 'Renovate Dashboard 🤖',
+  suppressNotifications: [
+    'prIgnoreNotification',
   ],
-  "rebaseWhen": "conflicted",
-  "regexManagers": [
+  rebaseWhen: 'conflicted',
+  customManagers: [
     {
-      "description": "Process various other dependencies",
-      "fileMatch": [
-        "core/.+\\.ya?ml$",
-        "clusters/.+\\.ya?ml$"
+      customType: 'regex',
+      description: 'Process various other dependencies',
+      managerFilePatterns: [
+        '/core/.+\\.ya?ml$/',
+        '/clusters/.+\\.ya?ml$/',
       ],
-      "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+      matchStrings: [
+        'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?"(?<currentValue>.*)"\n',
       ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    }
+      datasourceTemplate: '{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}',
+      versioningTemplate: '{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}',
+    },
   ],
-  "flux": {
-    "fileMatch": [
-      "core/.+\\.ya?ml$",
-      "clusters/.+\\.ya?ml$"
-    ]
+  flux: {
+    managerFilePatterns: [
+      '/core/.+\\.ya?ml$/',
+      '/clusters/.+\\.ya?ml$/',
+    ],
   },
-  "helm-values": {
-    "fileMatch": [
-      "core/.+\\.ya?ml$",
-      "clusters/.+\\.ya?ml$"
-    ]
+  'helm-values': {
+    managerFilePatterns: [
+      '/core/.+\\.ya?ml$/',
+      '/clusters/.+\\.ya?ml$/',
+    ],
   },
-  "kubernetes": {
-    "fileMatch": [
-      "core/.+\\.ya?ml$",
-      "clusters/.+\\.ya?ml$"
-    ]
+  kubernetes: {
+    managerFilePatterns: [
+      '/core/.+\\.ya?ml$/',
+      '/clusters/.+\\.ya?ml$/',
+    ],
   },
-  "packageRules": [
+  packageRules: [
     {
-      "matchPackageNames": [
-        "ghcr.io/fluxcd/image-reflector-controller",
-        "ghcr.io/fluxcd/image-automation-controller",
-        "ghcr.io/fluxcd/source-controller",
-        "ghcr.io/fluxcd/kustomize-controller",
-        "ghcr.io/fluxcd/helm-controller",
-        "ghcr.io/fluxcd/notification-controller"
+      matchPackageNames: [
+        'ghcr.io/fluxcd/image-reflector-controller',
+        'ghcr.io/fluxcd/image-automation-controller',
+        'ghcr.io/fluxcd/source-controller',
+        'ghcr.io/fluxcd/kustomize-controller',
+        'ghcr.io/fluxcd/helm-controller',
+        'ghcr.io/fluxcd/notification-controller',
       ],
-      "enabled": false
+      enabled: false,
     },
-    // setup datasources
     {
-      "matchDatasources": [
-        "helm"
+      matchDatasources: [
+        'helm',
       ],
-      "separateMinorPatch": true,
-      "ignoreDeprecated": true
+      separateMinorPatch: true,
+      ignoreDeprecated: true,
     },
-    // global docker datasource settings
     {
-      "matchDatasources": [
-        "docker"
+      matchDatasources: [
+        'docker',
       ],
-      "enabled": true,
-      "commitMessageTopic": "container image {{depName}}",
-      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      "matchUpdateTypes": [
-        "major",
-        "minor",
-        "patch"
-      ]
+      enabled: true,
+      commitMessageTopic: 'container image {{depName}}',
+      commitMessageExtra: 'to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}',
+      matchUpdateTypes: [
+        'major',
+        'minor',
+        'patch',
+      ],
     },
-    // group istio dependencies
     {
-      "description": "Group Istio Charts",
-      "groupName": "Istio",
-      "matchDatasources": [
-        "helm"
+      description: 'Group Istio Charts',
+      groupName: 'Istio',
+      matchDatasources: [
+        'helm',
       ],
-      "matchPaths": [
-        "core/istio/helm.yaml"
+      matchFileNames: [
+        'core/istio/helm.yaml',
       ],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
+      group: {
+        commitMessageTopic: '{{{groupName}}} group',
       },
-      "separateMinorPatch": true
-    },
-    // add labels according to package and update types
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "labels": [
-        "renovate/docker",
-        "renovate/major"
-      ]
+      separateMinorPatch: true,
     },
     {
-      "matchDatasources": [
-        "docker"
+      matchDatasources: [
+        'docker',
       ],
-      "matchUpdateTypes": [
-        "minor"
+      matchUpdateTypes: [
+        'major',
       ],
-      "labels": [
-        "renovate/docker",
-        "renovate/minor"
-      ]
+      labels: [
+        'renovate/docker',
+        'renovate/major',
+      ],
     },
     {
-      "matchDatasources": [
-        "docker"
+      matchDatasources: [
+        'docker',
       ],
-      "matchUpdateTypes": [
-        "patch"
+      matchUpdateTypes: [
+        'minor',
       ],
-      "labels": [
-        "renovate/docker",
-        "renovate/patch"
-      ]
+      labels: [
+        'renovate/docker',
+        'renovate/minor',
+      ],
     },
     {
-      "matchDatasources": [
-        "helm"
+      matchDatasources: [
+        'docker',
       ],
-      "matchUpdateTypes": [
-        "major"
+      matchUpdateTypes: [
+        'patch',
       ],
-      "labels": [
-        "renovate/helm",
-        "renovate/major"
-      ]
+      labels: [
+        'renovate/docker',
+        'renovate/patch',
+      ],
     },
     {
-      "matchDatasources": [
-        "helm"
+      matchDatasources: [
+        'helm',
       ],
-      "matchUpdateTypes": [
-        "minor"
+      matchUpdateTypes: [
+        'major',
       ],
-      "labels": [
-        "renovate/helm",
-        "renovate/minor"
-      ]
+      labels: [
+        'renovate/helm',
+        'renovate/major',
+      ],
     },
     {
-      "matchDatasources": [
-        "helm"
+      matchDatasources: [
+        'helm',
       ],
-      "matchUpdateTypes": [
-        "patch"
+      matchUpdateTypes: [
+        'minor',
       ],
-      "labels": [
-        "renovate/helm",
-        "renovate/patch"
+      labels: [
+        'renovate/helm',
+        'renovate/minor',
       ],
-      "automerge": true,
-      "ignoreTests": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
-    }
-  ]
+    },
+    {
+      matchDatasources: [
+        'helm',
+      ],
+      matchUpdateTypes: [
+        'patch',
+      ],
+      labels: [
+        'renovate/helm',
+        'renovate/patch',
+      ],
+      automerge: true,
+      ignoreTests: true,
+      automergeType: 'pr',
+      platformAutomerge: true,
+    },
+  ],
 }
