@@ -277,8 +277,8 @@ spec:
             - containerPort: 2222
               protocol: TCP
           readinessProbe:
-            exec:
-              command: ["/grpc_health_probe", "-addr=:8081"]
+            grpc:
+              port: 8081
             initialDelaySeconds: 10
             periodSeconds: 30
 ---
