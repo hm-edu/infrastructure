@@ -98,3 +98,46 @@ spec:
   workloadSelector:
     labels:
       istio: ingressgateway
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: sso-oidc-resource-inject
+  namespace: istio-ingress
+spec:
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: GATEWAY
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+              subFilter:
+                name: envoy.filters.http.router
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.lua.sso-oidc-resource-inject
+          typed_config:
+            '@type': type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
+            inlineCode: |
+              function envoy_on_request(request_handle)
+                local path = request_handle:headers():get(":path")
+                if path and path:find("/idp/profile/oidc/authorize", 1, true) then
+                  local query = path:match("%?(.*)")
+                  if query then
+                    local client_id = query:match("^client_id=([^&]*)") or query:match("&client_id=([^&]*)")
+                    if client_id == "hm-edu.eu.ps.cloudstream.ricoh.com" then
+                      if not (query:match("^resource=") or query:match("&resource=")) then
+                        request_handle:headers():replace(":path", path .. "&resource=https://hm-edu.eu.ps.cloudstream.ricoh.com")
+                      end
+                    end
+                  end
+                end
+              end
+              function envoy_on_response(response_handle)
+              end
+  workloadSelector:
+    labels:
+      istio: ingressgateway
