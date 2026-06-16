@@ -99,20 +99,8 @@ spec:
       debugMode: false
       hostPathVolumeType: Directory
       resources:
-      limits:
-        cpu: 100m
-        memory: 40Mi
-      requests:
-        cpu: 10m
-        memory: 20Mi
       restartPolicy: Always
       securityContext:
-      capabilities:
-        drop:
-          - ALL
-      readOnlyRootFilesystem: true
-      runAsGroup: 0
-      runAsUser: 0
     prometheusPodMonitor:
       create: true
     prometheusRules:
