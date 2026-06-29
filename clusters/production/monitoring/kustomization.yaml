@@ -6,6 +6,7 @@ resources:
   - kube-prometheus-stack
   - grafana
   - thanos
+  - karma
   - services
   - blackbox-exporter
   - rittal-exporter
