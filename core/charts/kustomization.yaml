@@ -17,4 +17,3 @@ resources:
   - enix.yaml
   - netbox.yaml
   - falco.yaml
-  - wiremind.yaml
