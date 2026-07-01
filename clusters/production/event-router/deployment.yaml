@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: kube-eventrouter
-          image: ghcr.io/kube-logging/eventrouter:latest@sha256:739be5d89c911abf4a1e226d57429d2e0e36ea0a59b71e615436eeecb70132d1
+          image: ghcr.io/kube-logging/eventrouter:latest@sha256:7949c5e57f65ab8d7db18c74fb493e3c36db25683ca659059c752b9c9929eae5
           imagePullPolicy: IfNotPresent
           resources:
             requests:
