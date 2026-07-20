@@ -30,6 +30,8 @@ spec:
     role: Stateless-Aggregator
     replicas: 3
     env:
+      - name: VECTOR_DANGEROUSLY_ALLOW_ENV_VAR_INTERPOLATION
+        value: "true"
       - name: NODE_IP
         valueFrom:
           fieldRef:
