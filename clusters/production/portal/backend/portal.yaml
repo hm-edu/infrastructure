@@ -182,6 +182,21 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 30
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: portal
+  name: pki-service-acme
+  labels:
+    app: pki-service
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 50Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -217,6 +232,22 @@ spec:
             - "true"
             - --smime_key_length
             - "4096"
+            - --ssl_ca
+            - "letsencrypt"
+            - --acme_email
+            - "noreply@hm.edu"
+            - --acme_directory
+            - "https://acme-v02.api.letsencrypt.org/directory"
+            - --acme_account_key
+            - "/data/acme-account-key.pem"
+            - --acme_dns_config
+            - "/config/acme-dns.yaml"
+          volumeMounts:
+            - mountPath: /config
+              name: acme-dns
+              readOnly: true
+            - mountPath: /data
+              name: acme-account
           env:
             - name: USER
               valueFrom:
@@ -281,6 +312,16 @@ spec:
               port: 8081
             initialDelaySeconds: 10
             periodSeconds: 30
+      volumes:
+        - name: acme-dns
+          configMap:
+            name: acme-dns
+            items:
+              - key: acme-dns.yaml
+                path: acme-dns.yaml
+        - name: acme-account
+          persistentVolumeClaim:
+            claimName: pki-service-acme
 ---
 apiVersion: v1
 kind: Service
