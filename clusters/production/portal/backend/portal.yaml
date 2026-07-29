@@ -242,6 +242,8 @@ spec:
             - "/data/acme-account-key.pem"
             - --acme_dns_config
             - "/config/acme-dns.yaml"
+            - --mail_port
+            - "587"
           volumeMounts:
             - mountPath: /config
               name: acme-dns
@@ -294,6 +296,16 @@ spec:
                 secretKeyRef:
                   name: mail
                   key: mail_from
+            - name: MAIL_USERNAME 
+              valueFrom:
+                secretKeyRef:
+                  name: mail
+                  key: mail_username
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mail
+                  key: mail_password
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
