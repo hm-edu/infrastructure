@@ -100,7 +100,6 @@ spec:
       hostPathVolumeType: Directory
       resources:
       restartPolicy: Always
-      securityContext:
     prometheusPodMonitor:
       create: true
     prometheusRules:
